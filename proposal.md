@@ -2,6 +2,10 @@
 We will create a Harry Potter themed game where the students would at first get to choose their wand, pets, potion, 
 
 # Need To Have List:
-list of all opponents with different strengths and they will be assigned randomly to the players 
-
-# Nice To Have List:    
+- list of all opponents with different strengths and they will be assigned randomly to the players (parent and child classes), (random library)
+- 2 different locations that we can move around, hogwarts and diagon alley.
+- save result of their battles in an external file for each player. 
+- Hagrid will be the narrator and helper. 
+# Nice To Have List:  
+- potion riddle game to get more scores
+- 
