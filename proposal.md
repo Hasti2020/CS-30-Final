@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 =======
 # Storyline
-The player has been chosen to enter the upcoming triWizzard tournament.  First, they would get to choose their wand, pets, potion, and enter the Triwizard Tournament in Hogwarts. With every duel, their goal is to survive, deal damage, and score points. They would win by defeating all enemies, staying alive, and getting the highest score.
+The player has been chosen to enter the upcoming triWizzard tournament.  First, they would get to choose their wand, pets, potion, and enter the Triwizard Tournament in Hogwarts. With every duel, their goal is to survive, deal damage, and score points. They would win by defeating all enemies, staying alive, and getting the highest score. 
 
 
 # Need To Have List:
