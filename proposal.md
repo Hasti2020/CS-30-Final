@@ -5,7 +5,7 @@ We will create a Harry Potter themed game where the students would at first get 
 Flow of the game:
 - Hagrid invites player to Hogwarts
 - They'll first to go Daiogon Alley where they will be able to pick a wand, a pet and school supplies
-- They'll then go to Hagwarts
+- They'll then go to Hagwart
 - They'll be assigned a house based on a short quiz
 - They'll have the option to attend classes (potions, charms, transfiguratuon)
 - Class quiz with questions to earn bonus points
