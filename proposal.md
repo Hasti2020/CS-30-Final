@@ -1,7 +1,20 @@
 
-=======
+===
 # Story line
 We will create a Harry Potter themed game where the students would at first get to choose their wand, pets, potion and enter the triwizard tournament in Hogwarts. Where they will be fighting with randomized oponents, and would win if they sucessfuly defeated all their oponents and remain alive in the end with the highest score.
+Flow of the game:
+- Hagrid invites player to Hogwarts
+- They'll first to go Daiogon Alley where they will be able to pick a wand, a pet and school supplies
+- They'll then go to Hagwarts
+- They'll be assigned a house based on a short quiz
+- They'll have the option to attend classes (potions, charms, transfiguratuon)
+- Class quiz with questions to earn bonus points
+- There will be hidden hints in those classes that can help in future battles
+- They'll be invited to join the ? tournament at their own risk
+- Nice to have: They'll have to retrieve a Dragon egg (for bonus points)\
+- Three battles with random apponants and if they survive,
+- They'll face the final boss aka Voldemort who showed up
+The player has been chosen to enter the upcoming triWizzard tournament.  First, they would get to choose their wand, pets, potion, and enter the Triwizard Tournament in Hogwarts. With every duel, their goal is to survive, deal damage, and score points. They would win by defeating all enemies, staying alive, and getting the highest score.
 
 # Need To Have List:
 Character Module:
@@ -27,6 +40,7 @@ Game Module:
 - Riddle game to get more scores
 - house sort
 - changes font color to the house color
+- Navigate in a maze to find the dragon egg
 
 
 >>>>>>> 2c10f6cbb016b1df949c196e024ea85b1cacd634
