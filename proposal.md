@@ -9,7 +9,7 @@ Flow of the game:
 - They'll have class quizzes with questions to earn bonus points
 - There will be hidden hints in those classes that can help in future battles
 - They'll be invited to join the Diwizzard tournament at their own risk
-- Three battles with random opponents, and if they survive,
+- Three battles with random opponents, and if they survive,  
 - They'll face the final boss, aka Voldemort, who showed up unexpectedly in the tournament.
 
 # Need To Have List:
