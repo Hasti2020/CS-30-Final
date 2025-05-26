@@ -26,6 +26,6 @@ wand_options = [Wand("Duststick", "Rabbit Fur", 0, 10),
                 Wand("Elder Echo", "Basilisk Horn", 20, 30)]
 
 
-Wand.get_wand()
+#Wand.get_wand()
 
 
