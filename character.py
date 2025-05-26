@@ -24,7 +24,9 @@ class Player(Character):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
 
-        
+    def movement(self):
+        pass
+
     def inflict_damage(self, enemy):
         print("\nCasting a spell...")
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
