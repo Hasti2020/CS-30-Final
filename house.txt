@@ -1,0 +1,7 @@
+What annoys you the most?, Cowardice, Cruelty, G, H,
+How do you like your victories?, Loud and hard-earned, Exactly as planned, G, S,
+A storm is approaching. What do you do?, Make sure everyone is safe, Stay indoors, H, R, 
+Which of these sounds most satisfying?, Solving a riddle no one else could, Pulling off a long-term plan flawlessly, R, S,
+What's your ideal weekend?, Hiking or exploring nature, Binge-watching a series, G, R,
+Which word describes you best?, Chill, Ambitious, H, S,
+End,
