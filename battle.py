@@ -3,7 +3,6 @@ import character
 player = character.Player('Harry')
 target = character.Oponent(character.oponent)
 
-
 while player.alive and target.alive:
     player.inflict_damage(target)
     if target.alive:
