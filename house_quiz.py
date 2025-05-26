@@ -23,7 +23,7 @@ while sorting[0] != "End":
         answer = input("Try again (enter)")
     
 print(house_list)
-g = house_list.count(" G")
+g = house_list.count(" G")    
 s = house_list.count(" S")
 h = house_list.count(" H")
 r = house_list.count(" R")
