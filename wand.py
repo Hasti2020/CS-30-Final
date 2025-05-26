@@ -15,10 +15,13 @@ class Wand:
         return random.randint(self.min_power, self.max_power)
     '''
     def get_wand():
+        global random_wand
         random_wand = random.choice(wand_options)
-        #print(f"The wand has spoken... You have been chosen by {random_wand}!")
-       #print(f"Your wand has a {random_wand.core};  and casts spells with power between {random_wand.min_power} and {random_wand.max_power}.")
         return random_wand
+
+    def wand_intro():
+        print(f"The wand has spoken... You have been chosen by {random_wand}!")
+        print(f"Your wand has a {random_wand.core};  and casts spells with power between {random_wand.min_power} and {random_wand.max_power}.")
         
 wand_options = [Wand("Duststick", "Rabbit Fur", 0, 10),
                 Wand("Ashlight", "Unicorn Hair", 5, 15),
