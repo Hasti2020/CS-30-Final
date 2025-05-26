@@ -2,6 +2,12 @@ import random
 quiz = open("house.txt", "r")
 line = quiz.readline()
 sorting = line.split(",")
+# Color codes using ANSI escape sequences
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+BLUE = "\033[94m"
+ENDC = "\033[0m"  # Reset to default
 
 house_list = []
 
@@ -29,13 +35,13 @@ h = house_list.count(" H")
 r = house_list.count(" R")
 
 if g == 3:
-    print("You are in...GRYFINDOR")
+    print(RED + "You are in...GRYFINDOR" + ENDC)
 if s == 3:
-    print("You are in...SLYTHERIN")
+    print(GREEN + "You are in...SLYTHERIN" + ENDC)
 if r == 3:
-    print("You are in...RAVENCLAW")
+    print(BLUE + "You are in...RAVENCLAW" + ENDC)
 if h == 3:
-    print("You are in...HUFFLEPUFF")
+    print(YELLOW + "You are in...HUFFLEPUFF" + ENDC)
 
     
         
