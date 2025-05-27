@@ -14,7 +14,6 @@ class Character:
         self.health -= damage
         if self.health <= 0:
             self.alive = False
-            print("lol u r dead")
         else: 
             print(f"{self.name}, current health : {self.health}")
 
@@ -30,8 +29,9 @@ class Player(Character):
     def inflict_damage(self, enemy):
         print("\nCasting a spell...")
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
-        print(f"{oponent} has taken {attack} damage")
+        print(f"{enemy.name} has taken {attack} damage")
         enemy.take_damage(attack)
+
         
        
 class Oponent(Character):
@@ -40,24 +40,21 @@ class Oponent(Character):
         Character.__init__(self, name)
      
     def inflict_damage(self, user):
-        print(f"{oponent} is casting a spell...")
+        print(f"{self.name} is casting a spell...")
         if self.name == 'Luna':
-            attack = random.randint(0, 10)
+            attack = random.randint(0, 5)
         if self.name == 'Draco':
-            attack = random.randint(5, 20)
+            attack = random.randint(5, 10)
         if self.name == 'Peter':
-            attack = random.randint(15, 30)
+            attack = random.randint(15, 25)
         if self.name == 'Bellatrix':
-            attack = random.randint(20, 35)
+            attack = random.randint(20, 30)
+        if self.name == 'Voldemort':
+            attack = random.randint(30, 40)
         print(f"you have taken {attack} damage")
         user.take_damage(attack)
 
-        
-    
- 
-oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
-oponent = random.choice(oponent_list)
-                
+               
 
 
 
