@@ -28,7 +28,7 @@ while sorting[0] != "End":
     else:
         answer = input("Try again (enter)")
     
-print(house_list) # delete when game is done
+#print(house_list) # delete when game is done
 g = house_list.count(" G")    
 s = house_list.count(" S")
 h = house_list.count(" H")
