@@ -3,7 +3,7 @@ import random
 
 oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
 oponent = random.choice(oponent_list) 
-player = character.Player('Harry') # player = character.Player('{player_name},)
+player = character.Player('Harry') # player = character.Player('{player_name}')
 target = character.Oponent(oponent)
 
 
