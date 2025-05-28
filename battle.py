@@ -1,33 +1,35 @@
-import character2
+import character
 import random
+
 oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
 oponent = random.choice(oponent_list) 
-player = character2.Player('Harry')
-target = character2.Oponent(oponent)
+player = character.Player('Harry') # player = character.Player('{player_name},)
+target = character.Oponent(oponent)
 
 
 while player.alive and target.alive:
-    player.inflict_damage(target, player)
+    player.inflict_damage(target)
     if target.alive:
         target.inflict_damage(player)  
     choice = input('enter to continue: ')
 
 
 if not player.alive:
-    print("better luck next time kiddo")
+    print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
 else:
-    print("\nCongrats you survived and won the battle")
-    print(f"But oh no {player.name}! Lord Voldemort just appeared on the battlefield! Use all the stength you have left to battle him!")
+    print("\nWell done, yeh did it! Survived and won the battle — knew yeh had it in yeh all along!")
+    print(f"But oh no, {player.name}! Blimey —  Lord Voldemort just appeared on the battlefield! Use every bit of strength yeh got left — this is the fight over yer life!")
     oponent = 'Voldemort'
-    boss = character2.Oponent('Voldemort')
+    boss = character.Oponent('Voldemort')
+    enter_final_battle = input('enter to continue: ')
     while player.alive and boss.alive:
         player.inflict_damage(boss)
         if boss.alive:
             boss.inflict_damage(player)
     if player.alive:
-        print("you won")
+        print("Yeh won. Yeh a true hero of the wizarding world {player.name}!")
     else:
-        print("u lost")
+        print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
     choice = input('enter to continue: ')
 
 
@@ -39,6 +41,7 @@ else:
 
 
     
+
 
 
 
