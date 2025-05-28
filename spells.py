@@ -1,5 +1,6 @@
 
-import character2
+import character
+
 spell_list = ['Sectumsempra',
           'Lumos',
           'Avada Kedavra',
@@ -25,7 +26,7 @@ class Spell:
         if self.name == 'Sectumsempra':
             return 25
         if self.name == 'Lumos':
-            return 0
+            return 1
         if self.name == 'Avada Kedavra':
             return 20
         if self.name == 'Disillusionment':
@@ -35,13 +36,16 @@ class Spell:
         if self.name == 'Expelliarmus':
             return 15
         else:
-            print("This is not a spell")
-    
+            return 0
     def cast_spell(self):
-        print(f"You have casted {self.name}, which has an attack damage of {self.attack}")
+        if character.choice in spell_list:
+            print(f"\nYou have casted {self.name}, which contributes {self.attack} damage")
+        else:
+            print(f"\nYou have casted an unknown spell, {self.name}, which contributes {self.attack} damage")
 '''
 Spell(character.choice).cast_spell()
 Spell(character.choice)
 '''
+
 
 
