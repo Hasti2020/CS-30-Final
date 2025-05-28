@@ -1,6 +1,6 @@
 import random
-import wand2
-import spells2
+import wand
+import spells
 
 class Character:
 
@@ -23,30 +23,34 @@ class Player(Character):
     
     def __init__(self, name):
         Character.__init__(self, name)
-        self.wand_type = wand2.Wand.get_wand()
+        self.wand_type = wand.Wand.get_wand()
 
     def movement(self):
         pass
 
-    def inflict_damage(self, enemy, hero):
+    def inflict_damage(self, enemy):
+        global choice
         print("\nCasting a spell...")
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
-        print(f"{enemy.name} has taken {attack} damage")
-        enemy.take_damage(attack)
-        if hero.health <= 60:
-            print(f'seems like you are losing quite a bit how health! Quickly cast a speel you remember from class to cause more damage!')
+        if self.health <= 60:
+            print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any spell yeh remember to cause more damage!')
             choice = input("spell name: ")
-            spells2.Spell(choice).cast_spell()
-            attack = spells2.Spell(choice).attack
+            spells.Spell(choice).cast_spell()
+            spell_attack = spells.Spell(choice).attack    
+            total_attack = attack + spell_attack
+            print(f"{enemy.name} has taken a total of {total_attack} damage")
+            enemy.take_damage(total_attack)
+        else:
+            print(f"{enemy.name} has taken {attack} damage")
             enemy.take_damage(attack)
-  
+
 class Oponent(Character):
     
     def __init__(self, name):
         Character.__init__(self, name)
      
     def inflict_damage(self, user):
-        print(f"{self.name} is casting a spell...")
+        print(f"\n{self.name} is casting a spell...")
         if self.name == 'Luna':
             attack = random.randint(0, 5)
         if self.name == 'Draco':
@@ -61,6 +65,7 @@ class Oponent(Character):
         user.take_damage(attack)
 
                
+
 
 
 
