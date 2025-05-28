@@ -28,7 +28,7 @@ while sorting[0] != "End":
     else:
         answer = input("Try again (enter)")
     
-print(house_list)
+print(house_list) # delete when game is done
 g = house_list.count(" G")    
 s = house_list.count(" S")
 h = house_list.count(" H")
@@ -36,13 +36,14 @@ r = house_list.count(" R")
 
 if g == 3:
     print(RED + "You are in...GRYFINDOR" + ENDC)
-if s == 3:
+elif s == 3:
     print(GREEN + "You are in...SLYTHERIN" + ENDC)
-if r == 3:
+elif r == 3:
     print(BLUE + "You are in...RAVENCLAW" + ENDC)
-if h == 3:
+elif h == 3:
     print(YELLOW + "You are in...HUFFLEPUFF" + ENDC)
-
+else:
+    print(RED + "You are in...GRYFINDOR" + ENDC)
     
         
 
