@@ -120,8 +120,8 @@ class Movement:
                 print("You already got a pet!")
 
 
-        if current_tile == "The leaky Cauldren":
-            print("You’re in the cozy Leaky Cauldron. Do you want to rest or listen for news? (rest/news/leave)")
+        if current_tile == "The leaky cauldron":
+            print("You are in the cozy Leaky Cauldron. Do you want to rest or listen for news? (rest/news/leave)")
             choice = input("Choice: ").lower()
             if choice == "rest":
                 print("You enjoy a warm meal and butterbeer. You feel refreshed!")
@@ -143,7 +143,7 @@ class Movement:
 
 
         if current_tile == "Weasleys' Wizard Wheezes (joke shop)":
-            print("You’ve entered the wildest shop in Diagon Alley!")
+            print("You have entered the wildest shop in Diagon Alley!")
             if self.have_money:
                 print("You can buy a fun item:\n1-Extendable Ear\n2-Trick Wand\n3-Skiving Snackbox")
                 choice = input("What would you like? (1/2/3): ")
@@ -154,7 +154,7 @@ class Movement:
                 elif choice == "3":
                     print("You feel a bit sick... now you can skip class if needed!")
                 else:
-                    print("That’s not an option.")
+                    print("That is not an option.")
             else:
                 print("Fred: Sorry, no galleons, no giggles! Get some money first.")
 
@@ -208,6 +208,7 @@ hogwarts = [
 player_name = input("Enter name: ")
 player = Movement(player_name, {'row': 0, 'col': 0}, False, False, False, False)
 player.main_menu()
+
 
 
 
