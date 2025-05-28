@@ -10,10 +10,10 @@ class Wand:
 
     def __str__(self):
         return f"{self.name}"
-    '''
+
     def cast_spell(self):
         return random.randint(self.min_power, self.max_power)
-    '''
+
     def get_wand():
         global random_wand
         random_wand = random.choice(wand_options)
@@ -31,6 +31,5 @@ wand_options = [Wand("Duststick", "Rabbit Fur", 0, 10),
 
 
 Wand.get_wand()
-
 
 
