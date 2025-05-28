@@ -1,6 +1,7 @@
 import random
 import wand
 import spells
+import movement
 
 class Character:
 
@@ -26,6 +27,10 @@ class Player(Character):
         self.wand_type = wand.Wand.get_wand()
 
     def movement(self):
+        pass
+        #movement.player.main_menu()
+
+    def heal(self):
         pass
 
     def inflict_damage(self, enemy):
