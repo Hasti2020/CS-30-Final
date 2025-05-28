@@ -1,5 +1,7 @@
 import random
-import wand 
+import wand2
+import spells2
+
 class Character:
 
     def __init__(self, name):
@@ -21,19 +23,23 @@ class Player(Character):
     
     def __init__(self, name):
         Character.__init__(self, name)
-        self.wand_type = wand.Wand.get_wand()
+        self.wand_type = wand2.Wand.get_wand()
 
     def movement(self):
         pass
 
-    def inflict_damage(self, enemy):
+    def inflict_damage(self, enemy, hero):
         print("\nCasting a spell...")
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         print(f"{enemy.name} has taken {attack} damage")
         enemy.take_damage(attack)
-
-        
-       
+        if hero.health <= 60:
+            print(f'seems like you are losing quite a bit how health! Quickly cast a speel you remember from class to cause more damage!')
+            choice = input("spell name: ")
+            spells2.Spell(choice).cast_spell()
+            attack = spells2.Spell(choice).attack
+            enemy.take_damage(attack)
+  
 class Oponent(Character):
     
     def __init__(self, name):
@@ -55,6 +61,7 @@ class Oponent(Character):
         user.take_damage(attack)
 
                
+
 
 
 
