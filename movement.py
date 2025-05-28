@@ -166,7 +166,7 @@ class Movement:
             for j, tile in enumerate(row):
                 if self.location['row'] == i and self.location['col'] == j:
                     # Highlight current location
-                    display_row.append(f"{tile}  \U0001f600")
+                    display_row.append(f"{tile}\U0001f600")
                 else:
                     display_row.append(tile)
             display_grid.append(display_row)
