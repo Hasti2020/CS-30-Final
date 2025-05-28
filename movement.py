@@ -2,55 +2,48 @@ import wand as w
 
 class Movement:
 
-    def __init__(self, name, location, have_money, have_wand):
+    def __init__(self, name, location, have_money, have_wand, have_book):
         self.name = name
         self.location = location
-        self.money = have_money
+        self.have_money = have_money
         self.have_wand = have_wand
+        self.have_book = have_book
     
     def __str__(self):
         return f"{self.name}"
     
     def move(self):
-        print("Which direction do you wanna go? (north, south, east, west)")
-        direction = input("Choice: ").lower()
-        # Move based on user input
-        if direction == "west":
-            if self.location['col'] > 0:
-                self.location['col'] -= 1
-                print("You moved west.")
-                print(f"Now you are in {diagon_alley[self.location['row']][self.location['col']]}. ")
+        #self.explore_diagon_tile()
+        while True:
+            print("Which direction do you wanna go? (north, south, east, west)")
+            direction = input("Choice: ").lower()
+            moved = False
+            if direction == "west":
+                if self.location['col'] > 0:
+                    self.location['col'] -= 1
+                    moved = True
+            elif direction == "east":
+                if self.location['col'] < 2:
+                    self.location['col'] += 1
+                    moved = True
+            elif direction == "south":
+                if self.location['row'] < 2:
+                    self.location['row'] += 1
+                    moved = True
+            elif direction == "north":
+                if self.location['row'] > 0:
+                    self.location['row'] -= 1
+                    moved = True
             else:
-                print("You can't move west.")
-                self.move()
-        elif direction == "east":
-            if self.location['col'] < 2:  # There's only 3 columns (0, 1, 2)
-                self.location['col'] += 1
-                print("You moved east.")
-                print(f"Now you are in {diagon_alley[self.location['row']][self.location['col']]}. ")
+                print("Invalid direction!")
+            if moved:
+                print(f"You moved {direction}.")
+                print(f"Now you are in {diagon_alley[self.location['row']][self.location['col']]}.")
+                break
             else:
-                print("You can't move east.")
-                self.move()
-        elif direction == "south":
-            if self.location['row'] < 2:  # There's only 3 rows (0, 1, 2)
-                self.location['row'] += 1
-                print("You moved south.")
-                print(f"Now you are in {diagon_alley[self.location['row']][self.location['col']]}. ")
-            else:
-                print("You can't move south.")
-                self.move()
-        elif direction == "north":
-            if self.location['row'] > 0:
-                self.location['row'] -= 1
-                print("You moved north.")
-                print(f"Now you are in {diagon_alley[self.location['row']][self.location['col']]}. ")
-            else:
-                print("You can't move north.")
-                self.move()
-        else:
-            print("Invalid direction! Please choose north, south, east or west.")
-            self.move()
+                print(f"You can't move {direction}. Try a different direction.")
         self.explore_diagon_tile()
+
 
         if diagon_alley[self.location['row']][self.location['col']] == "Train station":
             print(f"You're in the {diagon_alley[self.location['row']][self.location['col']]}")
@@ -59,38 +52,70 @@ class Movement:
     
     def explore_diagon_tile(self):
         current_tile = diagon_alley[self.location['row']][self.location['col']]
-        
+
         if current_tile == "Gringotts Wizarding Bank":
             print("You can collect your money from you account.")
             print(input("Enter your name and password to access your vault: "))
             print("Vault opened!"+
                   "\nWow you have more than enough!!")
-            self.money = True
+            self.have_money = True
             print("Now you can go shopping.")
 
         if current_tile == "Ollivanders wand shop":
-            if self.money == False:
+            if not self.have_money:
                 print("You didn't get your money yet! Go to the bank first.")
             else:
-                print("You should get your wand {player_name}!")
+                print(f"You should get your wand {self.name}!")
                 print("Olivander talking...")
-                w.Wand.get_wand()
+                w.Wand.wand_intro()
                 self.have_wand = True
-        self.move()
+
+        if current_tile == "Bookstore":
+            if not self.have_money:
+                print("You didn't get your money yet! Go to the bank first.")
+            else:
+                print(f"You can get your books from here {self.name}.")
+                self.have_book = True
+
+        if current_tile == "Pet shop":
+            if not self.have_money:
+                print("You didn't get your money yet! Go to the bank first.")
+            else:
+                print(f"You can pick a pet {self.name}:\n1-Cat \n2-Toad \n3-Owl")
+                while True:
+                    pet = input("What do you wanna get? (Enter the corresponding number): ")
+                    if pet == "1":
+                        print("You got a cat.")
+                        break
+                    elif pet == "2":
+                        print("You got a toad.")
+                        break
+                    elif pet == "3":
+                        print("You got an owl.")
+                        break
+                    else:
+                        print("Invalid input! Please enter 1, 2, or 3.")
+
 
 
     def main_menu(self):
-        # Display the current location based on player coordinates
-        print(f"You are currently in the {diagon_alley[self.location['row']][self.location['col']]} of Diagon Alley.")
-        print("Do you want to explore? (yes/no)")
-        explore = input("choice: ")
-        if explore.lower() == "yes":
-            self.move()
-        elif explore.lower() == "no":
-            print("Bye.")
-        else:
-            print("Invalid choice! Please choose yes or no.")
-            self.main_menu()
+        print(f"Welcome to Diagon Alley, {self.name}!")
+        self.explore_diagon_tile()
+
+        while True:
+            print(f"\nYou are currently in the {diagon_alley[self.location['row']][self.location['col']]}.")
+            print("Do you want to explore? (yes/no)")
+            explore = input("Choice: ").lower()
+
+            if explore == "yes":
+                self.move()
+            elif explore == "no":
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid choice! Please choose yes or no.")
+
+
     
 
 
@@ -108,7 +133,8 @@ hogwarts = [
 ]
 
 player_name = input("Enter name: ")
-player = Movement(player_name, {'row': 0, 'col': 0}, False, False)
-Movement.main_menu(player)
+player = Movement(player_name, {'row': 0, 'col': 0}, False, False, False)
+player.main_menu()
+
 
 
