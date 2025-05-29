@@ -1,7 +1,7 @@
 import random
 import wand
 import spells
-import movement
+import score
 
 class Character:
 
@@ -25,6 +25,7 @@ class Player(Character):
     def __init__(self, name):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
+        self.players_score = 0
 
     def movement(self):
         pass
@@ -39,15 +40,17 @@ class Player(Character):
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         if self.health <= 60:
             print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any spell yeh remember to cause more damage!')
-            choice = input("spell name: ")
+            choice = input("spell name: ").title()
             spells.Spell(choice).cast_spell()
             spell_attack = spells.Spell(choice).attack    
             total_attack = attack + spell_attack
             print(f"{enemy.name} has taken a total of {total_attack} damage")
             enemy.take_damage(total_attack)
+            return total_attack
         else:
             print(f"{enemy.name} has taken {attack} damage")
             enemy.take_damage(attack)
+            return attack
 
 class Oponent(Character):
     
@@ -68,7 +71,7 @@ class Oponent(Character):
             attack = random.randint(30, 40)
         print(f"you have taken {attack} damage")
         user.take_damage(attack)
-
+        return attack
                
 
 
