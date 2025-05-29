@@ -1,16 +1,25 @@
 import character
 import random
+import wand
+import score
 
 oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
 oponent = random.choice(oponent_list) 
 player = character.Player('Harry') # player = character.Player('{player_name}')
 target = character.Oponent(oponent)
 
+player_attack = player.inflict_damage(target)
+target_attack = target.inflict_damage(player)
+difference = abs(player_attack - target_attack)
 
+print(wand.Wand.wand_intro()) # WHY IS THERE NONE WHEN PRINTING
+print(f'/n your current score is {score.high_score}')
 while player.alive and target.alive:
     player.inflict_damage(target)
     if target.alive:
         target.inflict_damage(player)  
+    if player_attack > target_attack:
+        print(f"Difference in attack damage: {difference}")
     choice = input('enter to continue: ')
 
 
