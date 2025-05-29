@@ -51,6 +51,10 @@ class Player(Character):
             print(f"{enemy.name} has taken {attack} damage")
             enemy.take_damage(attack)
             return attack
+    
+    def compare_scores(self):
+        if self.players_score > int(score.high_score):
+            score.newScore(str(self.players_score))
 
 class Oponent(Character):
     
@@ -64,11 +68,11 @@ class Oponent(Character):
         if self.name == 'Draco':
             attack = random.randint(5, 10)
         if self.name == 'Peter':
-            attack = random.randint(15, 25)
+            attack = random.randint(10, 15)
         if self.name == 'Bellatrix':
-            attack = random.randint(20, 30)
+            attack = random.randint(10, 20)
         if self.name == 'Voldemort':
-            attack = random.randint(30, 40)
+            attack = random.randint(15, 20)
         print(f"you have taken {attack} damage")
         user.take_damage(attack)
         return attack
