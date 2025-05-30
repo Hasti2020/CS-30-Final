@@ -1,5 +1,7 @@
 import random
 
+random_wand = None
+
 class Wand:
 
     def __init__(self, name: str, core: str, min_power: int, max_power: int):
