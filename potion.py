@@ -11,6 +11,7 @@ class PotionGame:
         self.inventory = []
 
     def things_on_table(self):
+        global choice
         print("---------THINGS ON YOUR TABLE---------")
         i = 1
         for item in self.ingredients:
@@ -23,21 +24,34 @@ class PotionGame:
                 self.inventory.append(selected)
                 self.ingredients.pop(choice-1)
                 return selected
-
         except ValueError:
             print("numbers only")
             return None
 
-    def test(self):
-        print(self.ingredients)
-        print(self.inventory)
-        
+    def view_inventory(self):
+        global choice
+        i = 1
+        for item in self.inventory:
+            print(f"{i}. {item}")
+            i += 1
+    
+    def brew_potion(self):
+        for potion, required_items in self.potions():
+            if all(item in self.inventory for item in required_items):
+                for item in required_items:
+                    self.inventory(item)
+                    print(f'you have brewed {potion}')
+
+ 
 game = PotionGame()
 while True:        
     test = input("q or w: ")
     if test == 'q':
-        print(game.things_on_table()) 
+        game.things_on_table() 
     elif test == 'w':
-        print(game.test())
+        game.my_inventory()
+    elif test == 'e':
+        game.brew_potion()
+
       
 
