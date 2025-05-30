@@ -48,7 +48,6 @@ class Movement:
         self.display_diagon_map()
 
     
-
     def explore_diagon_tile(self):
         current_tile = diagon_alley[self.location['row']][self.location['col']]
 
@@ -70,6 +69,7 @@ class Movement:
                 else:
                     print(f"Hagrid: 'This here's the wand shop, {self.name}. Yer wand's waitin' for ya.'")
                     print("Ollivander says...")  # Calling wand_intro from your wand module
+                    w.Wand.get_wand()
                     w.Wand.wand_intro()
                     self.have_wand = True
             else:
@@ -149,7 +149,7 @@ class Movement:
                 print("George: Sorry, no galleons, no giggles! Get some money first.")
 
         elif current_tile == "Train station":
-            print(f"Hagrid: 'You're at the current_tile.'")
+            print(f"Hagrid: 'You're at the {current_tile}.'")
             print("Hagrid: 'You can either stay in Diagon Alley or head off to Hogwarts, yeh? What'll it be?'")
             decision = input("Stay or go, mate? (stay, go) ").lower()
             if decision == "stay":
@@ -163,8 +163,7 @@ class Movement:
                     print("Youre not done with your list yet! Go get your wand.")
                 else:
                     print("Yay, go get your trian. choo choo")
-
-
+                
 
     def display_diagon_map(self):
         display_grid = []
