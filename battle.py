@@ -1,5 +1,7 @@
 import character
 import random
+import wand
+import score
 
 oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
 oponent = random.choice(oponent_list) 
@@ -7,10 +9,19 @@ player = character.Player('Harry') # player = character.Player('{player_name}')
 target = character.Oponent(oponent)
 
 
+
+print(wand.Wand.wand_intro()) # WHY IS THERE NONE WHEN PRINTING
+score.getScore()
+print(f'\nCurrent Score: {score.high_score}')
 while player.alive and target.alive:
-    player.inflict_damage(target)
+    player_attack = player.inflict_damage(target)
     if target.alive:
-        target.inflict_damage(player)  
+        target_attack = target.inflict_damage(player) 
+        difference = abs(player_attack - target_attack)
+        if player_attack > target_attack:
+            print(f"Difference in attack damage: {difference}")
+            player.players_score += difference
+            print(f"score: {player.players_score}")
     choice = input('enter to continue: ')
 
 
@@ -23,11 +34,17 @@ else:
     boss = character.Oponent('Voldemort')
     enter_final_battle = input('enter to continue: ')
     while player.alive and boss.alive:
-        player.inflict_damage(boss)
+        player_attack = player.inflict_damage(boss)
         if boss.alive:
-            boss.inflict_damage(player)
+            boss_attack = boss.inflict_damage(player)
+            difference = abs(player_attack - boss_attack) 
+            if player_attack > target_attack:
+                print(f"Difference in attack damage: {difference}")
+                player.players_score += difference
+                print(f"score: {player.players_score}")
     if player.alive:
-        print("Yeh won. Yeh a true hero of the wizarding world {player.name}!")
+        print(f"Yeh won. Yeh a true hero of the wizarding world {player.name}!")
+        player.compare_scores()
     else:
         print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
     choice = input('enter to continue: ')
