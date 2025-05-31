@@ -2,6 +2,7 @@ import random
 import wand
 import spells
 import score
+import potion
 
 class Character:
 
@@ -20,12 +21,15 @@ class Character:
         else: 
             print(f"{self.name}, current health : {self.health}")
 
+
+
 class Player(Character):
     
     def __init__(self, name):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
+        self.potions = potion.game.potions_made()
 
     def movement(self):
         pass
@@ -33,6 +37,14 @@ class Player(Character):
 
     def heal(self):
         pass
+        #for item in self.potions:
+            #if item == 'Wiggenweld Potion':
+
+    def inventory(self):
+        i = 1
+        for item in self.potions:
+            print(f"{i}. {item}")
+            i += 1
 
     def inflict_damage(self, enemy):
         global choice
