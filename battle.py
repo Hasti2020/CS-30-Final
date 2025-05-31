@@ -7,16 +7,20 @@ def start_battle(potions):
     import potion
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
     oponent = random.choice(oponent_list) 
-    player = character.Player('Harry') # player = character.Player('{player_name}')
+    player = character.Player('Harry', potions) # player = character.Player('{player_name}')
     target = character.Oponent(oponent)
-    player.potion_inventory = potions
 
-    print(wand.Wand.wand_intro()) # WHY IS THERE NONE WHEN PRINTING
+    wand.Wand.wand_intro()
     score.getScore()
     print(f'\nCurrent Score: {score.high_score}')
     print("press 'e' to acess inventory of your potions!")
 
     while player.alive and target.alive:
+        choice = input("enter to continue or 'e' to view inventory: ")
+        if choice == 'e':
+            player.inventory()
+            continue 
+        
         player_attack = player.inflict_damage(target)
         if target.alive:
             target_attack = target.inflict_damage(player) 
@@ -25,9 +29,6 @@ def start_battle(potions):
                 print(f"\nDifference in attack damage: {difference}")
                 player.players_score += difference
                 print(f"score: {player.players_score}")
-        if choice == 'e':
-            player.inventory()
-        choice = input("enter to continue or 'e' to view inventory: ")
 
 
     if not player.alive:
@@ -43,7 +44,7 @@ def start_battle(potions):
             if boss.alive:
                 boss_attack = boss.inflict_damage(player)
                 difference = abs(player_attack - boss_attack) 
-                if player_attack > target_attack:
+                if player_attack > boss_attack:
                     print(f"Difference in attack damage: {difference}")
                     player.players_score += difference
                     print(f"score: {player.players_score}")
@@ -52,7 +53,7 @@ def start_battle(potions):
             player.compare_scores()
         else:
             print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
-        choice = input('enter to continue: ')
+        input('enter to continue: ')
 
 
     
