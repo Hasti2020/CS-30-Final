@@ -73,12 +73,14 @@ class Player(Character):
         thread = threading.Thread(target=self.countdown, args=(duration,), daemon=True)
         thread.start()
 
+    '''still in major progress'''
+
     def countdown(self, t):
         while t:
-            mins, secs = divmod(t, 60) # Convert seconds to minutes and remaining seconds
-            timer = '{:02d}:{:02d}'.format(mins, secs) # Format for display
-            print(f"\r[Maxima Boost] Time left: {timer}", end="")
-            time.sleep(1) # Pause for 1 second
+            mins, secs = divmod(t, 60) 
+            timer = '{:02d}:{:02d}'.format(mins, secs) 
+            print(f"\r[Maxima Boost] Time left: {timer}", end="\n") 
+            time.sleep(1) 
             t -= 1
         self.increase_attack = False
         print("Time's up!")
