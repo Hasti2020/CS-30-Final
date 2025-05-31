@@ -10,3 +10,4 @@ def main():
             potions = potion.start_potion_game()
         elif choice == 'a':
             battle.start_battle(potions)
+main()
