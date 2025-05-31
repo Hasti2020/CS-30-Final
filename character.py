@@ -25,26 +25,44 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name):
+    def __init__(self, name, potions = None):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
-        self.potions = potion.game.potions_made()
+        if potions:
+            self.potion_inventory = potions
+        else:
+            self.potion_inventory = []
+        
 
     def movement(self):
         pass
         #movement.player.main_menu()
 
-    def heal(self):
-        pass
-        #for item in self.potions:
-            #if item == 'Wiggenweld Potion':
+    def heal(self, user):
+        for item in self.potions:
+            if item == 'Wiggenweld Potion':
+                user.health += 20
+                print('You have regained 20 health!')
 
     def inventory(self):
         i = 1
-        for item in self.potions:
+        for item in self.potion_inventory:
             print(f"{i}. {item}")
             i += 1
+        try:
+            choice = int(input("What potion do you want to use?: "))
+            if 1 <= choice <= len(self.potion_inventory):
+                selected = self.potion_inventory[choice-1]
+                self.potion_inventory.pop(choice-1)
+                return selected
+            
+        except ValueError:
+            print("numbers only")
+            return None
+
+
+
 
     def inflict_damage(self, enemy):
         global choice
