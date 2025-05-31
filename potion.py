@@ -1,5 +1,5 @@
 import time
-import test_main_game
+
 
 class PotionGame:
     def __init__(self):
@@ -62,6 +62,7 @@ class PotionGame:
 
 def start_potion_game():
     game = PotionGame()
+    print("welcome to the potion making game!")
     while True:     
         test = input("q or w: ")
         if test == 'q':
@@ -72,7 +73,6 @@ def start_potion_game():
             game.brew_potion()
         elif test == 'p':
             print(game.potions_made())
-        elif test == 'q':
-            test_main_game.main()
-    return game.potions_made()  
+        elif test == 't':
+            return game.potions_made()  
 
