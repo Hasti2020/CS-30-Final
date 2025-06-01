@@ -7,7 +7,7 @@ def start_battle(potions):
     import potion
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
     oponent = random.choice(oponent_list) 
-    player = character.Player('Harry', potions) # player = character.Player('{player_name}')
+    player = character.Player('Harry', False, potions) # player = character.Player('{player_name}')
     target = character.Oponent(oponent)
 
     wand.Wand.wand_intro()
@@ -20,7 +20,6 @@ def start_battle(potions):
         if choice == 'e':
             player.inventory()
             continue 
-        
         player_attack = player.inflict_damage(target)
         if target.alive:
             target_attack = target.inflict_damage(player) 
@@ -38,7 +37,6 @@ def start_battle(potions):
         print(f"But oh no, {player.name}! Blimey —  Lord Voldemort just appeared on the battlefield! Use every bit of strength yeh got left — this is the fight over yer life!")
         oponent = 'Voldemort'
         boss = character.Oponent('Voldemort')
-        enter_final_battle = input('enter to continue: ')
         while player.alive and boss.alive:
             player_attack = player.inflict_damage(boss)
             if boss.alive:
