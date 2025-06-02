@@ -41,7 +41,7 @@ class Player(Character):
         pass
         #movement.player.main_menu()
 
-    def inventory(self):
+    def inventory(self): # change to choose_potion
         i = 1
         for item in self.potion_inventory:
             print(f"{i}. {item}")
@@ -79,7 +79,7 @@ class Player(Character):
         while t:
             mins, secs = divmod(t, 60) 
             timer = '{:02d}:{:02d}'.format(mins, secs) 
-            print(f"\r[Maxima Boost] Time left: {timer}", end="\n") 
+            print(f"\r[Maxima Boost] Time left: {timer}", end="") 
             time.sleep(1) 
             t -= 1
         self.increase_attack = False
