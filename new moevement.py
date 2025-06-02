@@ -1,15 +1,31 @@
 import wand as w
 from tabulate import tabulate
+import random as r
 
 class Movement:
 
-    def __init__(self, name, location, have_money, have_wand, have_book, have_pet):
+    def __init__(self, name, location):
         self.name = name
-        self.location = location
-        self.have_money = have_money
-        self.have_wand = have_wand
-        self.have_book = have_book
-        self.have_pet = have_pet
+        self.location = False
+        self.have_money = False
+        self.have_wand = False
+        self.have_book = False
+        self.have_pet = False
+        self.at_hogwarts = False
+        self.sorted = False
+
+        self.diagon_alley_map = [
+            ["Entrance", "Gringotts Wizarding Bank", "Ollivanders wand shop"],
+            ["Bookstore", "Pet shop", "The leaky cauldron"],
+            ["Weasleys' Wizard Wheezes (joke shop)", "Post Office", "Train station"]
+        ]
+        self.hogwarts_map = [
+            ["Dining Hall", "Library", "Dorms"],
+            ["class", "Hagrid's Cabin", "Secret path"],
+            ["Hallway", "Room of Requirement", "Front doors"]
+        ]
+        self.current_map = self.diagon_alley_map
+        self.location = {'row': 0, 'col': 0}
     
     def __str__(self):
         return f"{self.name}"
@@ -40,16 +56,22 @@ class Movement:
                 print("Hagrid: Blimey, that's not a direction! Try again, yeah?")
             if moved:
                 print(f"Hagrid: Good on ya! You moved {direction}.")
-                print(f"Hagrid: You're now standin' in {diagon_alley[self.location['row']][self.location['col']]}, nice an' safe.")
+                if self.at_hogwarts:
+                    print(f"Hagrid: You're now at {self.hogwarts_map[self.location['row']][self.location['col']]}.")
+                else:
+                    print(f"Hagrid: You're now standin' in {self.diagon_alley_map[self.location['row']][self.location['col']]}, nice an' safe.")
                 break
             else:
                 print(f"Hagrid: Ya can't go {direction} from here, try another way.")
-        self.explore_diagon_tile()
-        self.display_diagon_map()
+            if self.at_hogwarts:
+                self.explore_hogwarts_tile()
+            else:
+                self.explore_diagon_tile()
+            self.display_map() 
 
     
     def explore_diagon_tile(self):
-        current_tile = diagon_alley[self.location['row']][self.location['col']]
+        current_tile = self.diagon_alley_map[self.location['row']][self.location['col']]
 
         if current_tile == "Gringotts Wizarding Bank":
             if not self.have_money:
@@ -121,7 +143,7 @@ class Movement:
                 print("Hagrid: Alright, off ya go then!")
 
 
-        if current_tile == "Post Office":
+        elif current_tile == "Post Office":
             print("Hagrid: You are in the Post Office. Fancy sendin' a magical letter? (yes/no)  ")
             choice = input("Say yes or no, mate: ").lower()
             if choice == "yes":
@@ -162,22 +184,128 @@ class Movement:
                 elif not self.have_wand:
                     print("Youre not done with your list yet! Go get your wand.")
                 else:
-                    print("Yay, go get your trian. choo choo")
+                    print("Hagrid: Brilliant! Let’s get yeh to Hogwarts. Choo choo!")
+                    self.current_map = self.hogwarts_map
+                    self.location = {'row': 0, 'col': 0}
+                    self.at_hogwarts = True
+                    self.explore_hogwarts_tile()
                 
+                
+    def explore_hogwarts_tile(self):
+        current_tile = self.hogwarts_map[self.location['row']][self.location['col']]
 
-    def display_diagon_map(self):
+        if current_tile == "Dining Hall":
+            if not self.sorted:
+                    print("Hagrid: Ahh, the Great Hall! Time for yeh to be sorted into yer house.")
+                    self.sorted = True
+                    print("ADD QUIZZ")  # ASK Emily to fix quiz module so its usable
+            else:
+                print("Hagrid: Welcome to the Dining Hall. Fancy a feast or just sittin' with the students? (feast/sit/leave)")
+                choice = input("Yer pick: ").lower()
+                if choice == "feast":
+                    print("Hagrid: You had a grand feast! Yer energy’s full. You’ll feel stronger in battles now.")
+                    self.energy_boost = True  # You can use this in future battle logic
+                elif choice == "sit":
+                    print("Hagrid: You sat with a group of friendly witches and wizards. Nice way to make friends!")
+                else:
+                    print("Hagrid: Alright then, movin on.")
+
+        elif current_tile == "Library":
+            print("Hagrid: Shhh... It's the library. Want to read a magical book? (yes/no)")
+            if input("Your choice: ").lower() == "yes":
+                print("Hagrid: You found a dusty book on magical creatures. You've learned a new spell: *Stupefy!*")
+                # Tell Emily to add this to the list of spells
+            else:
+                print("Hagrid: Fair enough, not everyone’s a bookworm.")
+
+
+        elif current_tile == "Dorms":
+            print("Hagrid: Yer dorm’s cozy and warm. Wanna take a nap or decorate yer space? (nap/decorate/leave)")
+            action = input("What'll it be? ").lower()
+            if action == "nap":
+                print("Hagrid: You took a quick nap. Energy restored!")
+                self.energy_boost = True
+            elif action == "decorate":
+                print("Hagrid: You added fairy lights and posters! Yer dorm feels more like home.")
+            else:
+                print("Hagrid: Alright, outta here then.")
+
+
+        elif current_tile == "class":
+            print("You're in Potions class. Professor Snape eyes you.")
+            # Add potion module to here
+
+        elif current_tile == "Hagrid's Cabin":
+            print("Hagrid: Hey! You found my cabin. Want to help me feed a baby dragon? (yes/no)")
+            if input("Yes or no? ").lower() == "yes":
+                print("Hagrid: Thanks, mate! The dragon really likes ya.")
+            else:
+                print("Hagrid: No worries. That lil’ rascal bites anyway.")
+
+
+        elif current_tile == "Secret path":
+            print("Hagrid: Oi, you’ve stumbled on a secret path. Want to sneak through it? Could be risky. (sneak/leave)")
+            choice = input("What's yer move? ").lower()
+            if choice == "sneak":
+                luck = r.randint(1, 2)
+                if luck == 1:
+                    print("Hagrid: Whoa! You found a hidden chest and gained 10 Galleons!")
+                    self.galleons += 10
+                else:
+                    print("Hagrid: Uh-oh! A trick stair. You lost some time and had to crawl out.")
+            else:
+                print("Hagrid: Smart one, not all paths are worth the risk.")
+
+        elif current_tile == "Hallway":
+            print("You’re wandering a long stone hallway. Portraits whisper as you pass.")
+
+        elif current_tile == "Room of Requirement":
+            print("Hagrid: You have entered the Room of Requirement! What do you wish for?")
+            print("Options: 'knowledge' or 'secret?''")
+            wish = input("Your wish: ").lower()
+            if wish == "knowledge":
+                print("Hagrid: A rare spellbook appears. You learned *Expelliarmus!*")
+                # Add this to the spells list
+            elif wish == "secret":
+                print("Hagrid: The room whispers... 'There's a traitor at Hogwarts.'")
+            else:
+                print("Hagrid: The room didn’t understand ya. Try again next time.")
+
+        elif current_tile == "Front doors":
+            print("Hagrid: Standing at the great oak doors of Hogwarts. Want to step outside or go back in? (out/in)")
+            choice = input("Yer move: ").lower()
+            if choice == "out":
+                print("Hagrid: A cold wind howls outside. You see the Forbidden Forest in the distance...")
+                self.seen_forest = True
+            else:
+                print("Hagrid: Wise choice. Hogwarts is safer inside.")
+
+
+    def display_map(self):
         display_grid = []
-        for i, row in enumerate(diagon_alley):
+
+        # Use the current map (e.g., self.current_map)
+        for i, row in enumerate(self.current_map):
             display_row = []
             for j, tile in enumerate(row):
                 if self.location['row'] == i and self.location['col'] == j:
-                    # Highlight current location
-                    display_row.append(f"{tile}\U0001f600")
+                    # Highlight current location with emoji
+                    display_row.append(f"{tile} \U0001f600")
                 else:
                     display_row.append(tile)
             display_grid.append(display_row)
-        print("Hagrid: Here's where yeh are on the Diagon Alley map:\n")
+
+        # Dynamic title based on map name
+        if self.current_map == self.diagon_alley_map:
+            print("Hagrid: Here's where yeh are on the Diagon Alley map:\n")
+        elif self.current_map == self.hogwarts_map:
+            print("Hagrid: Here's where yeh are in Hogwarts:\n")
+        else:
+            print("You're somewhere mysterious...\n")
+
+        # Print the map
         print(tabulate(display_grid, tablefmt="fancy_grid"))
+
 
 
     def main_menu(self):
@@ -185,7 +313,7 @@ class Movement:
             self.explore_diagon_tile()
 
             while True:
-                print(f"\nHagrid: Right now, yeh're at the {diagon_alley[self.location['row']][self.location['col']]}.")
+                print(f"\nHagrid: Right now, yeh're at the {self.diagon_alley_map[self.location['row']][self.location['col']]}.")
                 print("Hagrid: Want to explore a bit more? (yes/no)")
                 explore = input("Say yes or no: ").lower()
 
@@ -198,19 +326,6 @@ class Movement:
                     print("Hagrid: Come on now, just say yes or no.")
 
 
-
-diagon_alley = [
-    ["Entrance", "Gringotts Wizarding Bank", "Ollivanders wand shop"],
-    ["Bookstore", "Pet shop", "The leaky cauldron"],
-    ["Weasleys' Wizard Wheezes (joke shop)", "Post Office", "Train station"]
-]
-
-hogwarts = [
-    ["Dining Hall", "Library", "Dorms"],
-    ["class", "Hagrid's Cabin", "Secret path"],
-    ["Hallway", "Room of Requirement", "Front doors"]
-]
-
 player_name = input("What's yer name, young wizard? ")
-player = Movement(player_name, {'row': 0, 'col': 0}, False, False, False, False)
+player = Movement(player_name, {'row': 0, 'col': 0})
 player.main_menu()
