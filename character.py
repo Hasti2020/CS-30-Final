@@ -2,6 +2,8 @@ import random
 import wand
 import spells
 import score
+import threading
+import time
 
 class Character:
 
@@ -20,29 +22,81 @@ class Character:
         else: 
             print(f"{self.name}, current health : {self.health}")
 
+
+
 class Player(Character):
     
-    def __init__(self, name):
+    def __init__(self, name, increase_attack, potions = None):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
+        self.increase_attack = increase_attack
+        if potions:
+            self.potion_inventory = potions
+        else:
+            self.potion_inventory = []
+        
 
     def movement(self):
         pass
         #movement.player.main_menu()
 
-    def heal(self):
-        pass
+    def inventory(self):
+        i = 1
+        for item in self.potion_inventory:
+            print(f"{i}. {item}")
+            i += 1
+        try:
+            choice = int(input("What potion do you want to use?: "))
+            if 1 <= choice <= len(self.potion_inventory):
+                selected = self.potion_inventory.pop(choice-1)
+                if selected == 'Wiggenweld Potion':
+                    print(f'\nYou have used the Wiggenweld Potion!')
+                    self.healing()
+                elif selected == 'Maxima Potion':
+                    print(f'\nYou have used the Maxima Potion!')
+                    print(f'\nYour attacks will increase by 5 damage for the next 30 seconds!')
+                    self.increase_attack = True
+                    self.start_countdown(30)
+            else:
+                print("invalid")
+        except ValueError:
+            print("numbers only")
+            return None
+    
+    def healing(self):
+        self.health += 20
+        print('You have gained an extra 20 health!')
+
+
+    def start_countdown(self, duration):
+        thread = threading.Thread(target=self.countdown, args=(duration,), daemon=True)
+        thread.start()
+
+    '''still in major progress'''
+
+    def countdown(self, t):
+        while t:
+            mins, secs = divmod(t, 60) 
+            timer = '{:02d}:{:02d}'.format(mins, secs) 
+            print(f"\r[Maxima Boost] Time left: {timer}", end="\n") 
+            time.sleep(1) 
+            t -= 1
+        self.increase_attack = False
+        print("Time's up!")
+
 
     def inflict_damage(self, enemy):
         global choice
         print("\nCasting a spell...")
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
+        if self.increase_attack: 
+            attack += 5
         if self.health <= 60:
             print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any spell yeh remember to cause more damage!')
             choice = input("spell name: ").title()
             spells.Spell(choice).cast_spell()
-            spell_attack = spells.Spell(choice).attack    
+            spell_attack = spells.Spell(choice).attack  
             total_attack = attack + spell_attack
             print(f"{enemy.name} has taken a total of {total_attack} damage")
             enemy.take_damage(total_attack)
