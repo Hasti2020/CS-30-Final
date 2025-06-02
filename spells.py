@@ -35,6 +35,8 @@ class Spell:
             return 10
         if self.name == 'Expelliarmus':
             return 15
+        if self.name == 'Stupefy':
+            return 10
         else:
             return 0
     def cast_spell(self):
