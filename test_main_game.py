@@ -1,9 +1,9 @@
 import potion
 import battle
 
-potions = []
 
 def main():
+    potions = []
     while True:
         choice = input('a or s: ')
         if choice == 's':
