@@ -41,7 +41,7 @@ class Player(Character):
         pass
         #movement.player.main_menu()
 
-    def inventory(self):
+    def inventory(self): # change to choose_potion
         i = 1
         for item in self.potion_inventory:
             print(f"{i}. {item}")
@@ -57,7 +57,7 @@ class Player(Character):
                     print(f'\nYou have used the Maxima Potion!')
                     print(f'\nYour attacks will increase by 5 damage for the next 30 seconds!')
                     self.increase_attack = True
-                    self.start_countdown(30)
+                    self.start_countdown(15)
             else:
                 print("invalid")
         except ValueError:
@@ -79,7 +79,7 @@ class Player(Character):
         while t:
             mins, secs = divmod(t, 60) 
             timer = '{:02d}:{:02d}'.format(mins, secs) 
-            print(f"\r[Maxima Boost] Time left: {timer}", end="\n") 
+            print(f"\n\r[Maxima Boost] Time left: {timer}", end="") 
             time.sleep(1) 
             t -= 1
         self.increase_attack = False
@@ -89,6 +89,7 @@ class Player(Character):
     def inflict_damage(self, enemy):
         global choice
         print("\nCasting a spell...")
+        time.sleep(1.5)
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         if self.increase_attack: 
             attack += 5
@@ -117,6 +118,7 @@ class Oponent(Character):
      
     def inflict_damage(self, user):
         print(f"\n{self.name} is casting a spell...")
+        time.sleep(3)
         if self.name == 'Luna':
             attack = random.randint(0, 5)
         if self.name == 'Draco':
