@@ -276,7 +276,6 @@ class Movement:
             choice = input("Yer move: ").lower()
             if choice == "out":
                 print("Hagrid: A cold wind howls outside. You see the Forbidden Forest in the distance...")
-                self.seen_forest = True
             else:
                 print("Hagrid: Wise choice. Hogwarts is safer inside.")
 
