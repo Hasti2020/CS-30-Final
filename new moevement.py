@@ -1,6 +1,7 @@
 import wand as w
 from tabulate import tabulate
 import random as r
+import house_quiz as h
 
 class Movement:
 
@@ -199,6 +200,7 @@ class Movement:
                     print("Hagrid: Ahh, the Great Hall! Time for yeh to be sorted into yer house.")
                     self.sorted = True
                     print("ADD QUIZZ")  # ASK Emily to fix quiz module so its usable
+                    h.house_sort()  # Here u go pookie
             else:
                 print("Hagrid: Welcome to the Dining Hall. Fancy a feast or just sittin' with the students? (feast/sit/leave)")
                 choice = input("Yer pick: ").lower()
