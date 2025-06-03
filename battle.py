@@ -7,13 +7,13 @@ def start_battle(potions):
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
     player = character.Player('Harry', False, potions) # player = character.Player('{player_name}')
     score.getScore()
-    print("\n-------------Player Info-------------")
+    print("\n-----------------Player Info-----------------")
     print(f'Current High-score: {score.high_score}')
     print(f'Wand: {wand.Wand.get_wand()}')
     print(f'Potions: {potions}')
-    print("\n----------------Note-----------------")
+    print("\n--------------------Note---------------------")
     print("press 'e' to acess inventory of your potions!")
-    print("\n--------------Main Game--------------")
+    print("\n------------------Main Game------------------")
     for i in range(3): # loops 3 times to create 3 different bettles
         oponent = random.choice(oponent_list) 
         oponent_list.remove(oponent) 
