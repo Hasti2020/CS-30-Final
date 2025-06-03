@@ -83,7 +83,7 @@ class Player(Character):
         while t:
             mins, secs = divmod(t, 60) 
             timer = '{:02d}:{:02d}'.format(mins, secs) 
-            print(f"\r[Maxima Boost] Time left: {timer}", end="") 
+            print(f"\r[Maxima Boost] Time left: {timer}", end="", flush=True) 
             time.sleep(1) 
             t -= 1
         self.increase_attack = False
@@ -122,7 +122,7 @@ class Oponent(Character):
      
     def inflict_damage(self, user):
         print(f"\n{self.name} is casting a spell...")
-        time.sleep(3)
+        time.sleep(2)
         if self.name == 'Luna':
             attack = random.randint(0, 5)
         if self.name == 'Draco':
