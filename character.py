@@ -66,6 +66,10 @@ class Player(Character):
     
     def healing(self):
         self.health += 20
+        print('drinking...')
+        time.sleep(1)
+        print('drinking...')
+        time.sleep(1)
         print('You have gained an extra 20 health!')
 
 
@@ -79,7 +83,7 @@ class Player(Character):
         while t:
             mins, secs = divmod(t, 60) 
             timer = '{:02d}:{:02d}'.format(mins, secs) 
-            print(f"\n\r[Maxima Boost] Time left: {timer}", end="") 
+            print(f"\r[Maxima Boost] Time left: {timer}", end="") 
             time.sleep(1) 
             t -= 1
         self.increase_attack = False
