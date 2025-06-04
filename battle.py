@@ -10,7 +10,10 @@ def start_battle(potions):
     print("\n-------------Player Info-------------")
     print(f'Current High-score: {score.high_score}')
     print(f'Wand: {wand.Wand.get_wand()}')
-    print(f'Potions: {potions}')
+    if potions == None:
+        print(f'Potions: You do not have any potions')
+    else:
+        print(f'Potions: {potions}')
     print("\n----------------Note-----------------")
     print("press 'e' to acess inventory of your potions!")
     print("\n--------------Main Game--------------")
