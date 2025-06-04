@@ -14,9 +14,9 @@ def start_battle(potions):
     print("\n----------------Note-----------------")
     print("press 'e' to acess inventory of your potions!")
     print("\n--------------Main Game--------------")
-    for i in range(3):
+    for i in range(3): # loops 3 times to create 3 different bettles
         oponent = random.choice(oponent_list) 
-        oponent_list.remove(oponent)
+        oponent_list.remove(oponent) 
         target = character.Oponent(oponent)
         print(f"\nYou are now fighting against: {oponent}")
         print("\nBattle #" + str(i + 1) +" shall now begin!")
