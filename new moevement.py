@@ -7,7 +7,7 @@ class Movement:
 
     def __init__(self, name, location):
         self.name = name
-        self.location = False
+        self.location = location
         self.have_money = False
         self.have_wand = False
         self.have_book = False
@@ -32,21 +32,22 @@ class Movement:
         return f"{self.name}"
     
     def move(self):
-        #self.explore_diagon_tile()
         while True:
             print("- Hagrid: Alright, now which way do you wanna go? (north, south, east, west)")
             direction = input("Yer choice, mate: ").lower()
             moved = False
+            old_location = self.location.copy()
+
             if direction == "west":
                 if self.location['col'] > 0:
                     self.location['col'] -= 1
                     moved = True
             elif direction == "east":
-                if self.location['col'] < 2:
+                if self.location['col'] < len(self.current_map[0]) - 1:
                     self.location['col'] += 1
                     moved = True
             elif direction == "south":
-                if self.location['row'] < 2:
+                if self.location['row'] < len(self.current_map) - 1:
                     self.location['row'] += 1
                     moved = True
             elif direction == "north":
@@ -55,20 +56,21 @@ class Movement:
                     moved = True
             else:
                 print("Hagrid: Blimey, that's not a direction! Try again, yeah?")
+
             if moved:
                 print(f"Hagrid: Good on ya! You moved {direction}.")
-                if self.at_hogwarts:
-                    print(f"Hagrid: You're now at {self.hogwarts_map[self.location['row']][self.location['col']]}.")
-                else:
-                    print(f"Hagrid: You're now standin' in {self.diagon_alley_map[self.location['row']][self.location['col']]}, nice an' safe.")
-                break
             else:
                 print(f"Hagrid: Ya can't go {direction} from here, try another way.")
+
+            # Now always explore and display the current tile
             if self.at_hogwarts:
                 self.explore_hogwarts_tile()
             else:
                 self.explore_diagon_tile()
-            self.display_map() 
+            self.display_map()
+
+            if moved:
+                break  # Only break after all logic is processed
 
     
     def explore_diagon_tile(self):
@@ -110,7 +112,7 @@ class Movement:
 
 
         elif current_tile == "Pet shop":
-            if self.have_pet == False:
+            if not self.have_pet:
                 if not self.have_money:
                     print("Hagrid: Ya havent got no money for a pet yet. Off to the bank!")
                 else:
@@ -252,7 +254,6 @@ class Movement:
                 luck = r.randint(1, 2)
                 if luck == 1:
                     print("Hagrid: Whoa! You found a hidden chest and gained 10 Galleons!")
-                    self.galleons += 10
                 else:
                     print("Hagrid: Uh-oh! A trick stair. You lost some time and had to crawl out.")
             else:
@@ -263,7 +264,7 @@ class Movement:
 
         elif current_tile == "Room of Requirement":
             print("Hagrid: You have entered the Room of Requirement! What do you wish for?")
-            print("Options: 'knowledge' or 'secret?''")
+            print("Options: 'knowledge' or 'secret?'")
             wish = input("Your wish: ").lower()
             if wish == "knowledge":
                 print("Hagrid: A rare spellbook appears. You learned *Expelliarmus!*")
@@ -314,7 +315,7 @@ class Movement:
             self.explore_diagon_tile()
 
             while True:
-                print(f"\nHagrid: Right now, yeh're at the {self.diagon_alley_map[self.location['row']][self.location['col']]}.")
+                print(f"\nHagrid: Right now, yeh're at the {self.current_map[self.location['row']][self.location['col']]}.")
                 print("Hagrid: Want to explore a bit more? (yes/no)")
                 explore = input("Say yes or no: ").lower()
 
@@ -322,6 +323,7 @@ class Movement:
                     self.move()
                 elif explore == "no":
                     print("Hagrid: Alright then, take care out there, {0}!'. Farewell!'".format(self.name))
+                    # Do something better instead of sudden end!
                     break
                 else:
                     print("Hagrid: Come on now, just say yes or no.")
