@@ -57,7 +57,7 @@ class Player(Character):
                     print(f'\nYou have used the Maxima Potion!')
                     print(f'\nYour attacks will increase by 5 damage for the next 30 seconds!')
                     self.increase_attack = True
-                    self.start_countdown(15)
+                    #self.start_countdown(15)
             else:
                 print("invalid")
         except ValueError:
@@ -83,7 +83,7 @@ class Player(Character):
         while t:
             mins, secs = divmod(t, 60) 
             timer = '{:02d}:{:02d}'.format(mins, secs) 
-            print(f"\r[Maxima Boost] Time left: {timer}", end="", flush=True) 
+            print(f"\r[Maxima Boost Time left: {timer}]  ", end=" ", flush=True) 
             time.sleep(1) 
             t -= 1
         self.increase_attack = False
