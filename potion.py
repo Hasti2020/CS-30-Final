@@ -30,6 +30,11 @@ class PotionGame:
         except ValueError:
             print("numbers only")
             return None
+    
+    def view_recipe(self):
+        for key, value in self.potions.items():
+            print("\n---------POTIONS RECIPE---------")
+            print(f"- {key}: {value}")
         
     '''for testing purposes'''
     def view_inventory(self):
@@ -40,21 +45,23 @@ class PotionGame:
     
     def brew_potion(self):
         brew = False
-        print("brewing...")
-        time.sleep(1)
-        print("brewing...")
-        time.sleep(1)
-        print("almost done!")
-        time.sleep(1)
         for potion, required_items in self.potions.items():
                 if all(item in self.inventory for item in required_items):
                         for item in required_items:
                             self.inventory.remove(item)
-                        print(f'you have brewed {potion}')
+                        print("brewing...")
+                        time.sleep(1)
+                        print("brewing...")
+                        time.sleep(1)
+                        print("almost done!")
+                        time.sleep(1)
+                        print(f'you have brewed 2x {potion}')
+                        self.potion_inventory.append(potion)
                         self.potion_inventory.append(potion)
                         brew = True
         if not brew:
             print("you do not have enough inredients to brew any potions!")
+            time.sleep(1)
 
     def potions_made(self):
         print("\n---------INVENTORY---------")
@@ -85,8 +92,8 @@ def start_potion_game():
     input("press enter to continue: ")
     while True:
         print("\n-------------OPTIONS-------------")
-        print("1. View the things on your table")
-        print("2. Go to brewing station")
+        print("1. Take ingredients from your table")
+        print("2. Brew your ingredients")
         print("3. View Potions Inventory")
         print("4. Potions Recipe")
         print("5. Exit")
@@ -97,11 +104,12 @@ def start_potion_game():
             elif choice == '2':
                 game.brew_potion()
             elif choice == '3':
-                print(game.potions_made()) 
+                game.potions_made()
             elif choice == '4':
-                pass
+                game.view_recipe()
             elif choice == '5':
                 return game.potions_made()  
         except ValueError:
-            print("invalid!")
+            print("invalid choice!")
+            time.sleep(1)
 
