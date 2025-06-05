@@ -75,7 +75,7 @@ class Player(Character):
         time.sleep(1)
         print('drinking...')
         time.sleep(1)
-        print('You have gained an extra 20 health!')
+        print('+ 20 health!')
 
 
     def start_countdown(self, duration):
@@ -103,8 +103,10 @@ class Player(Character):
         if self.increase_attack: 
             attack += 5
         if self.increase_damage:
+            ...
+            time.sleep(1)
             attack += 50
-            print("BAMM")
+            print("BAMMMM THUNDERSTRIKE")
         if self.health <= 60:
             print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any spell yeh remember to cause more damage!')
             choice = input("spell name: ").title()

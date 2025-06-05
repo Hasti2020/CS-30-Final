@@ -36,6 +36,7 @@ def start_battle(potions):
                     print(f"\nDifference in attack damage: {difference}")
                     player.players_score += difference
                     print(f"score: {player.players_score}")
+                    print(f"health: {player.health}")
         if player.alive:
             print(f'\nCongrats {player.name}, you have defeated {oponent}!')
     
