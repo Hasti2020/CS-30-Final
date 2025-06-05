@@ -1,12 +1,14 @@
 unsorted_list = [5, 2, 7, 3, 8, 1]
 
 def insersion_sort(list_):
-    for i in range(len(list_)-1):
+    for i in range(1, len(list_)):
         index = list_[i]
         j = i - 1
-        while j > index:
-            len[j], index = index, len[j]
-            print("partial sort:", list_)
+        while j >= 0 and list_[j] > index:
+            list_[j+1] = list_[j] # new number at that spot
+            j -= 1
+        list_[j+1] = index
+        print("partial sort:", list_)
     return list_
 
 print(unsorted_list)
