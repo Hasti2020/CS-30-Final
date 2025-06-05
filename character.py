@@ -26,11 +26,12 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name, increase_attack, potions = None):
+    def __init__(self, name, increase_attack, increase_damage, potions = None):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
         self.increase_attack = increase_attack
+        self.increase_damage = increase_damage
         if potions:
             self.potion_inventory = potions
         else:
@@ -58,6 +59,10 @@ class Player(Character):
                     print(f'\nYour attacks will increase by 5 damage for the next 30 seconds!')
                     self.increase_attack = True
                     #self.start_countdown(15)
+                elif selected == 'Thunderbrew Potion':
+                    print(f'\nYou have used the Thunderbrew Potion')
+                    print(f'\nYour next attack will be increased by 50 damage!')
+                    self.increase_damage = True
             else:
                 print("invalid")
         except ValueError:
@@ -97,6 +102,9 @@ class Player(Character):
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         if self.increase_attack: 
             attack += 5
+        if self.increase_damage:
+            attack += 50
+            print("BAMM")
         if self.health <= 60:
             print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any spell yeh remember to cause more damage!')
             choice = input("spell name: ").title()
