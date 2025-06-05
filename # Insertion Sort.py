@@ -5,13 +5,14 @@
 unsorted_list = [5, 2, 7, 3, 8, 1]
 
 def insertion_sort(list_):
-    for i in range(1, len(list_)):
-        key = list_[i]
-        j = i - 1
-        while j >= 0 and list_[j] > key:
-            list_[j + 1] = list_[j]
-            j -= 1
-        list_[j + 1] = key
+    for cards_position in range(1, len(list_)):
+        current_card = list_[cards_position]
+        left_cards_position = cards_position - 1
+        left_card = list_[left_cards_position]
+        while left_cards_position >= 0 and left_card > current_card:
+            list_[left_cards_position + 1] = list_[left_cards_position]
+            left_cards_position -= 1
+        list_[left_cards_position + 1] = current_card
     return list_
 
 
