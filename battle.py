@@ -10,14 +10,8 @@ def start_battle(potions):
     print("\n-----------------Player Info-----------------")
     print(f'Current High-score: {score.high_score}')
     print(f'Wand: {wand.Wand.get_wand()}')
-<<<<<<< HEAD
     print(f'Potions: {potions}')
-    if potions == None:
-        print(f'Potions: You do not have any potions')
-    else:
-        print(f'Potions: {potions}')
     print("\n----------------Note-----------------")
->>>>>>> 3c642b7a5268ec1d87ce24eb1c379793e150afa4
     print("press 'e' to acess inventory of your potions!")
     print("\n------------------Main Game------------------")
     for i in range(3): # loops 3 times to create 3 different bettles
