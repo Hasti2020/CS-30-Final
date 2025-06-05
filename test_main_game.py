@@ -3,7 +3,7 @@ import battle
 
 
 def main():
-    potions = ['Maxima Potion']
+    potions = ['Thunderbrew Potion']
     while True:
         choice = input('a or s: ')
         if choice == 's':
