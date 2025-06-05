@@ -46,6 +46,6 @@ def house_sort():
     else:
         print(RED + "You are in...GRYFINDOR" + ENDC)
         
-house_sort()           
+         
 
 

@@ -57,22 +57,51 @@ class PotionGame:
             print("you do not have enough inredients to brew any potions!")
 
     def potions_made(self):
-        return self.potion_inventory
- 
+        print("\n---------INVENTORY---------")
+        i = 1
+        for item in self.potion_inventory:
+            print(f"{i}. {item}")
+            i += 1
 
 def start_potion_game():
     game = PotionGame()
-    print("welcome to the potion making game!")
-    while True:     
-        test = input("q or w: ")
-        if test == 'q':
-            game.things_on_table() 
-        elif test == 'w':
-            game.view_inventory()
-        elif test == 'e':
-            game.brew_potion()
-        elif test == 'p':
-            print(game.potions_made())
-        elif test == 't':
-            return game.potions_made()  
+    print("--------You have entered professor Snape's potion class--------")
+    time.sleep(1)
+    print("\nSnape: Well, well, look who is late on their very first day...")
+    time.sleep(2)
+    print("Snape: So as I was saying, we will be learning 3 types of potions in this class")
+    time.sleep(2)
+    print("Snape: Pay attention as I explain the abilities of the potions as it might come in handy soon...")
+    time.sleep(1)
+    print("\nSnape: Let's first take a look at the 'Wiggenweld Potion'...")
+    print("Snape: This potion has the ability to grant you with an extra 20 HP in your battles.")
+    print("\nSnape: Moving on to the 'Maxima Potion'...")
+    print("Snape: This potion has the ability to grant you with an extra 10 attack damage for 20 seconds.")
+    print("\nSnape: Next, the 'Thunderbrew Potion'...")
+    print("Snape: This potion will grant you the ability to strike your enemy with 50 total attack damage.")
+    time.sleep(2)
+    print("\nSnape: Now, you guys would be making these potions for yourselves,...")
+    print("Snape: Look at the recipes and brew the ingredients needed to make your potions.")
+    input("press enter to continue: ")
+    while True:
+        print("\n-------------OPTIONS-------------")
+        print("1. View the things on your table")
+        print("2. Go to brewing station")
+        print("3. View Potions Inventory")
+        print("4. Potions Recipe")
+        print("5. Exit")
+        choice = input("what do you intend to do?: ")
+        try:    
+            if choice == '1':
+                game.things_on_table()
+            elif choice == '2':
+                game.brew_potion()
+            elif choice == '3':
+                print(game.potions_made()) 
+            elif choice == '4':
+                pass
+            elif choice == '5':
+                return game.potions_made()  
+        except ValueError:
+            print("invalid!")
 
