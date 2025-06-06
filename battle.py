@@ -6,7 +6,7 @@ def start_battle():
     import score
     import potion
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
-    player = character.Player('Harry', False, False, potions) # player = character.Player('{player_name}')
+    player = character.Player('Harry', False, False, potion.PotionGame()potion_inventory) # player = character.Player('{player_name}')
     score.getScore()
     print("\n-----------------Player Info-----------------")
     print(f'Current High-score: {score.high_score}')
