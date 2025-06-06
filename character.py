@@ -103,12 +103,13 @@ class Player(Character):
         if self.increase_attack: 
             attack += 5
         if self.increase_damage:
-            ...
             time.sleep(1)
             attack += 50
             print("BAMMMM THUNDERSTRIKE")
+            self.increase_damage = False
         if self.health <= 60:
-            print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any spell yeh remember to cause more damage!')
+            print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any one of the spell yeh remember to cause more damage!')
+            
             choice = input("spell name: ").title()
             spells.Spell(choice).cast_spell()
             spell_attack = spells.Spell(choice).attack  
