@@ -1,16 +1,17 @@
 
-def start_battle(potions):
+def start_battle():
     import character
     import random
     import wand
     import score
+    import potion
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
     player = character.Player('Harry', False, False, potions) # player = character.Player('{player_name}')
     score.getScore()
     print("\n-----------------Player Info-----------------")
     print(f'Current High-score: {score.high_score}')
     print(f'Wand: {wand.Wand.get_wand()}')
-    print(f'Potions: {potions}')
+    print(f'Potions: {potion.view_inventory}')
     print("\n----------------Note-----------------")
     print("press 'e' to acess inventory of your potions!")
     print("\n------------------Main Game------------------")
