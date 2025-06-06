@@ -68,7 +68,7 @@ def start_potion_game():
     print("--------You have entered professor Snape's potion class--------")
     time.sleep(1)
     print("\nSnape: Well, well, look who is late on their very first day...")
-    time.sleep(2)
+    time.sleep(1)
     print("Snape: So as I was saying, we will be learning 3 types of potions in this class")
     time.sleep(2)
     print("Snape: Pay attention as I explain the abilities of the potions as it might come in handy soon...")
