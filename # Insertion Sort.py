@@ -7,11 +7,11 @@ unsorted_list = [5, 2, 7, 3, 8, 1]
 def insertion_sort(list_):
     for i in range(1, len(list_)):
         key = list_[i]
-        j = i - 1
+        j = i + 1
         while j >= 0 and list_[j] > key:
-            list_[j + 1] = list_[j]
+            list_[j - 1] = list_[j]
             j -= 1
-        list_[j + 1] = key
+        list_[j - 1] = key
     return list_
 
 
