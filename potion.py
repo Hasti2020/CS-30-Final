@@ -49,16 +49,17 @@ class PotionGame:
                 if all(item in self.inventory for item in required_items):
                         for item in required_items:
                             self.inventory.remove(item)
-                        print("brewing...")
-                        time.sleep(1)
-                        print("brewing...")
-                        time.sleep(1)
-                        print("almost done!")
-                        time.sleep(1)
-                        print(f'you have brewed 2x {potion}')
-                        self.potion_inventory.append(potion)
-                        self.potion_inventory.append(potion)
-                        brew = True
+                            print("brewing...")
+                            time.sleep(1)
+                            print("brewing...")
+                            time.sleep(1)
+                            print("almost done!")
+                            time.sleep(1)
+                            print(f'you have brewed 2x {potion}')
+                            time.sleep(2)
+                            self.potion_inventory.append(potion)
+                            self.potion_inventory.append(potion)
+                            brew = True
         if not brew:
             print("you do not have enough inredients to brew any potions!")
             time.sleep(1)
