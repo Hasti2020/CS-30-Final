@@ -4,6 +4,7 @@ import spells
 import score
 import threading
 import time
+import potion
 
 class Character:
 
@@ -26,14 +27,14 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name, increase_attack, increase_damage, potions = None):
+    def __init__(self, name, increase_attack, increase_damage, potion.PotionGame()potion_inventory):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
         self.increase_attack = increase_attack
         self.increase_damage = increase_damage
-        if potions:
-            self.potion_inventory = potions
+        if potion.PotionGame()potion_inventory:
+            self.potion_inventory = potion.PotionGame()potion_inventory
         else:
             self.potion_inventory = []
         
