@@ -2,6 +2,8 @@ import wand as w
 from tabulate import tabulate
 import random as r
 import house_quiz as h
+import battle as b
+import potion as p
 
 class Movement:
 
@@ -237,6 +239,7 @@ class Movement:
 
         elif current_tile == "class":
             print("You're in Potions class. Professor Snape eyes you.")
+            potions = p.start_potion_game()
             # Add potion module to here
 
         elif current_tile == "Hagrid's Cabin":
