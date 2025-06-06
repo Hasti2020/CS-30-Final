@@ -1,0 +1,18 @@
+# Bubble Sort
+
+unsorted_list = [5, 2, 1, 7, 8, 3]
+
+def quick_sort(list_):
+    pivot = list_.pop()
+    greater_list = []
+    lesser_list = []
+    for i in range(0, len(list_)):
+        if list_[i] < pivot:
+            lesser_list.append(list_[i])
+        elif list_[i] > pivot:
+            greater_list.append(list_[i])
+    return quick_sort(lesser_list) + [pivot] + quick_sort(greater_list) + [pivot]
+
+print(unsorted_list)
+sorted_list = quick_sort(unsorted_list.copy())
+print(sorted_list)
