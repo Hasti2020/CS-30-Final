@@ -1,4 +1,5 @@
 import random
+import time
 
 random_wand = None
 
@@ -23,6 +24,9 @@ class Wand:
 
     def wand_intro():
         print(f"The wand has spoken... You have been chosen by {random_wand}!")
+        time.sleep(1)
+        print("...........")
+        time.sleep(2)
         print(f"Your wand has a {random_wand.core};  and casts spells with power between {random_wand.min_power} and {random_wand.max_power}.")
         
 wand_options = [Wand("Duststick", "Rabbit Fur", 0, 10),
