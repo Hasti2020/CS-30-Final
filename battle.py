@@ -6,12 +6,11 @@ def start_battle():
     import score
     import potion
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
-    player = character.Player('Harry', False, False, potion.PotionGame()potion_inventory) # player = character.Player('{player_name}')
+    player = character.Player('Harry', False, False, False) # player = character.Player('{player_name}')
     score.getScore()
     print("\n-----------------Player Info-----------------")
     print(f'Current High-score: {score.high_score}')
     print(f'Wand: {wand.Wand.get_wand()}')
-    print(f'Potions: {potion.view_inventory}')
     print("\n----------------Note-----------------")
     print("press 'e' to acess inventory of your potions!")
     print("\n------------------Main Game------------------")
@@ -24,7 +23,7 @@ def start_battle():
         if not player.alive:
             print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
             break
-        while player.alive and target.alive:
+        while player.alive and target.alive:   
             choice = input("enter to continue or 'e' to view inventory: ")
             if choice == 'e':
                 player.inventory()
