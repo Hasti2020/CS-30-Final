@@ -45,7 +45,7 @@ class Spell:
         else:
             print(f"\nYou have casted an unknown spell, {self.name}, which contributes {self.attack} damage")
 
-def Spell_Lesson():
+def spell_lesson():
     print("--------You have entered professor Flitwick's spells lessons--------")
 
 

@@ -72,8 +72,8 @@ class Movement:
                 self.explore_diagon_tile()
             self.display_map()
 
-            if moved:
-                break  # Only break after all logic is processed
+            #if moved:
+                #break  # Only break after all logic is processed
 
     
     def explore_diagon_tile(self):
@@ -331,6 +331,8 @@ class Movement:
                     print("Hagrid: Come on now, just say yes or no.")
 
 
+'''
 player_name = input("What's yer name, young wizard? ")
 player = Movement(player_name, {'row': 0, 'col': 0})
 player.main_menu()
+'''
