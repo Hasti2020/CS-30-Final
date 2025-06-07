@@ -4,7 +4,7 @@ import spells
 import score
 import threading
 import time
-import potion
+
 
 class Character:
 
@@ -27,29 +27,29 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name, increase_attack, increase_damage, potions):
+    def __init__(self, name, increase_attack, increase_damage, user_potions):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
         self.increase_attack = increase_attack
         self.increase_damage = increase_damage
         #self.timer_on = timer_on
-        self.potions = potions
+        self.user_potions = user_potions
         
-
     def movement(self):
         pass
         #movement.player.main_menu()
 
-    def inventory(self): # change to choose_potion
+    def choose_potion(self):
+        print("\nPotion Inventory:", self.user_potions)
         i = 1
-        for item in self.potions:
+        for item in self.user_potions:
             print(f"{i}. {item}")
             i += 1
         try:
             choice = int(input("What potion do you want to use?: "))
-            if 1 <= choice <= len(self.potions):
-                selected = self.potions.pop(choice-1)
+            if 1 <= choice <= len(self.user_potions):
+                selected = self.user_potions.pop(choice-1)
                 if selected == 'Wiggenweld Potion':
                     print(f'\nYou have used the Wiggenweld Potion!')
                     self.healing()
@@ -67,7 +67,7 @@ class Player(Character):
         except ValueError:
             print("numbers only")
             return None
-    
+
     def healing(self):
         self.health += 20
         print('drinking...')
