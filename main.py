@@ -1,3 +1,4 @@
+'''
 import Explore as e
 import wand as w
 import potion as p
@@ -40,3 +41,4 @@ def run_game():
     player.move()  # or whatever the main movement method is
 
 run_game()
+'''
