@@ -3,15 +3,16 @@ import random
 import wand
 import score
 import time
-import potion
+
 
 class Battle:
 
-    def __init__(self, name, potions):
+    def __init__(self, name, potion):
         self.name = name
+        self.potion = potion
         self.oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
         wand.Wand.get_wand()
-        self.player = character.Player(self.name, False, False, potions)
+        self.player = character.Player(self.name, False, False, potion)
 
     def start_battle(self): 
         score.getScore()
@@ -30,10 +31,11 @@ class Battle:
             if not self.player.alive:
                 print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
                 break
-            while self.player.alive and target.alive:   
+            while self.player.alive and target.alive:  
+                print("press enter to continue or 'e' to access inventory:") 
                 choice = input()
                 if choice == 'e':
-                    self.player.inventory()
+                    self.player.choose_potion()
                     continue 
                 player_attack = self.player.inflict_damage(target)
                 if target.alive:
