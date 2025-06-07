@@ -1,6 +1,6 @@
 
 import character
-
+import time
 '''
 for item in spell_list:
     print(item)
@@ -44,6 +44,11 @@ class Spell:
             print(f"\nYou have casted {self.name}, which contributes {self.attack} damage")
         else:
             print(f"\nYou have casted an unknown spell, {self.name}, which contributes {self.attack} damage")
+
+def Spell_Lesson():
+    print("--------You have entered professor Flitwick's spells lessons--------")
+
+
 '''
 Spell(character.choice).cast_spell()
 Spell(character.choice)
