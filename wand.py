@@ -19,7 +19,8 @@ class Wand:
 
     def get_wand():
         global random_wand
-        random_wand = random.choice(wand_options)
+        if random_wand == None:
+            random_wand = random.choice(wand_options)
         return random_wand
 
     def wand_intro():
