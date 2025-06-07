@@ -10,7 +10,7 @@ class PotionGame:
             'Thunderbrew Potion': ['Leech Juice', 'Stench of the Dead']
         }
         self.inventory = []
-        self.potion_inventory = []
+        self.potion_inventory = ['Wiggenweld Potion', 'Maxima Potion', 'Thunderbrew Potion']
 
     def things_on_table(self):
         global choice
@@ -32,8 +32,8 @@ class PotionGame:
             return None
     
     def view_recipe(self):
+        print("\n---------POTIONS RECIPE---------")
         for key, value in self.potions.items():
-            print("\n---------POTIONS RECIPE---------")
             print(f"- {key}: {value}")
         
     '''for testing purposes'''
@@ -83,8 +83,10 @@ def start_potion_game():
     time.sleep(1)
     print("\nSnape: Let's first take a look at the 'Wiggenweld Potion'...")
     print("Snape: This potion has the ability to grant you with an extra 20 HP in your battles.")
+    time.sleep(2)
     print("\nSnape: Moving on to the 'Maxima Potion'...")
     print("Snape: This potion has the ability to grant you with an extra 10 attack damage for 20 seconds.")
+    time.sleep(2)
     print("\nSnape: Next, the 'Thunderbrew Potion'...")
     print("Snape: This potion will grant you the ability to strike your enemy with 50 total attack damage.")
     time.sleep(2)
