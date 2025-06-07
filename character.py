@@ -104,7 +104,6 @@ class Player(Character):
     def inflict_damage(self, enemy):
         global choice
         print("\nCasting a spell...")
-        time.sleep(1.5)
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         if self.increase_attack: 
             attack += 5
@@ -113,14 +112,14 @@ class Player(Character):
             attack += 50
             print("BAMMMM THUNDERSTRIKE")
             self.increase_damage = False
-        if self.health <= 100:
+        if self.health <= 50:
             print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any one of the spell yeh remember to cause more damage!')
             i = 1
             for item in spells.Spell.spell_list:
                 print(f"{i}. {item}")
                 i += 1
-            self.timer_on = True
-            self.start_countdown(5)
+            #self.timer_on = True
+            #self.start_countdown(5)
             choice = input("spell name: ").title()
             spells.Spell(choice).cast_spell()
             spell_attack = spells.Spell(choice).attack  
