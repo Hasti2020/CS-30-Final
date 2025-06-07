@@ -1,6 +1,5 @@
 import time
 
-
 class PotionGame:
     def __init__(self):
         self.ingredients = ['Horklump Juice', 'Dittany Leaves', 'Leech Juice', 'Spider Fang', 'Leech Juice', 'Stench of the Dead']
@@ -55,7 +54,7 @@ class PotionGame:
                 if all(item in self.inventory for item in required_items):
                         for item in required_items:
                             self.inventory.remove(item)
-                            print(f'you have brewed 2x {potion}')
+                            print(f'you have brewed {potion}')
                             time.sleep(2)
                             self.potion_inventory.append(potion)
                             brew = True
@@ -70,6 +69,9 @@ class PotionGame:
         for item in self.potion_inventory:
             print(f"{i}. {item}")
             i += 1
+
+    def potions_stored(self):
+        return self.potion_inventory
 
 def start_potion_game():
     game = PotionGame()
@@ -111,8 +113,7 @@ def start_potion_game():
             elif choice == '4':
                 game.view_recipe()
             elif choice == '5':
-                return game.potions_made()  
+                return game.potions_stored() 
         except ValueError:
             print("invalid choice!")
             time.sleep(1)
-
