@@ -45,7 +45,6 @@ class PotionGame:
     
     def brew_potion(self):
         brew = False
-        self.inventory.remove(item)
         print("brewing...")
         time.sleep(1)
         print("brewing...")
@@ -55,6 +54,7 @@ class PotionGame:
         for potion, required_items in self.potions.items():
                 if all(item in self.inventory for item in required_items):
                         for item in required_items:
+                            self.inventory.remove(item)
                             print(f'you have brewed 2x {potion}')
                             time.sleep(2)
                             self.potion_inventory.append(potion)
