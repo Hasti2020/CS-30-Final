@@ -27,13 +27,13 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name, increase_attack, increase_damage, timer_on):
+    def __init__(self, name, increase_attack, increase_damage):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
         self.increase_attack = increase_attack
         self.increase_damage = increase_damage
-        self.timer_on = timer_on
+        #self.timer_on = timer_on
         self.potions = potion.PotionGame().potion_inventory
         
 
@@ -96,8 +96,8 @@ class Player(Character):
         print("Time's up!")
         if self.increase_attack:
             self.increase_attack = False
-        if self.timer_on: 
-            self.timer_on = False
+        #if self.timer_on: 
+           # self.timer_on = False
 
 
 
@@ -122,17 +122,12 @@ class Player(Character):
             self.timer_on = True
             self.start_countdown(5)
             choice = input("spell name: ").title()
-            if not self.timer_on and choice == None:
-                print("You did not cast any spells in time")
-                total_attack = 0
-                return total_attack
-            else:
-                spells.Spell(choice).cast_spell()
-                spell_attack = spells.Spell(choice).attack  
-                total_attack = attack + spell_attack
-                print(f"{enemy.name} has taken a total of {total_attack} damage")
-                enemy.take_damage(total_attack)
-                return total_attack
+            spells.Spell(choice).cast_spell()
+            spell_attack = spells.Spell(choice).attack  
+            total_attack = attack + spell_attack
+            print(f"{enemy.name} has taken a total of {total_attack} damage")
+            enemy.take_damage(total_attack)
+            return total_attack
         else:
             print(f"{enemy.name} has taken {attack} damage")
             enemy.take_damage(attack)
