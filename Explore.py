@@ -284,14 +284,13 @@ class Movement:
                 print("\nMcGonagall: 'Very well. I hope you’ve been studying, practicing, and not just petting hippogriffs.'")
                 print("She pulls out a long scroll and scribbles your name down.")
                 print("McGonagall: 'The first battle will be start soon. Prepare yourself — there’s no turning back now.'")
-                b.start_battle()
+                b.Battle(self.name).start_battle()
             else:
                 print("\nMcGonagall: 'A wise decision. There’s no shame in preparation. Come back when you’re truly ready.'")
                 print("She vanishes into the shadows like a dramatic Scottish ninja.")
 
     def display_map(self):
         display_grid = []
-
         # Use the current map (e.g., self.current_map)
         for i, row in enumerate(self.current_map):
             display_row = []
