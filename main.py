@@ -36,6 +36,7 @@ def run_game():
     player_name = input("Hagrid: 'What’s your name, then?'\n> ")
     print(f"\nAlright then, {player_name}, you’re about to begin your magical journey. ✨")
     player = e.Movement(player_name, {'row': 0, 'col': 0})
+    
     player.move()  # or whatever the main movement method is
 
 run_game()
