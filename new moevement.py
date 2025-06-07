@@ -1,9 +1,10 @@
 import wand as w
 from tabulate import tabulate
 import random as r
-import house_quiz as h
-import battle as b
 import potion as p
+import spells as s
+import house_quiz as h
+
 
 class Movement:
 
@@ -24,8 +25,8 @@ class Movement:
         ]
         self.hogwarts_map = [
             ["Dining Hall", "Library", "Dorms"],
-            ["class", "Hagrid's Cabin", "Secret path"],
-            ["Hallway", "Room of Requirement", "Front doors"]
+            ["Potion Class", "Hagrid's Cabin", "Secret path"],
+            ["Spell Class", "Room of Requirement", "Front doors"]
         ]
         self.current_map = self.diagon_alley_map
         self.location = {'row': 0, 'col': 0}
@@ -203,8 +204,7 @@ class Movement:
             if not self.sorted:
                     print("Hagrid: Ahh, the Great Hall! Time for yeh to be sorted into yer house.")
                     self.sorted = True
-                    print("ADD QUIZZ")  # ASK Emily to fix quiz module so its usable
-                    h.house_sort()  # Here u go pookie
+                    h.house_sort()
             else:
                 print("Hagrid: Welcome to the Dining Hall. Fancy a feast or just sittin' with the students? (feast/sit/leave)")
                 choice = input("Yer pick: ").lower()
@@ -237,10 +237,9 @@ class Movement:
                 print("Hagrid: Alright, outta here then.")
 
 
-        elif current_tile == "class":
+        elif current_tile == "Potion Class":
             print("You're in Potions class. Professor Snape eyes you.")
             p.start_potion_game()
-            # Add potion module to here
 
         elif current_tile == "Hagrid's Cabin":
             print("Hagrid: Hey! You found my cabin. Want to help me feed a baby dragon? (yes/no)")
@@ -262,12 +261,12 @@ class Movement:
             else:
                 print("Hagrid: Smart one, not all paths are worth the risk.")
 
-        elif current_tile == "Hallway":
-            print("You’re wandering a long stone hallway. Portraits whisper as you pass.")
+        elif current_tile == "Spell Class":
+            s.spell_lesson()
 
         elif current_tile == "Room of Requirement":
             print("Hagrid: You have entered the Room of Requirement! What do you wish for?")
-            print("Options: 'knowledge' or 'secret?'")
+            print("Options: 'knowledge' or 'secret?/'")
             wish = input("Your wish: ").lower()
             if wish == "knowledge":
                 print("Hagrid: A rare spellbook appears. You learned *Expelliarmus!*")
