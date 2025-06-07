@@ -1,5 +1,7 @@
+import time
+import random
+
 def house_sort():     
-    import random
     quiz = open("house.txt", "r")
     line = quiz.readline()
     sorting = line.split(",")
@@ -49,14 +51,26 @@ def house_sort():
         print(YELLOW + "🌻 Sweet, loyal, and lowkey the only reason Hogwarts hasn’t burned down. You bake cookies *and* win duels with kindness (and maybe a frying pan)." + ENDC)
     else:
         print(RED + "You are in...GRYFINDOR" + ENDC)
+    time.sleep(1)
     print("\n🎉 The great hall erupts in applause as you walk to your house table, your new housemates cheering you on.")
+    time.sleep(1)
     print("\n🧙‍♂️ Dumbledore: 'Welcome, welcome, one and all!")
+    time.sleep(1)
     print("Dumbledore: This year... things are going to get a tad more *interesting*.'")
+    time.sleep(1)
     print("Dumbledore: 'I am pleased to announce that this year, Hogwarts will be hosting the legendary... **Diwizard Tournament!**'")
+    time.sleep(1)
     print("To prepare, attend your classes, practice spells, brew potions, and maybe read a book for once.")
+    time.sleep(1)
     print("When — and *only* when — you feel ready... make your way to the *Front Doors* and seek out Professor McGonagall.")
+    time.sleep(1)
     print("Tell her you wish to enter the Diwizard Tournament.")
+    time.sleep(1)
     print("But be warned — you only get one shot. So be wise, be ready, and for Merlin’s sake, don’t challenge a basilisk with just a toad.'")
+    time.sleep(1)
     print("\n🍰 Suddenly, desserts appear. The students cheer, but your mind is racing...")
+    time.sleep(1)
     print("You're not just here for classes. You're here to prove yourself.")
+    time.sleep(1)
     print("The Diwizard Tournament awaits. But first — it's time to get ready.")
+
