@@ -7,12 +7,11 @@ import time
 
 class Battle:
 
-    def __init__(self, name, potion):
+    def __init__(self, name, potion_inventory):
         self.name = name
-        self.potion = potion
         self.oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
         wand.Wand.get_wand()
-        self.player = character.Player(self.name, False, False, potion)
+        self.player = character.Player(self.name, False, False, potion_inventory)
 
     def start_battle(self): 
         score.getScore()
