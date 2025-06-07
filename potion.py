@@ -10,7 +10,7 @@ class PotionGame:
             'Thunderbrew Potion': ['Leech Juice', 'Stench of the Dead']
         }
         self.inventory = []
-        self.potion_inventory = ['Wiggenweld Potion', 'Maxima Potion', 'Thunderbrew Potion']
+        self.potion_inventory = []
 
     def things_on_table(self):
         global choice
@@ -45,23 +45,24 @@ class PotionGame:
     
     def brew_potion(self):
         brew = False
+        self.inventory.remove(item)
+        print("brewing...")
+        time.sleep(1)
+        print("brewing...")
+        time.sleep(1)
+        print("almost done!")
+        time.sleep(1)
         for potion, required_items in self.potions.items():
                 if all(item in self.inventory for item in required_items):
                         for item in required_items:
-                            self.inventory.remove(item)
-                            print("brewing...")
-                            time.sleep(1)
-                            print("brewing...")
-                            time.sleep(1)
-                            print("almost done!")
-                            time.sleep(1)
                             print(f'you have brewed 2x {potion}')
                             time.sleep(2)
                             self.potion_inventory.append(potion)
                             self.potion_inventory.append(potion)
                             brew = True
         if not brew:
-            print("you do not have enough inredients to brew any potions!")
+            print(f'you have brewed no potion...')
+            print("Snape: Looks like someone did not follow the recipes correctly...")
             time.sleep(1)
 
     def potions_made(self):
