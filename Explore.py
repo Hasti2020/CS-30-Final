@@ -4,6 +4,7 @@ import random as r
 import potion as p
 import spells as s
 import house_quiz as h
+import battle as b
 
 
 class Movement:
@@ -277,13 +278,16 @@ class Movement:
                 print("Hagrid: The room didn’t understand ya. Try again next time.")
 
         elif current_tile == "Front doors":
-            print("Hagrid: Standing at the great oak doors of Hogwarts. Want to step outside or go back in? (out/in)")
-            choice = input("Yer move: ").lower()
-            if choice == "out":
-                print("Hagrid: A cold wind howls outside. You see the Forbidden Forest in the distance...")
+            print("\nProfessor McGonagall: 'Well? Have you come to throw your name into the Diwizard Tournament?'")
+            choice = input("Do you want to enter the tournament? (yes/no): ").strip().lower()
+            if choice == "yes":
+                print("\nMcGonagall: 'Very well. I hope you’ve been studying, practicing, and not just petting hippogriffs.'")
+                print("She pulls out a long scroll and scribbles your name down.")
+                print("McGonagall: 'The first battle will be start soon. Prepare yourself — there’s no turning back now.'")
+                b.start_battle()
             else:
-                print("Hagrid: Wise choice. Hogwarts is safer inside.")
-
+                print("\nMcGonagall: 'A wise decision. There’s no shame in preparation. Come back when you’re truly ready.'")
+                print("She vanishes into the shadows like a dramatic Scottish ninja.")
 
     def display_map(self):
         display_grid = []
