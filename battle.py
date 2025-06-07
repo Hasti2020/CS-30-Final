@@ -3,19 +3,21 @@ import random
 import wand
 import score
 import time
+import potion
 
 class Battle:
 
-    def __init__(self, name):
+    def __init__(self, name, potions):
         self.name = name
         self.oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
-        self.player = character.Player(self.name, False, False)
+        wand.Wand.get_wand()
+        self.player = character.Player(self.name, False, False, potions)
 
     def start_battle(self): 
         score.getScore()
         print("\n-----------------Player Info-----------------")
         print(f'Current High-score: {score.high_score}')
-        print(f'Wand: {wand.Wand.get_wand()}')
+        print(f'Wand: {self.player.wand_type}')
         print("\n----------------Note-----------------")
         print("press 'e' to acess inventory of your potions! and enter to continue your battles!")
         print("\n------------------Main Game------------------")
