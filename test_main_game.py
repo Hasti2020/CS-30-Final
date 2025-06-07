@@ -11,3 +11,21 @@ def main():
             battle.start_battle()
 main()
 '''
+import Explore as e
+import wand as w
+import potion as p
+import spells as s
+import house_quiz as h
+import random as r
+
+def run_game():
+    player_name = input("Hagrid: 'What’s your name, then?'\n> ")
+    print(f"\nAlright then, {player_name}, you’re about to begin your magical journey. ✨")
+    player = e.Movement(player_name, {'row': 0, 'col': 0})
+
+    player.current_map = player.hogwarts_map
+    player.at_hogwarts = True
+    player.location = {'row': 0, 'col': 0}  
+    player.move()  
+
+run_game()
