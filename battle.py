@@ -4,9 +4,8 @@ def start_battle():
     import random
     import wand
     import score
-    import potion
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
-    player = character.Player('Harry', False, False, False) # player = character.Player('{player_name}')
+    player = character.Player('Harry', False, False) # player = character.Player('{player_name}')
     score.getScore()
     print("\n-----------------Player Info-----------------")
     print(f'Current High-score: {score.high_score}')
