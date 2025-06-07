@@ -58,7 +58,6 @@ class PotionGame:
                             print(f'you have brewed 2x {potion}')
                             time.sleep(2)
                             self.potion_inventory.append(potion)
-                            self.potion_inventory.append(potion)
                             brew = True
         if not brew:
             print(f'you have brewed no potion...')
