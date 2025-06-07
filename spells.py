@@ -1,20 +1,19 @@
 
 import character
 
-spell_list = ['Sectumsempra',
-          'Lumos',
-          'Avada Kedavra',
-          'Disillusionment',
-          'Cruciatus', 
-          'Expelliarmus',
-]
 '''
 for item in spell_list:
     print(item)
 choice = input("spell name: ")
 '''
 class Spell:
-
+    spell_list = ['Sectumsempra',
+          'Lumos',
+          'Avada Kedavra',
+          'Disillusionment',
+          'Cruciatus', 
+          'Expelliarmus']
+    
     def __init__(self, name):
         self.name = name
         self.attack = self.spell_power()
@@ -39,8 +38,9 @@ class Spell:
             return 10
         else:
             return 0
+        
     def cast_spell(self):
-        if character.choice in spell_list:
+        if character.choice in Spell.spell_list:
             print(f"\nYou have casted {self.name}, which contributes {self.attack} damage")
         else:
             print(f"\nYou have casted an unknown spell, {self.name}, which contributes {self.attack} damage")
@@ -48,6 +48,7 @@ class Spell:
 Spell(character.choice).cast_spell()
 Spell(character.choice)
 '''
+
 
 
 
