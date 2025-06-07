@@ -4,14 +4,15 @@ def start_battle():
     import random
     import wand
     import score
+    import time
     oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
-    player = character.Player('Harry', False, False) # player = character.Player('{player_name}')
+    player = character.Player({player.name}, False, False) 
     score.getScore()
     print("\n-----------------Player Info-----------------")
     print(f'Current High-score: {score.high_score}')
     print(f'Wand: {wand.Wand.get_wand()}')
     print("\n----------------Note-----------------")
-    print("press 'e' to acess inventory of your potions!")
+    print("press 'e' to acess inventory of your potions! and enter to continue your battles!")
     print("\n------------------Main Game------------------")
     for i in range(3): # loops 3 times to create 3 different bettles
         oponent = random.choice(oponent_list) 
@@ -23,7 +24,7 @@ def start_battle():
             print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
             break
         while player.alive and target.alive:   
-            choice = input("enter to continue or 'e' to view inventory: ")
+            choice = input()
             if choice == 'e':
                 player.inventory()
                 continue 
