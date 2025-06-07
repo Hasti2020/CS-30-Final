@@ -27,14 +27,14 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name, increase_attack, increase_damage, user_potions):
+    def __init__(self, name, increase_attack, increase_damage, potion_inventory):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
         self.increase_attack = increase_attack
         self.increase_damage = increase_damage
         #self.timer_on = timer_on
-        self.user_potions = user_potions
+        self.user_potions = potion_inventory
         
     def movement(self):
         pass
