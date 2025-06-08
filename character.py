@@ -33,15 +33,15 @@ class Player(Character):
         self.players_score = 0
         self.increase_attack = increase_attack
         self.increase_damage = increase_damage
-        #self.timer_on = timer_on
         self.user_potions = potion_inventory
+
         
     def movement(self):
         pass
         #movement.player.main_menu()
 
     def choose_potion(self):
-        print("\nPotion Inventory:", self.user_potions)
+        print("\n---------------Potion Inventory---------------")
         i = 1
         for item in self.user_potions:
             print(f"{i}. {item}")
@@ -93,12 +93,9 @@ class Player(Character):
             print(f"\r[Maxima Boost Time left: {timer}]  ", end=" ", flush=True) 
             time.sleep(1) 
             t -= 1
-        print("Time's up!")
         if self.increase_attack:
             self.increase_attack = False
-        #if self.timer_on: 
-           # self.timer_on = False
-
+            print("Time's up!")
 
 
     def inflict_damage(self, enemy):
