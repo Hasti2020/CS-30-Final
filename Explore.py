@@ -18,6 +18,7 @@ class Movement:
         self.have_pet = False
         self.at_hogwarts = False
         self.sorted = False
+        self.user_potions = None
 
         self.diagon_alley_map = [
             ["Entrance", "Gringotts Wizarding Bank", "Ollivanders wand shop"],
@@ -241,7 +242,7 @@ class Movement:
         elif current_tile == "Potion Class":
             print("You're in Potions class. Professor Snape eyes you.")
             mini_game = p.PotionGame(self.name)
-            user_potions = mini_game.start_potion_game()
+            self.user_potions = mini_game.start_potion_game()
 
 
         elif current_tile == "Hagrid's Cabin":
@@ -286,7 +287,7 @@ class Movement:
                 print("\nMcGonagall: 'Very well. I hope you’ve been studying, practicing, and not just petting hippogriffs.'")
                 print("She pulls out a long scroll and scribbles your name down.")
                 print("McGonagall: 'The first battle will be start soon. Prepare yourself — there’s no turning back now.'")
-                tournament = b.Battle(self.name, user_potions)
+                tournament = b.Battle(self.name, self.user_potions)
                 tournament.start_battle()
             else:
                 print("\nMcGonagall: 'A wise decision. There’s no shame in preparation. Come back when you’re truly ready.'")
