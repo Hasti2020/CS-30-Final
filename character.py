@@ -27,7 +27,7 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name, increase_attack, increase_damage, potion_inventory):
+    def __init__(self, name, increase_attack, increase_damage, potion_inventory): # have potion inventory be in here from start
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
@@ -39,6 +39,7 @@ class Player(Character):
     def movement(self):
         pass
         #movement.player.main_menu()
+        
 
     def choose_potion(self):
         print("\n---------------Potion Inventory---------------")
