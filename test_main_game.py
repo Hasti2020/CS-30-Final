@@ -25,7 +25,7 @@ def run_game():
 
     player.current_map = player.hogwarts_map
     player.at_hogwarts = True
-    player.location = {'row': 0, 'col': 0}  
+    player.location = {'row': 1, 'col': 0}  
     player.move()  
 
 run_game()
