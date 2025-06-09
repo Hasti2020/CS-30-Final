@@ -54,8 +54,6 @@ class Battle:
             oponent = 'Voldemort'
             boss = character.Oponent('Voldemort')
             while self.player.alive and boss.alive:
-                print("press enter to continue or 'e' to access inventory:") 
-                choice = input()
                 if choice == 'e':
                     self.player.choose_potion()
                     continue 
@@ -70,9 +68,12 @@ class Battle:
             if self.player.alive:
                 print(f"Yeh won. Yeh a true hero of the wizarding world {self.player.name}!")
                 self.player.compare_scores()
+                raise SystemExit
             else:
                 print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
-            input('enter to continue: ')
+                raise SystemExit
+            print("press enter to continue or 'e' to access inventory:") 
+            choice = input()
 
 
     
