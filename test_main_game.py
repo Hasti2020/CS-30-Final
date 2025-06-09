@@ -17,12 +17,13 @@ import potion as p
 import spells as s
 import house_quiz as h
 import random as r
+import character as c
 
 def run_game():
     player_name = input("Hagrid: 'What’s your name, then?'\n> ")
     print(f"\nAlright then, {player_name}, you’re about to begin your magical journey. ✨")
-    player = e.Movement(player_name, {'row': 0, 'col': 0})
-
+    player_character = c.Player(player_name)
+    player = e.Movement(player_name, {'row': 0, 'col': 0}, player_character)
     player.current_map = player.hogwarts_map
     player.at_hogwarts = True
     player.location = {'row': 1, 'col': 0}  
