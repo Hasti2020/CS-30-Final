@@ -53,9 +53,6 @@ def spell_lesson():
     print("Flitwick: Need a bit of light? Lumos ✨! A flick of the wand, and voilà — a glowing tip to guide your way in the dark!")
     print("Flitwick: It can only create 1 DMG in a battle though...")
     time.sleep(2)
-    print("Flitwick: The Disarming Charm! Expelliarmus✨! Disarms your opponent — quick and clean. Ideal in duels!")
-    print("Flitwick: It creates a total of 15 attack damge!")
-    time.sleep(2)
     print("Flitwick: Become nearly invisible! Disillusionment Charm ✨! Excellent for sneaking — just don’t trip over your own feet!")
     print("Flitwick: Only 5 DMG tho...")
     time.sleep(2)
@@ -69,6 +66,7 @@ def spell_lesson():
     print("Flitwick: This spell can cause 20 DMG...")
     time.sleep(2)
     print("You: Ugh, this is too boring, I will sneak out now")
+    time.sleep(2)
     ...
     time.sleep(1)
     ...
