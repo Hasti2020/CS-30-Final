@@ -2,8 +2,8 @@ import time
 import character as c
 
 class PotionGame:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, player):
+        self.player = player
         self.ingredients = ['Horklump Juice', 'Dittany Leaves', 'Leech Juice', 'Spider Fang', 'Leech Juice', 'Stench of the Dead']
         self.potions = {
             'Wiggenweld Potion': ['Horklump Juice', 'Dittany Leaves'],
@@ -11,7 +11,7 @@ class PotionGame:
             'Thunderbrew Potion': ['Leech Juice', 'Stench of the Dead']
         }
         self.inventory = ['Maxima Potion']
-        self.potion_inventory = []
+
 
     def things_on_table(self):
         global choice
@@ -58,7 +58,7 @@ class PotionGame:
                             self.inventory.remove(item)
                             print(f'you have brewed {potion}')
                             #time.sleep(2)
-                            self.potion_inventory.append(potion)
+                            self.player.potion_inventory.append(potion)
                             brew = True
         if not brew:
             print(f'you have brewed no potion...')
@@ -68,13 +68,9 @@ class PotionGame:
     def potions_made(self):
         print("\n---------INVENTORY---------")
         i = 1
-        for item in self.potion_inventory:
+        for item in self.player.potion_inventory:
             print(f"{i}. {item}")
             i += 1
-
-    def potions_stored(self):
-        return self.potion_inventory
-    
 
     def start_potion_game(self):
         print("--------You have entered professor Snape's potion class--------")
@@ -115,7 +111,7 @@ class PotionGame:
                 elif choice == '4':
                     self.view_recipe()
                 elif choice == '5':
-                    return self.potions_stored() 
+                    return self.player.potion_inventory
             except ValueError:
                 print("invalid choice!")
                 time.sleep(1)
