@@ -9,9 +9,9 @@ import battle as b
 
 class Movement:
 
-    def __init__(self, name, player_character, location):
+    def __init__(self, name, user, location):
         self.name = name
-        self.player_character = player_character
+        self.user = user
         self.location = location
         self.have_money = False
         self.have_wand = False
@@ -242,7 +242,7 @@ class Movement:
 
         elif current_tile == "Potion Class":
             print("You're in Potions class. Professor Snape eyes you.")
-            mini_game = p.PotionGame(self.player_character)
+            mini_game = p.PotionGame(self.user)
             mini_game.start_potion_game()
 
         elif current_tile == "Hagrid's Cabin":
@@ -287,7 +287,7 @@ class Movement:
                 print("\nMcGonagall: 'Very well. I hope you’ve been studying, practicing, and not just petting hippogriffs.'")
                 print("She pulls out a long scroll and scribbles your name down.")
                 print("McGonagall: 'The first battle will be start soon. Prepare yourself — there’s no turning back now.'")
-                tournament = b.Battle(self.player_character)
+                tournament = b.Battle(self.user)
                 tournament.start_battle()
             else:
                 print("\nMcGonagall: 'A wise decision. There’s no shame in preparation. Come back when you’re truly ready.'")
