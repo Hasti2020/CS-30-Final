@@ -7,11 +7,10 @@ import time
 
 class Battle:
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, player):
         self.oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
         wand.Wand.get_wand()
-        self.player = character.Player(self.name)
+        self.player = player
 
     def start_battle(self): 
         score.getScore()
@@ -44,16 +43,22 @@ class Battle:
                         print(f"\nDifference in attack damage: {difference}")
                         self.player.players_score += difference
                         print(f"score: {self.player.players_score}")
-                        print(f"health: {self.player.health}")
             if self.player.alive:
                 print(f'\nCongrats {self.player.name}, you have defeated {oponent}!')
         
         if self.player.alive:
+            time.sleep(1)
             print("\nWell done, yeh did it! Survived and won the battle — knew yeh had it in yeh all along!")
             print(f"But oh no, {self.player.name}! Blimey —  Lord Voldemort just appeared on the battlefield! Use every bit of strength yeh got left — this is the fight over yer life!")
+            time.sleep(2)
             oponent = 'Voldemort'
             boss = character.Oponent('Voldemort')
             while self.player.alive and boss.alive:
+                print("press enter to continue or 'e' to access inventory:") 
+                choice = input()
+                if choice == 'e':
+                    self.player.choose_potion()
+                    continue 
                 player_attack = self.player.inflict_damage(boss)
                 if boss.alive:
                     boss_attack = boss.inflict_damage(self.player)
