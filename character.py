@@ -21,7 +21,7 @@ class Character:
         if self.health <= 0:
             self.alive = False
         else: 
-            print(f"{self.name}, current health : {self.health}")
+            print(f"{self.name}'s current health : {self.health}")
 
 
 
@@ -56,12 +56,12 @@ class Player(Character):
                     self.healing()
                 elif selected == 'Maxima Potion':
                     print(f'\nYou have used the Maxima Potion!')
-                    print(f'\nYour attacks will increase by 5 damage for the next 30 seconds!')
+                    print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
                     self.increase_attack = True
-                    self.start_countdown(15)
+                    self.start_countdown(20)
                 elif selected == 'Thunderbrew Potion':
                     print(f'\nYou have used the Thunderbrew Potion')
-                    print(f'\nYour next attack will be increased by 50 damage!')
+                    print(f'\nYour next attack will be increased by 20 damage!')
                     self.increase_damage = True
             else:
                 print("invalid")
@@ -73,10 +73,10 @@ class Player(Character):
         self.health += 20
         print('drinking...')
         time.sleep(1)
-        print('+ 10 health!')
+        print('+ 5 health!')
         print('drinking...')
         time.sleep(1)
-        print('+ 10 health!')
+        print('+ 5 health!')
         time.sleep(0.5)
         print("You have gain 20 HP!")
 
@@ -101,14 +101,14 @@ class Player(Character):
 
     def inflict_damage(self, enemy):
         global choice
-        print("\nCasting a spell...")
+        print("\nCasting a spell... 🪄✨")
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         if self.increase_attack: 
             attack += 5
         if self.increase_damage:
             time.sleep(1)
             attack += 50
-            print("BAMMMM THUNDERSTRIKE")
+            print("⚡⚡ BAMMMM THUNDERSTRIKE ⚡⚡")
             self.increase_damage = False
         if self.health <= 50:
             print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any one of the spell yeh remember to cause more damage!')
@@ -126,7 +126,7 @@ class Player(Character):
             enemy.take_damage(total_attack)
             return total_attack
         else:
-            print(f"{enemy.name} has taken {attack} damage")
+            print(f"{enemy.name} has taken {attack} damage!")
             enemy.take_damage(attack)
             return attack
     
@@ -140,19 +140,19 @@ class Oponent(Character):
         Character.__init__(self, name)
      
     def inflict_damage(self, user):
-        print(f"\n{self.name} is casting a spell...")
+        print(f"\n{self.name} is casting a spell... 😈🪄")
         time.sleep(2)
         if self.name == 'Luna':
-            attack = random.randint(0, 5)
-        if self.name == 'Draco':
             attack = random.randint(5, 10)
-        if self.name == 'Peter':
+        if self.name == 'Draco':
             attack = random.randint(10, 15)
-        if self.name == 'Bellatrix':
-            attack = random.randint(10, 20)
-        if self.name == 'Voldemort':
+        if self.name == 'Peter':
             attack = random.randint(15, 20)
-        print(f"you have taken {attack} damage")
+        if self.name == 'Bellatrix':
+            attack = random.randint(20, 30)
+        if self.name == 'Voldemort':
+            attack = random.randint(30, 35)
+        print(f"You have taken {attack} damage!")
         user.take_damage(attack)
         return attack
                
