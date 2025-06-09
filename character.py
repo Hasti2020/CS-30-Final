@@ -27,13 +27,13 @@ class Character:
 
 class Player(Character):
     
-    def __init__(self, name, increase_attack, increase_damage, potion_inventory): # have potion inventory be in here from start
+    def __init__(self, name): # have potion inventory be in here from start
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
-        self.increase_attack = increase_attack
-        self.increase_damage = increase_damage
-        self.user_potions = potion_inventory
+        self.increase_attack = False
+        self.increase_damage = False
+        self.potion_inventory = []
 
         
     def movement(self):
@@ -44,13 +44,13 @@ class Player(Character):
     def choose_potion(self):
         print("\n---------------Potion Inventory---------------")
         i = 1
-        for item in self.user_potions:
+        for item in self.potion_inventory:
             print(f"{i}. {item}")
             i += 1
         try:
             choice = int(input("What potion do you want to use?: "))
-            if 1 <= choice <= len(self.user_potions):
-                selected = self.user_potions.pop(choice-1)
+            if 1 <= choice <= len(self.potion_inventory):
+                selected = self.potion_inventory.pop(choice-1)
                 if selected == 'Wiggenweld Potion':
                     print(f'\nYou have used the Wiggenweld Potion!')
                     self.healing()
