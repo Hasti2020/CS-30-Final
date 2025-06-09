@@ -47,8 +47,32 @@ class Spell:
 
 def spell_lesson():
     print("--------You have entered professor Flitwick's spells lessons--------")
-    print(f"Flitwick: Hello there students, today " )
-
+    time.sleep(1)
+    print("Flitwick: Hello students, today we will be learning about the most famous spells in the wizzarding world! ✨✨" )
+    time.sleep(1)
+    print("Flitwick: Need a bit of light? Lumos ✨! A flick of the wand, and voilà — a glowing tip to guide your way in the dark!")
+    print("Flitwick: It can only create 1 DMG in a battle though...")
+    time.sleep(2)
+    print("Flitwick: The Disarming Charm! Expelliarmus✨! Disarms your opponent — quick and clean. Ideal in duels!")
+    print("Flitwick: It creates a total of 15 attack damge!")
+    time.sleep(2)
+    print("Flitwick: Become nearly invisible! Disillusionment Charm ✨! Excellent for sneaking — just don’t trip over your own feet!")
+    print("Flitwick: Only 5 DMG tho...")
+    time.sleep(2)
+    print("Flitwick: Dark magic... Sectumsempra ✨ causes deep, slashing wounds. Use it only if you must — and be prepared for the consequences")
+    print("Flitwick: This dangerous spell can cause a massive 25 DMG...")
+    time.sleep(2)
+    print("Flitwick: The Cruciatus.It causes unbearable pain. Unforgivable. Illegal. And deeply disturbing. This is not a spell to take lightly")
+    print("Flitwick: This spell can cause 10 DMG...")
+    time.sleep(2)
+    print("Flitwick: The Killing Curse. Avada Kedavra. This spell is pure evil — never to be used")
+    print("Flitwick: This spell can cause 20 DMG...")
+    time.sleep(2)
+    print("You: Ugh, this is too boring, I will sneak out now")
+    ...
+    time.sleep(1)
+    ...
+    time.sleep(1)
 
 '''
 Spell(character.choice).cast_spell()
