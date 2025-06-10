@@ -3,7 +3,7 @@ import random
 import wand
 import score
 import time
-
+import potion
 
 class Battle:
 
@@ -33,7 +33,7 @@ class Battle:
                 print("press enter to continue or 'e' to access inventory:") 
                 choice = input()
                 if choice == 'e':
-                    self.player.choose_potion()
+                    self.player.potion_game.choose_potion()
                     continue 
                 player_attack = self.player.inflict_damage(target)
                 if target.alive:
