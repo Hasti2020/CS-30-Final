@@ -10,10 +10,10 @@ class Battle:
     def __init__(self, player):
         self.oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
         wand.Wand.get_wand()
+        score.getScore()
         self.player = player
 
     def start_battle(self): 
-        score.getScore()
         print("\n-----------------Player Info-----------------")
         print(f'Current High-score: {score.high_score}')
         print(f'Wand: {self.player.wand_type}')
@@ -28,7 +28,7 @@ class Battle:
             print("\nBattle #" + str(i + 1) +" shall now begin!")
             if not self.player.alive:
                 print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
-                break
+                raise SystemExit
             while self.player.alive and target.alive:  
                 print("press enter to continue or 'e' to access inventory:") 
                 choice = input()
@@ -65,6 +65,8 @@ class Battle:
                         print(f"Difference in attack damage: {difference}")
                         self.player.players_score += difference
                         print(f"score: {self.player.players_score}")
+            print("press enter to continue or 'e' to access inventory:") 
+            choice = input()
             if self.player.alive:
                 print(f"Yeh won. Yeh a true hero of the wizarding world {self.player.name}!")
                 self.player.compare_scores()
@@ -72,8 +74,7 @@ class Battle:
             else:
                 print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
                 raise SystemExit
-            print("press enter to continue or 'e' to access inventory:") 
-            choice = input()
+    
 
 
     
