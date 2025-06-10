@@ -10,7 +10,7 @@ def main():
         elif choice == 'a':
             battle.start_battle()
 main()
-'''
+
 import Explore as e
 import wand as w
 import potion as p
@@ -30,3 +30,4 @@ def run_game():
     player.move()  
 
 run_game()
+'''
