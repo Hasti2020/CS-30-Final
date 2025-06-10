@@ -4,6 +4,7 @@ import spells
 import score
 import threading
 import time
+import potion
 
 
 class Character:
@@ -34,41 +35,12 @@ class Player(Character):
         self.increase_attack = False
         self.increase_damage = False
         self.potion_inventory = []
-
+        self.potion_game = potion.PotionGame(self)
         
     def movement(self):
         pass
         #movement.player.main_menu()
-        
-
-    def choose_potion(self):
-        print("\n---------------Potion Inventory---------------")
-        i = 1
-        for item in self.potion_inventory:
-            print(f"{i}. {item}")
-            i += 1
-        try:
-            choice = int(input("What potion do you want to use?: "))
-            if 1 <= choice <= len(self.potion_inventory):
-                selected = self.potion_inventory.pop(choice-1)
-                if selected == 'Wiggenweld Potion':
-                    print(f'\nYou have used the Wiggenweld Potion!')
-                    self.healing()
-                elif selected == 'Maxima Potion':
-                    print(f'\nYou have used the Maxima Potion!')
-                    print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
-                    self.increase_attack = True
-                    self.start_countdown(20)
-                elif selected == 'Thunderbrew Potion':
-                    print(f'\nYou have used the Thunderbrew Potion')
-                    print(f'\nYour next attack will be increased by 20 damage!')
-                    self.increase_damage = True
-            else:
-                print("invalid")
-        except ValueError:
-            print("numbers only")
-            return None
-
+            
     def healing(self):
         self.health += 20
         print('drinking...')
@@ -112,13 +84,11 @@ class Player(Character):
             print("⚡⚡ BAMMMM THUNDERSTRIKE ⚡⚡")
             self.increase_damage = False
         if self.health <= 50:
-            print('Blimey, yeh not lookin too good on health! Quick! Think back to class — cast any one of the spell yeh remember to cause more damage!')
+            print('Blimey, cast any one of the spell yeh remember to cause more damage!')
             i = 1
             for item in spells.Spell.spell_list:
                 print(f"{i}. {item}")
                 i += 1
-            #self.timer_on = True
-            #self.start_countdown(5)
             choice = input("spell name: ").title()
             spells.Spell(choice).cast_spell()
             spell_attack = spells.Spell(choice).attack  
