@@ -9,7 +9,15 @@
 
 # 2025-05-21
 - Hasti + Emily: Editted porposal.md
-- added stroyline
+- added storyline
 - added need-to-haves
+- updated storyline
 - Hasti: created color example.py
+
 # 2025-05-22
+- Hasti: Created character.py
+- initialized and created character class
+
+# 2025-05-23
+- Hasti: Created wand.py
+- Initialized and created the Wand class 
