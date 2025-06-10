@@ -243,6 +243,7 @@ class Movement:
         elif current_tile == "Potion Class":
             print("You're in Potions class. Professor Snape eyes you.")
             mini_game = p.PotionGame(self.user)
+            self.user.potion_game = mini_game
             mini_game.start_potion_game()
 
         elif current_tile == "Hagrid's Cabin":
