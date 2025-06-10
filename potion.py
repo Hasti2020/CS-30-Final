@@ -10,7 +10,7 @@ class PotionGame:
             'Maxima Potion': ['Leech Juice', 'Spider Fang'],
             'Thunderbrew Potion': ['Leech Juice', 'Stench of the Dead']
         }
-        self.inventory = ['Maxima Potion']
+        self.inventory = []
 
 
     def things_on_table(self):
@@ -43,6 +43,34 @@ class PotionGame:
         for item in self.inventory:
             print(f"{i}. {item}")
             i += 1
+
+    def choose_potion(self):
+        print("\n---------------Potion Inventory---------------")
+        i = 1
+        for item in self.player.potion_inventory:
+            print(f"{i}. {item}")
+            i += 1
+        try:
+            choice = int(input("What potion do you want to use?: "))
+            if 1 <= choice <= len(self.player.potion_inventory):
+                selected = self.player.potion_inventory.pop(choice-1)
+                if selected == 'Wiggenweld Potion':
+                    print(f'\nYou have used the Wiggenweld Potion!')
+                    self.player.healing()
+                elif selected == 'Maxima Potion':
+                    print(f'\nYou have used the Maxima Potion!')
+                    print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
+                    self.player.increase_attack = True
+                    self.player.start_countdown(20)
+                elif selected == 'Thunderbrew Potion':
+                    print(f'\nYou have used the Thunderbrew Potion')
+                    print(f'\nYour next attack will be increased by 20 damage!')
+                    self.player.increase_damage = True
+            else:
+                print("invalid")
+        except ValueError:
+            print("numbers only")
+            return None
     
     def brew_potion(self):
         brew = False
@@ -56,7 +84,7 @@ class PotionGame:
                 if all(item in self.inventory for item in required_items):
                         for item in required_items:
                             self.inventory.remove(item)
-                            print(f'you have brewed {potion}')
+                            print(f'you have brewed a {potion}')
                             #time.sleep(2)
                             self.player.potion_inventory.append(potion)
                             brew = True
