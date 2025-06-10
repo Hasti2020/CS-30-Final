@@ -102,6 +102,7 @@ class Player(Character):
     def inflict_damage(self, enemy):
         global choice
         print("\nCasting a spell... 🪄✨")
+        time.sleep(1.5)
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         if self.increase_attack: 
             attack += 5
