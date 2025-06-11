@@ -216,7 +216,9 @@ class Movement:
 
         elif current_tile == "Potion Class":
             print("You're in Potions class. Professor Snape eyes you.")
-            p.start_potion_game()
+            mini_game = p.PotionGame(self.player)
+            self.player.potion_game = mini_game
+            mini_game.start_potion_game()
 
         elif current_tile == "Hagrid's Cabin":
             print("Hagrid: Hey! You found my cabin. Want to help me feed a baby dragon? (yes/no)")
@@ -258,7 +260,8 @@ class Movement:
                 print("\nMcGonagall: 'Very well. I hope you’ve been studying, practicing, and not just petting hippogriffs.'")
                 print("She pulls out a long scroll and scribbles your name down.")
                 print("McGonagall: 'The first battle will be start soon. Prepare yourself — there’s no turning back now.'")
-                b.start_battle()
+                tournament = b.Battle(self.player)
+                tournament.start_battle()
             else:
                 print("\nMcGonagall: 'A wise decision. There’s no shame in preparation. Come back when you’re truly ready.'")
                 print("She vanishes into the shadows like a dramatic Scottish ninja.")
