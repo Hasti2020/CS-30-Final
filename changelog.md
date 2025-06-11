@@ -102,8 +102,13 @@ Emily: Created a view_inventory method to test if the things picked up is in the
 Emily: Created brew_potions method and checks if player has the right ingrdients and start the brewing process
 
 ## 2025-05-30 ##
+
+### Added 
+Emily: Added the compare_score method in player class to update the higest score after every round
 Emily: Have the battle database become a fuction called start battle and added voldemort to be the final boss
 after defeating 1st opponent
+
+Emily: Fixed main menu 
 
 
 
