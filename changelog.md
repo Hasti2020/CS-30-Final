@@ -65,7 +65,6 @@ Emily: Created a spell class and spell_power method that returns a damage for ea
 Emily: Created a cast_spell to print out a dialog when the player casts a spell and a dialog if the player casts
 an unknown spell
 Emily: Added dialogs for when the player is allowed to cast spells in inflict_damage
-Emily: Have the spell casting damage added to the regular damage if is used
 
 ### Changed:
 Emily: Changed wand module.py to wand.py
@@ -85,8 +84,12 @@ Emily: added a healthing method for player child class
 Emily: Create potion.py
 Emily: Created score.py and score.txt
 Emily: Created getScore and newScore functions and have the player's score be saved into an external text
-file after the battle (Saves current highest score)
-Emily: Player's difference in attack damge vs the opponent will be added up into their score
+file 
+Emily: Got the spell casting to work for the player class, spell damage will be combined with regular damage
+Emily: added voldemort to be the final boss after defeating 1st opponent
+Emily: pasted code from battle, character, and spell from Thonny to Visual studio (Could not download VS at home)
+Emily: Created PotionGame class
+
 
 ### Edited
 Emily: Adjusted the spell damages
@@ -95,18 +98,17 @@ Emily: Adjested opponents' power ranges
 ## 2025-05-29 ##
 
 ### Added
-Emily: Created PotionGame class
 Emily: Created things_on_table and test methods and a database for the main menu of the potion game
 Emily: Have the player be able to pick up ingredients from the table and store in their inventory 
 Emily: Created a view_inventory method to test if the things picked up is in the inventory
 Emily: Created brew_potions method and checks if player has the right ingrdients and start the brewing process
+Emily: Player's difference in attack damge vs the opponent will be added up into their score
 
 ## 2025-05-30 ##
 
 ### Added 
 Emily: Added the compare_score method in player class to update the higest score after every round
-Emily: Have the battle database become a fuction called start battle and added voldemort to be the final boss
-after defeating 1st opponent
+Emily: Have the battle database become a fuction called start battle
 
 Emily: Fixed main menu 
 
