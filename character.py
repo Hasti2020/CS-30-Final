@@ -7,27 +7,33 @@ import time
 import potion
 
 
+
+
 class Character:
+
 
     def __init__(self, name):
         self.name = name
         self.health = 100
         self.alive = True
-    
+   
     def __str__(self):
         return f"{self.name}"
-    
+   
     def take_damage(self, damage):
         self.health -= damage
         if self.health <= 0:
             self.alive = False
-        else: 
+        else:
             print(f"{self.name}'s current health : {self.health}")
 
 
 
+
+
+
 class Player(Character):
-    
+   
     def __init__(self, name): # have potion inventory be in here from start
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
@@ -36,11 +42,19 @@ class Player(Character):
         self.increase_damage = False
         self.potion_inventory = []
         self.potion_game = potion.PotionGame(self)
-        
+        self.have_money = False
+        self.have_wand = False
+        self.have_book = False
+        self.have_pet = False
+        self.at_hogwarts = False
+        self.sorted = False
+        self.location = {'row': 0, 'col': 0}
+
+       
     def movement(self):
         pass
-        #movement.player.main_menu()       
-            
+        #movement.player.main_menu()      
+           
     def healing(self):
         self.health += 20
         print('drinking...')
@@ -53,22 +67,28 @@ class Player(Character):
         print("You have gain 20 HP!")
 
 
+
+
     def start_countdown(self, duration):
         thread = threading.Thread(target=self.countdown, args=(duration,), daemon=True)
         thread.start()
 
+
     '''still in major progress'''
+
 
     def countdown(self, t):
         while t:
-            mins, secs = divmod(t, 60) 
-            timer = '{:02d}:{:02d}'.format(mins, secs) 
-            print(f"\r[Maxima Boost Time left: {timer}]  ", end=" ", flush=True) 
-            time.sleep(1) 
+            mins, secs = divmod(t, 60)
+            timer = '{:02d}:{:02d}'.format(mins, secs)
+            print(f"\r[Maxima Boost Time left: {timer}]  ", end=" ", flush=True)
+            time.sleep(1)
             t -= 1
         if self.increase_attack:
             self.increase_attack = False
             print("Time's up!")
+
+
 
 
     def inflict_damage(self, enemy):
@@ -76,7 +96,7 @@ class Player(Character):
         print("\nCasting a spell... 🪄✨")
         time.sleep(1.5)
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
-        if self.increase_attack: 
+        if self.increase_attack:
             attack += 5
         if self.increase_damage:
             time.sleep(1)
@@ -100,13 +120,14 @@ class Player(Character):
             print(f"{enemy.name} has taken {attack} damage!")
             enemy.take_damage(attack)
             return attack
-    
+   
     def compare_scores(self):
         if self.players_score > int(score.high_score):
             score.newScore(str(self.players_score))
 
+
 class Oponent(Character):
-    
+   
     def __init__(self, name):
         Character.__init__(self, name)
      
@@ -127,6 +148,16 @@ class Oponent(Character):
         user.take_damage(attack)
         return attack
                
+
+
+
+
+
+
+
+
+
+
 
 
 
