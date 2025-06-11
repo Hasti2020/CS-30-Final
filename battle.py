@@ -3,7 +3,7 @@ import random
 import wand
 import score
 import time
-import potion
+
 
 class Battle:
 
@@ -18,7 +18,13 @@ class Battle:
         print(f'Current High-score: {score.high_score}')
         print(f'Wand: {self.player.wand_type}')
         print("\n----------------Note-----------------")
-        print("press 'e' to acess inventory of your potions! and enter to continue your battles!")
+        print("press 'e' to acess inventory of your potions! ")
+        print("press enter to continue your battles and action!")
+        print("\n--------------WARNING---------------")
+        print("Dialogs in the battle will be printed with wait times in between like this...")
+        time.sleep(1)
+        print("Only click enter once you have the option to, in order to avoid the battle from moving too quickly!")
+        time.sleep(1)
         print("\n------------------Main Game------------------")
         for i in range(3): # loops 3 times to create 3 different bettles
             oponent = random.choice(self.oponent_list) 
@@ -70,7 +76,6 @@ class Battle:
             if self.player.alive:
                 print(f"Yeh won. Yeh a true hero of the wizarding world {self.player.name}!")
                 self.player.compare_scores()
-                raise SystemExit
             else:
                 print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
                 raise SystemExit

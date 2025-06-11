@@ -25,7 +25,7 @@ Flow of the game:
 - A module for our main game
 - A module for characters (Player, Opponent, Voldemort classes)
 - A module for the battles
-- A module for the player's inventory (maybe view_inventory or select classes?)
+- A module or method for the player's inventory (maybe view_inventory or select classes?)
 - A module for movement (Maps and Movements Classes)
 - A high-score text file
 - 
@@ -49,6 +49,6 @@ Flow of the game:
   - “Not bad, not bad at all! Yeh’re risin’ through the ranks.”
 
   # Target Audience:
-This game is designed for Harry Potter fans who enjoy fighting-related games. It also appeals to the competitive players who enjoy getting the highest scores and replaying the game for better outcomes.
+This game is designed for Harry Potter fans who enjoy fighting-related games. It also appeals to players who likes text-based games and enjoy a slow adventure and world building.
 >>>>>>> 2c10f6cbb016b1df949c196e024ea85b1cacd634
 
