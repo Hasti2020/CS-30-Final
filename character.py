@@ -39,7 +39,7 @@ class Player(Character):
         
     def movement(self):
         pass
-        #movement.player.main_menu()
+        #movement.player.main_menu()       
             
     def healing(self):
         self.health += 20
