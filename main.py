@@ -1,10 +1,5 @@
 
 import Explore as e
-import wand as w
-import potion as p
-import spells as s
-import house_quiz as h
-import random as r
 import character as c
 
 def intro_story():

@@ -252,7 +252,7 @@ class Movement:
 
         elif current_tile == "Room of Requirement":
             print("Hagrid: You have entered the Room of Requirement! What do you wish for?")
-            print("Options: 'knowledge' or 'secret?/'")
+            print("Options: 'knowledge' or 'secret?'")
             wish = input("Your wish: ").lower()
             if wish == "knowledge":
                 print("Hagrid: A rare spellbook appears. You learned *Expelliarmus!*")

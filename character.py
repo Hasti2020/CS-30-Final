@@ -25,10 +25,7 @@ class Character:
         if self.health <= 0:
             self.alive = False
         else:
-            print(f"{self.name}'s current health : {self.health}")
-
-
-
+            print(f"[{self.name}] current health : {self.health}")
 
 
 class Player(Character):
@@ -41,16 +38,15 @@ class Player(Character):
         self.increase_damage = False
         self.potion_inventory = []
         self.potion_game = potion.PotionGame(self)
-        self.have_money = False
-        self.have_wand = False
-        self.have_book = False
-        self.have_pet = False
-        self.at_hogwarts = False
-        self.sorted = False
+        self.have_money = True
+        self.have_wand = True
+        self.have_book = True
+        self.have_pet = True
+        self.at_hogwarts = True
+        self.sorted = True
         self.location = {'row': 0, 'col': 0}
         self.enter_potion_class = False
         self.enter_spell_class = False
-
              
            
     def healing(self):
@@ -83,7 +79,7 @@ class Player(Character):
 
 
     def inflict_damage(self, enemy):
-        global choice
+        global spell_input
         print("\nCasting a spell... 🪄✨")
         time.sleep(1.5)
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
@@ -95,15 +91,16 @@ class Player(Character):
             print("⚡⚡ BAMMMM THUNDERSTRIKE ⚡⚡")
             self.increase_damage = False
         if self.health <= 50:
-            print('Blimey, cast any one of the spell yeh remember to cause more damage!')
+            print('\nBlimey, cast any one of the spell yeh remember to cause more damage!')
             print('Type it CORRECTLLY!!')
             i = 1
             for item in spells.Spell.spell_list:
                 print(f"{i}. {item}")
                 i += 1
-            choice = input("spell name: ").title()
-            spells.Spell(choice).cast_spell()
-            spell_attack = spells.Spell(choice).attack  
+            print("Spell Name: ")
+            spell_input = input("> ").title()
+            spells.Spell(spell_input).cast_spell()
+            spell_attack = spells.Spell(spell_input).attack  
             total_attack = attack + spell_attack
             print(f"{enemy.name} has taken a total of {total_attack} damage")
             enemy.take_damage(total_attack)
@@ -112,7 +109,8 @@ class Player(Character):
             print(f"{enemy.name} has taken {attack} damage!")
             enemy.take_damage(attack)
             return attack
-   
+
+
     def compare_scores(self):
         if self.players_score > int(score.high_score):
             score.newScore(str(self.players_score))
@@ -133,9 +131,9 @@ class Oponent(Character):
         if self.name == 'Peter':
             attack = random.randint(15, 20)
         if self.name == 'Bellatrix':
-            attack = random.randint(20, 30)
+            attack = random.randint(20, 25)
         if self.name == 'Voldemort':
-            attack = random.randint(30, 35)
+            attack = random.randint(25, 30)
         print(f"You have taken {attack} damage!")
         user.take_damage(attack)
         return attack

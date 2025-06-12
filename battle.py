@@ -13,6 +13,12 @@ class Battle:
         score.getScore()
         self.player = player
 
+    def battle_stat(self):
+        print('---------------STATS---------------')
+        print(f"Score: {self.player.players_score}")
+        print(f"Health: {self.player.health}")
+        self.player.compare_scores()
+
     def start_battle(self): 
         print("\n-----------------Player Info-----------------")
         print(f'Current High-score: {score.high_score}')
@@ -31,15 +37,12 @@ class Battle:
             self.oponent_list.remove(oponent) 
             target = character.Oponent(oponent)
             print(f"\n{oponent} is approaching...")
-            print("\nBattle #" + str(i + 1) +" is starting!")
+            print("\nOh no! Battle #" + str(i + 1) +" is starting!")
             print('...')
             time.sleep(3)
-            if not self.player.alive:
-                print("Hagrid: Oh no, kiddo, stand up! Seems like the enemy has won... don't worry — yeh got more in yeh than yeh know!")
-                raise SystemExit
             while self.player.alive and target.alive:  
                 print("press enter to continue or 'e' to access inventory:") 
-                choice = input()
+                choice = input('> ')
                 if choice == 'e':
                     self.player.potion_game.choose_potion()
                     continue 
@@ -51,8 +54,16 @@ class Battle:
                         print(f"\nDifference in attack damage: {difference}")
                         self.player.players_score += difference
                         print(f"score: {self.player.players_score}")
+                if not self.player.alive:
+                    print("Hagrid: Oh no, kiddo, stand up! Seems like the enemy has won... don't worry — yeh got more in yeh than yeh know!")
+                    time.sleep(2)
+                    self.battle_stat()
+                    raise SystemExit
             if self.player.alive:
                 print(f'\nCongrats {self.player.name}, you have defeated {oponent}!')
+                time.sleep(2)
+                self.battle_stat()
+                
         
         if self.player.alive:
             time.sleep(1)
@@ -62,8 +73,10 @@ class Battle:
             oponent = 'Voldemort'
             boss = character.Oponent('Voldemort')
             while self.player.alive and boss.alive:
+                print("press enter to continue or 'e' to access inventory:") 
+                choice = input('> ')
                 if choice == 'e':
-                    self.player.choose_potion()
+                    self.player.potion_game.choose_potion()
                     continue 
                 player_attack = self.player.inflict_damage(boss)
                 if boss.alive:
@@ -73,13 +86,14 @@ class Battle:
                         print(f"Difference in attack damage: {difference}")
                         self.player.players_score += difference
                         print(f"score: {self.player.players_score}")
-            print("press enter to continue or 'e' to access inventory:") 
-            choice = input()
             if self.player.alive:
                 print(f"Yeh won. Yeh a true hero of the wizarding world {self.player.name}!")
-                self.player.compare_scores()
+                time.sleep(2)
+                self.battle_stat()
             else:
                 print("Hagrid: Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
+                time.sleep(2)
+                self.battle_stat()
                 raise SystemExit
     
 
