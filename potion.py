@@ -4,13 +4,13 @@ import character as c
 class PotionGame:
     def __init__(self, player):
         self.player = player
-        self.ingredients = ['Horklump Juice', 'Dittany Leaves', 'Leech Juice', 'Spider Fang', 'Leech Juice', 'Stench of the Dead']
+        self.ingredients = ['Horklump Juice', 'Dittany Leaves', 'Lemon Juice', 'Spider Fang', 'Leech Juice', 'Stench of the Dead']
         self.potions = {
             'Wiggenweld Potion': ['Horklump Juice', 'Dittany Leaves'],
-            'Maxima Potion': ['Leech Juice', 'Spider Fang'],
+            'Maxima Potion': ['Lemon Juice', 'Spider Fang'],
             'Thunderbrew Potion': ['Leech Juice', 'Stench of the Dead']
         }
-        self.inventory = []
+        self.ingredients_inventory = []
 
 
     def things_on_table(self):
@@ -29,7 +29,7 @@ class PotionGame:
                 return selected
             
         except ValueError:
-            print("numbers only")
+            print("You did not collected anything....")
             return None
     
     def view_recipe(self):
@@ -57,21 +57,22 @@ class PotionGame:
                 if selected == 'Wiggenweld Potion':
                     print(f'\nYou have used the Wiggenweld Potion!')
                     self.player.healing()
-                elif selected == 'Maxima Potion':
+                if selected == 'Maxima Potion':
                     print(f'\nYou have used the Maxima Potion!')
                     print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
                     self.player.increase_attack = True
                     self.player.start_countdown(20)
-                elif selected == 'Thunderbrew Potion':
+                if selected == 'Thunderbrew Potion':
                     print(f'\nYou have used the Thunderbrew Potion')
                     print(f'\nYour next attack will be increased by 20 damage!')
                     self.player.increase_damage = True
             else:
-                print("invalid")
+                print("You do not have that potion!")
         except ValueError:
-            print("numbers only")
+            print("You do not have that potion!")
             return None
     
+
     def brew_potion(self):
         brew = False
         print("brewing...")
@@ -81,10 +82,10 @@ class PotionGame:
         print("almost done!")
         time.sleep(1)
         for potion, required_items in self.potions.items():
-                if all(item in self.inventory for item in required_items):
+                if all(item in self.ingredients_inventory for item in required_items):
                         for item in required_items:
-                            self.inventory.remove(item)
-                            print(f'you have brewed a {potion}')
+                            self.ingredients_inventory.remove(item)
+                            print(f'+ you have brewed a {potion}')
                             #time.sleep(2)
                             self.player.potion_inventory.append(potion)
                             brew = True
@@ -93,12 +94,14 @@ class PotionGame:
             print("Snape: Looks like someone did not follow the recipes correctly...")
             time.sleep(1)
 
+
     def potions_made(self):
         print("\n---------INVENTORY---------")
         i = 1
         for item in self.player.potion_inventory:
             print(f"{i}. {item}")
             i += 1
+
 
     def start_potion_game(self):
         print("--------You have entered professor Snape's potion class--------")
@@ -120,6 +123,8 @@ class PotionGame:
         time.sleep(2)
         print("\nSnape: Now, you guys would be making these potions for yourselves,...")
         print("Snape: Look at the recipes and brew the ingredients needed to make your potions.")
+        time.sleep(2)
+        print("\nSnape: With each time you successfully brew, you will brew 2 of the same potion...")
         input("press enter to continue: ")
         while True:
             print("\n-------------OPTIONS-------------")
@@ -141,5 +146,5 @@ class PotionGame:
                 elif choice == '5':
                     return self.player.potion_inventory
             except ValueError:
-                print("invalid choice!")
+                print("Snape: What are you trying to do there?")
                 time.sleep(1)

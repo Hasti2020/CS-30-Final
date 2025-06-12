@@ -215,10 +215,14 @@ class Movement:
                 print("Hagrid: Alright, outta here then.")
 
         elif current_tile == "Potion Class":
-            print("You're in Potions class. Professor Snape eyes you.")
-            mini_game = p.PotionGame(self.player)
-            self.player.potion_game = mini_game
-            mini_game.start_potion_game()
+            if not self.player.enter_potion_class:
+                print("You're in Potions class. Professor Snape eyes you.")
+                mini_game = p.PotionGame(self.player)
+                self.player.potion_game = mini_game
+                mini_game.start_potion_game()
+                self.player.enter_potion_class = True
+            else:
+                print("Hagrid: Yeh just walked passed professor Snape's class!")
 
         elif current_tile == "Hagrid's Cabin":
             print("Hagrid: Hey! You found my cabin. Want to help me feed a baby dragon? (yes/no)")
@@ -240,7 +244,11 @@ class Movement:
                 print("Hagrid: Smart one, not all paths are worth the risk.")
 
         elif current_tile == "Spell Class":
-            s.spell_lesson()
+            if not self.player.enter_spell_class:
+                s.spell_lesson()
+                self.player.enter_spell_class = True
+            else:
+                print("Hagrid: Yeh just walked pass professor Flitwick's spells class!")
 
         elif current_tile == "Room of Requirement":
             print("Hagrid: You have entered the Room of Requirement! What do you wish for?")

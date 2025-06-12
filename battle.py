@@ -19,7 +19,7 @@ class Battle:
         print(f'Wand: {self.player.wand_type}')
         print("\n----------------Note-----------------")
         print("press 'e' to acess inventory of your potions! ")
-        print("press enter to continue your battles and action!")
+        print("press enter or any other keys to continue your battles and action!")
         print("\n--------------WARNING---------------")
         print("Dialogs in the battle will be printed with wait times in between like this...")
         time.sleep(1)
@@ -30,10 +30,12 @@ class Battle:
             oponent = random.choice(self.oponent_list) 
             self.oponent_list.remove(oponent) 
             target = character.Oponent(oponent)
-            print(f"\nYou are now fighting against: {oponent}")
-            print("\nBattle #" + str(i + 1) +" shall now begin!")
+            print(f"\n{oponent} is approaching...")
+            print("\nBattle #" + str(i + 1) +" is starting!")
+            print('...')
+            time.sleep(3)
             if not self.player.alive:
-                print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
+                print("Hagrid: Oh no, kiddo, stand up! Seems like the enemy has won... don't worry — yeh got more in yeh than yeh know!")
                 raise SystemExit
             while self.player.alive and target.alive:  
                 print("press enter to continue or 'e' to access inventory:") 
@@ -77,7 +79,7 @@ class Battle:
                 print(f"Yeh won. Yeh a true hero of the wizarding world {self.player.name}!")
                 self.player.compare_scores()
             else:
-                print("Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
+                print("Hagrid: Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
                 raise SystemExit
     
 

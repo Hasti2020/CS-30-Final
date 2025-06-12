@@ -41,18 +41,16 @@ class Player(Character):
         self.increase_damage = False
         self.potion_inventory = []
         self.potion_game = potion.PotionGame(self)
-        self.have_money = False
-        self.have_wand = False
-        self.have_book = False
-        self.have_pet = False
-        self.at_hogwarts = False
-        self.sorted = False
+        self.have_money = True
+        self.have_wand = True
+        self.have_book = True
+        self.have_pet = True
+        self.at_hogwarts = True
+        self.sorted = True
         self.location = {'row': 0, 'col': 0}
-
-       
-    def movement(self):
-        pass
-        #movement.player.main_menu()      
+        self.enter_potion_class = False
+        self.enter_spell_class = False
+             
            
     def healing(self):
         self.health += 20
@@ -66,14 +64,9 @@ class Player(Character):
         print("You have gain 20 HP!")
 
 
-
-
     def start_countdown(self, duration):
         thread = threading.Thread(target=self.countdown, args=(duration,), daemon=True)
         thread.start()
-
-
-    '''still in major progress'''
 
 
     def countdown(self, t):
@@ -86,8 +79,6 @@ class Player(Character):
         if self.increase_attack:
             self.increase_attack = False
             print("Time's up!")
-
-
 
 
     def inflict_damage(self, enemy):
@@ -104,6 +95,7 @@ class Player(Character):
             self.increase_damage = False
         if self.health <= 50:
             print('Blimey, cast any one of the spell yeh remember to cause more damage!')
+            print('Type it CORRECTLLY!!')
             i = 1
             for item in spells.Spell.spell_list:
                 print(f"{i}. {item}")
