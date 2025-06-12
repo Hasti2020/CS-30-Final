@@ -24,25 +24,20 @@ class PotionGame:
             choice = int(input("What do you want to grab to the brewing station?: "))
             if 1 <= choice <= len(self.ingredients):
                 selected = self.ingredients[choice-1]
-                self.inventory.append(selected)
+                self.ingredients_inventory.append(selected)
                 self.ingredients.pop(choice-1)
                 return selected
             
         except ValueError:
             print("You did not collected anything....")
             return None
+
     
     def view_recipe(self):
         print("\n---------POTIONS RECIPE---------")
         for key, value in self.potions.items():
-            print(f"- {key}: {value}")
-        
-    '''for testing purposes'''
-    def view_inventory(self):
-        i = 1
-        for item in self.inventory:
-            print(f"{i}. {item}")
-            i += 1
+            print(f"- {key}: {', '.join(value)}")
+
 
     def choose_potion(self):
         print("\n---------------Potion Inventory---------------")
@@ -145,6 +140,8 @@ class PotionGame:
                     self.view_recipe()
                 elif choice == '5':
                     return self.player.potion_inventory
+                else:
+                    print("Snape: What are you trying to do there?")   
             except ValueError:
                 print("Snape: What are you trying to do there?")
                 time.sleep(1)

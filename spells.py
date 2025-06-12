@@ -1,11 +1,8 @@
 
 import character
 import time
-'''
-for item in spell_list:
-    print(item)
-choice = input("spell name: ")
-'''
+
+
 class Spell:
     spell_list = ['Sectumsempra',
           'Lumos',
@@ -53,29 +50,26 @@ def spell_lesson():
     print("Flitwick: Need a bit of light? Lumos ✨! A flick of the wand, and voilà — a glowing tip to guide your way in the dark!")
     print("Flitwick: It can only create 1 DMG in a battle though...")
     time.sleep(2)
-    print("Flitwick: Become nearly invisible! Disillusionment Charm ✨! Excellent for sneaking — just don’t trip over your own feet!")
+    print("\nFlitwick: Become nearly invisible! Disillusionment Charm ✨! Excellent for sneaking — just don’t trip over your own feet!")
     print("Flitwick: Only 5 DMG tho...")
     time.sleep(2)
-    print("Flitwick: Dark magic... Sectumsempra ✨ causes deep, slashing wounds. Use it only if you must — and be prepared for the consequences")
+    print("\nFlitwick: Dark magic... Sectumsempra ✨ causes deep, slashing wounds. Use it only if you must — and be prepared for the consequences")
     print("Flitwick: This dangerous spell can cause a massive 25 DMG...")
     time.sleep(2)
-    print("Flitwick: The Cruciatus.It causes unbearable pain. Unforgivable. Illegal. And deeply disturbing. This is not a spell to take lightly")
+    print("\nFlitwick: The Cruciatus.It causes unbearable pain. Unforgivable. Illegal. And deeply disturbing. This is not a spell to take lightly")
     print("Flitwick: This spell can cause 10 DMG...")
     time.sleep(2)
-    print("Flitwick: The Killing Curse. Avada Kedavra. This spell is pure evil — never to be used")
+    print("\nFlitwick: The Killing Curse. Avada Kedavra. This spell is pure evil — never to be used")
     print("Flitwick: This spell can cause 20 DMG...")
     time.sleep(2)
-    print("You: Ugh, this is too boring, I will sneak out now")
+    print("\nYou: Ugh, this is too boring, I will sneak out now")
     time.sleep(2)
     ...
     time.sleep(1)
     ...
     time.sleep(1)
 
-'''
-Spell(character.choice).cast_spell()
-Spell(character.choice)
-'''
+
 
 
 

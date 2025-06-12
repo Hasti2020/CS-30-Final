@@ -50,6 +50,7 @@ class Player(Character):
         self.location = {'row': 0, 'col': 0}
         self.enter_potion_class = False
         self.enter_spell_class = False
+
              
            
     def healing(self):
