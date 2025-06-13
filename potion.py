@@ -52,12 +52,14 @@ class PotionGame:
                 if selected == 'Wiggenweld Potion':
                     print(f'\nYou have used the Wiggenweld Potion!')
                     self.player.healing()
-                if selected == 'Maxima Potion':
+                if selected == 'Maxima Potion' and not self.player.increase_attack:
                     print(f'\nYou have used the Maxima Potion!')
                     print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
                     self.player.increase_attack = True
                     self.player.start_countdown(20)
-                if selected == 'Thunderbrew Potion':
+                elif selected == 'Maxima Potion' and self.player.increase_attack:
+                    print('You are already currently using the Maxima potion')
+                if selected == 'Thunderbrew Potion' and not self.player.increase_damage:
                     print(f'\nYou have used the Thunderbrew Potion')
                     print(f'\nYour next attack will be increased by 20 damage!')
                     self.player.increase_damage = True

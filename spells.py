@@ -1,5 +1,4 @@
 
-import character
 import time
 
 
@@ -9,8 +8,7 @@ class Spell:
           'Avada Kedavra',
           'Disillusionment',
           'Cruciatus', 
-          'Expelliarmus', 
-          'Stupefy']
+          'Expelliarmus']
     
     def __init__(self, name):
         self.name = name

@@ -200,6 +200,7 @@ class Movement:
             print("Hagrid: Shhh... It's the library. Want to read a magical book? (yes/no)")
             if input("Your choice: ").lower() == "yes":
                 print("Hagrid: You found a dusty book on magical creatures. You've learned a new spell: *Stupefy!*")
+                s.Spell.spell_list.append('Stupefy')
             else:
                 print("Hagrid: Fair enough, not everyone’s a bookworm.")
 

@@ -14,7 +14,7 @@ class Battle:
         self.player = player
 
     def battle_stat(self):
-        print('---------------STATS---------------')
+        print('\n---------------STATS---------------')
         print(f"Score: {self.player.players_score}")
         print(f"Health: {self.player.health}")
         self.player.compare_scores()
@@ -27,7 +27,6 @@ class Battle:
         print("press 'e' to acess inventory of your potions! ")
         print("press enter or any other keys to continue your battles and action!")
         print("\n--------------WARNING---------------")
-        print("Dialogs in the battle will be printed with wait times in between like this...")
         print("Only click enter once you have the option to, in order to avoid the battle from moving too quickly!")
         print("\n------------------Main Game------------------")
         for i in range(3): # loops 3 times to create 3 different bettles
@@ -87,7 +86,9 @@ class Battle:
             if self.player.alive:
                 print(f"Yeh won. Yeh a true hero of the wizarding world {self.player.name}!")
                 time.sleep(2)
+                print('')
                 self.battle_stat()
+                raise SystemExit()
             else:
                 print("Hagrid: Better luck next time, kiddo… but don't worry — yeh got more in yeh than yeh know!")
                 time.sleep(2)

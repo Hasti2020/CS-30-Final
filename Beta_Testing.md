@@ -6,5 +6,6 @@ Beta Test Feedback 1:
 - option to go back in check inventory
 
 Beta Test Feedback 2:
+- Game was overall good and entertaining!
 - Tell players they got the books after they enetered bookstore
 - misspelling issues. ex: while True: if yes break; elif no break; else: type again

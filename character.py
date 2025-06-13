@@ -44,7 +44,7 @@ class Player(Character):
         self.have_book = True
         self.have_pet = True
         self.at_hogwarts = True
-        self.sorted = True
+        self.sorted = False
         self.location = {'row': 0, 'col': 0}
         self.enter_potion_class = False
         self.enter_spell_class = False

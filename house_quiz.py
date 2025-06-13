@@ -1,7 +1,8 @@
 import time
 import random
 
-def house_sort():     
+def house_sort(): 
+    print('------------HOUSE SORTING QUIZ------------')    
     quiz = open("house.txt", "r")
     line = quiz.readline()
     sorting = line.split(",")
@@ -29,7 +30,7 @@ def house_sort():
             line = quiz.readline()
             sorting = line.split(",")
         else:
-            answer = input("The sorting hat is confused by by your mind...")
+            answer = input("The sorting hat is confused by your mind... (enter)")
         
     #print(house_list) # delete when game is done
     g = house_list.count(" G")    
@@ -50,7 +51,9 @@ def house_sort():
         print(YELLOW + "You are in...HUFFLEPUFF" + ENDC)
         print(YELLOW + "🌻 Sweet, loyal, and lowkey the only reason Hogwarts hasn’t burned down. You bake cookies *and* win duels with kindness (and maybe a frying pan)." + ENDC)
     else:
-        print(RED + "You are in...GRYFINDOR" + ENDC)
+        houses = ['GRYFINDOR', 'SLYTHERIN', 'RAVENCLAW', 'HUFFLEPUFF']
+        chosen_house = random.randint(houses)
+    
     time.sleep(1)
     print("\n🎉 The great hall erupts in applause as you walk to your house table, your new housemates cheering you on.")
     time.sleep(1)
