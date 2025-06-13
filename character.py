@@ -8,7 +8,6 @@ import potion
 
 
 
-
 class Character:
 
 
@@ -35,9 +34,9 @@ class Player(Character):
         Character.__init__(self, name)
         self.wand_type = wand.Wand.get_wand()
         self.players_score = 0
-        self.increase_attack = False
-        self.increase_damage = False
-        self.potion_inventory = []
+        self.maxima_increase = False
+        self.thunderbrew_increase = False
+        self.potion_inventory = ['Maxima Potion', 'Thunderbrew Potion']
         self.potion_game = potion.PotionGame(self)
         self.have_money = False
         self.have_wand = False
@@ -62,20 +61,40 @@ class Player(Character):
         print("You have gain 20 HP!")
 
 
-    def start_countdown(self, duration):
-        thread = threading.Thread(target=self.countdown, args=(duration,), daemon=True)
+    def start_countdown(self, length):
+        '''
+        In order for timer to not freeze the whole game, threading needs
+        to be used to run the method sperately in the background in my
+        game. Or else the game will wait for the timer to go out before
+        the game continues on.
+        '''
+        thread = threading.Thread(target=self.countdown, args=(length,), daemon=True)
+        # chooses my countdown method to be played in the background, 
+        # and takes in my coutdown argument of 15s, letting my timer
+        # to be played in the background without freezing the game
+        # daemon will stop the threading once the game ends
         thread.start()
 
 
     def countdown(self, t):
-        while t:
-            mins, secs = divmod(t, 60)
+        '''
+        This is the method for the Maxima Potion's timer to
+        be displayed on the console.
+        '''
+        while t: # while my time is counting down
+            mins, secs = divmod(t, 60) 
+            # takes my time argument and try doing the quotient division with 60
+            # 15 fits in 60 0 times, so there is 0 minutes, and 15s is left
             timer = '{:02d}:{:02d}'.format(mins, secs)
+            # if the number is only 1 digit, add a zero in front to make it 2 digits
+            # and formats the timer into 00:15, with just whole numbers
             print(f"\r[Maxima Boost Time left: {timer}]  ", end=" ", flush=True)
+            # prints the timer format, and let it keep printing at the same spot
+            # and also immediately display it on the screen (end just adds a space)
             time.sleep(1)
-            t -= 1
-        if self.increase_attack:
-            self.increase_attack = False
+            t -= 1 # time argument keeps counting down
+        if self.maxima_increase:
+            self.maxima_increase = False
             print("Time's up!")
 
 
@@ -84,12 +103,12 @@ class Player(Character):
         print("\nCasting a spell... 🪄✨")
         #time.sleep(1.5)
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
-        if self.increase_attack:
+        if self.maxima_increase:
             attack += 5
-        if self.increase_damage:
+        if self.thunderbrew_increase:
             attack += 20
             print("⚡⚡ BAMMMM THUNDERSTRIKE ⚡⚡")
-            self.increase_damage = False
+            self.thunderbrew_increase = False
         if self.health <= 40: # if the player health is less than 40, they cast a spell
             print('\nBlimey, cast any one of the spell yeh remember to cause more damage!')
             print('Type it CORRECTLLY!!')

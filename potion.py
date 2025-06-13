@@ -52,17 +52,17 @@ class PotionGame:
                 if selected == 'Wiggenweld Potion':
                     print(f'\nYou have used the Wiggenweld Potion!')
                     self.player.healing()
-                if selected == 'Maxima Potion' and not self.player.increase_attack:
+                if selected == 'Maxima Potion' and not self.player.maxima_increase:
                     print(f'\nYou have used the Maxima Potion!')
                     print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
-                    self.player.increase_attack = True
+                    self.player.maxima_increase = True
                     self.player.start_countdown(15)
-                elif selected == 'Maxima Potion' and self.player.increase_attack:
+                elif selected == 'Maxima Potion' and self.player.thunderbrew_increase:
                     print('You are already currently using the Maxima potion')
-                if selected == 'Thunderbrew Potion' and not self.player.increase_damage:
+                if selected == 'Thunderbrew Potion' and not self.player.thunderbrew_increase:
                     print(f'\nYou have used the Thunderbrew Potion')
                     print(f'\nYour next attack will be increased by 20 damage!')
-                    self.player.increase_damage = True
+                    self.player.thunderbrew_increase = True
             else:
                 print("You do not have that potion!")
         except ValueError:
@@ -82,8 +82,7 @@ class PotionGame:
                 if all(item in self.ingredients_inventory for item in required_items):
                         for item in required_items:
                             self.ingredients_inventory.remove(item)
-                            print(f'+ you have brewed a {potion}')
-                            #time.sleep(2)
+                            print(f'+ you have brewed a {potion}') # puts in loop to get 2 potions
                             self.player.potion_inventory.append(potion)
                             brew = True
         if not brew:
