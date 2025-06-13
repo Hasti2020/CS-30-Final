@@ -103,7 +103,6 @@ an unknown spell
 - Hasti: Changed everything in new movement module to Hagrid narration
 
 
-
 ### Edited
 Emily: Adjusted the spell damages
 Emily: Adjested opponents' power ranges
