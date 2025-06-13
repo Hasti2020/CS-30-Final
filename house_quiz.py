@@ -1,5 +1,11 @@
+###############################################################################
+'''
+bla bla 
+'''
+###############################################################################
+# Imports and Global Variables-------------------------------------------------
 import time
-import random
+
 
 def house_sort(): 
     print('------------HOUSE SORTING QUIZ------------')    
@@ -11,10 +17,8 @@ def house_sort():
     GREEN = "\033[92m"
     YELLOW = "\033[93m"
     BLUE = "\033[94m"
-    ENDC = "\033[0m"  # Reset to default
-
+    ENDC = "\033[0m" # Reset to default
     house_list = []
-
     while sorting[0] != "End":
         print(sorting[0])
         print("1. " + str(sorting[1]))
@@ -30,7 +34,8 @@ def house_sort():
             line = quiz.readline()
             sorting = line.split(",")
         else:
-            answer = input("The sorting hat is confused by your mind... (enter)")
+            answer = input("The sorting hat is confused by your mind" 
+            + "... (enter)")
         
     #print(house_list) # delete when game is done
     g = house_list.count(" G")    
@@ -40,7 +45,7 @@ def house_sort():
 
     if g == 3:
         print(RED + "You are in...GRYFINDOR" + ENDC)
-        print(RED + "💥 The bold, the brave, the ones who run *straight* into danger yelling 'YOLO!' — hope you packed a spare wand." + ENDC)
+        print(RED + "💥 The bold, the brave, the ones who run *straight* into 'danger yelling 'YOLO!' — hope you packed a spare wand." + ENDC)
     elif s == 3:
         print(GREEN + "You are in...SLYTHERIN" + ENDC)
         print(GREEN + "🐍 Ambitious, clever, and a *tiny bit* dramatic. You’re the main character, obviously — plotting your way to magical world domination since breakfast." + ENDC)
@@ -51,8 +56,8 @@ def house_sort():
         print(YELLOW + "You are in...HUFFLEPUFF" + ENDC)
         print(YELLOW + "🌻 Sweet, loyal, and lowkey the only reason Hogwarts hasn’t burned down. You bake cookies *and* win duels with kindness (and maybe a frying pan)." + ENDC)
     else:
-        houses = ['GRYFINDOR', 'SLYTHERIN', 'RAVENCLAW', 'HUFFLEPUFF']
-        chosen_house = random.randint(houses)
+        print(RED + "You are in...GRYFINDOR" + ENDC)
+        print(RED + "💥 The bold, the brave, the ones who run *straight* into danger yelling 'YOLO!' — hope you packed a spare wand." + ENDC)
     
     time.sleep(1)
     print("\n🎉 The great hall erupts in applause as you walk to your house table, your new housemates cheering you on.")

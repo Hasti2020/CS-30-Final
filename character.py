@@ -39,11 +39,11 @@ class Player(Character):
         self.increase_damage = False
         self.potion_inventory = []
         self.potion_game = potion.PotionGame(self)
-        self.have_money = True
-        self.have_wand = True
-        self.have_book = True
-        self.have_pet = True
-        self.at_hogwarts = True
+        self.have_money = False
+        self.have_wand = False
+        self.have_book = False
+        self.have_pet = False
+        self.at_hogwarts = False
         self.sorted = False
         self.location = {'row': 0, 'col': 0}
         self.enter_potion_class = False
@@ -87,10 +87,10 @@ class Player(Character):
         if self.increase_attack:
             attack += 5
         if self.increase_damage:
-            attack += 50
+            attack += 20
             print("⚡⚡ BAMMMM THUNDERSTRIKE ⚡⚡")
             self.increase_damage = False
-        if self.health <= 100:
+        if self.health <= 40: # if the player health is less than 40, they cast a spell
             print('\nBlimey, cast any one of the spell yeh remember to cause more damage!')
             print('Type it CORRECTLLY!!')
             i = 1

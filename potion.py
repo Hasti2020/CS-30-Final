@@ -56,7 +56,7 @@ class PotionGame:
                     print(f'\nYou have used the Maxima Potion!')
                     print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
                     self.player.increase_attack = True
-                    self.player.start_countdown(20)
+                    self.player.start_countdown(15)
                 elif selected == 'Maxima Potion' and self.player.increase_attack:
                     print('You are already currently using the Maxima potion')
                 if selected == 'Thunderbrew Potion' and not self.player.increase_damage:
@@ -113,7 +113,7 @@ class PotionGame:
         print("Snape: This potion has the ability to grant you with an extra 10 HP in your battles.")
         time.sleep(2)
         print("\nSnape: Moving on to the 'Maxima Potion'...")
-        print("Snape: This potion has the ability to grant you with an extra 5 attack damage for 20 seconds.")
+        print("Snape: This potion has the ability to grant you with an extra 5 attack damage for 15 seconds.")
         time.sleep(2)
         print("\nSnape: Next, the 'Thunderbrew Potion'...")
         print("Snape: This potion will grant you the ability to strike your enemy with 20 total attack damage.")
