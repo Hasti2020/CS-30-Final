@@ -24,6 +24,7 @@ class Character:
         self.health -= damage
         if self.health <= 0:
             self.alive = False
+            self.health = 0
         else:
             print(f"[{self.name}] current health : {self.health}")
 
@@ -81,30 +82,43 @@ class Player(Character):
     def inflict_damage(self, enemy):
         global spell_input
         print("\nCasting a spell... 🪄✨")
-        time.sleep(1.5)
+        #time.sleep(1.5)
         attack = random.randint(self.wand_type.min_power, self.wand_type.max_power)
         if self.increase_attack:
             attack += 5
         if self.increase_damage:
-            time.sleep(1)
             attack += 50
             print("⚡⚡ BAMMMM THUNDERSTRIKE ⚡⚡")
             self.increase_damage = False
-        if self.health <= 50:
+        if self.health <= 100:
             print('\nBlimey, cast any one of the spell yeh remember to cause more damage!')
             print('Type it CORRECTLLY!!')
             i = 1
             for item in spells.Spell.spell_list:
                 print(f"{i}. {item}")
                 i += 1
-            print("Spell Name: ")
-            spell_input = input("> ").title()
-            spells.Spell(spell_input).cast_spell()
-            spell_attack = spells.Spell(spell_input).attack  
-            total_attack = attack + spell_attack
-            print(f"{enemy.name} has taken a total of {total_attack} damage")
-            enemy.take_damage(total_attack)
-            return total_attack
+            try:
+                print("Spell Name: ")
+                spell_input = int(input("> ")) - 1
+                if 0 <= spell_input < len(spells.Spell.spell_list):
+                    spell_name = spells.Spell.spell_list[spell_input]
+                    spell = spells.Spell(spell_name)
+                    spell.cast_spell()
+                else:
+                    print("Invalid spell number, defaulting to unknown spell")
+                    spell_attack = 0
+                spell_attack = spell.attack
+                total_attack = attack + spell_attack
+                print(f"{enemy.name} has taken a total of {total_attack} damage")
+                enemy.take_damage(total_attack)
+                return total_attack
+            except ValueError:
+                print("\nYou have casted an unknown spell which contributes 0 damage")
+                spell_attack = 0
+                total_attack = attack + spell_attack
+                print(f"{enemy.name} has taken a total of {total_attack} damage")
+                enemy.take_damage(total_attack)
+                return total_attack
         else:
             print(f"{enemy.name} has taken {attack} damage!")
             enemy.take_damage(attack)
@@ -123,7 +137,7 @@ class Oponent(Character):
      
     def inflict_damage(self, user):
         print(f"\n{self.name} is casting a spell... 😈🪄")
-        time.sleep(2)
+        #time.sleep(2)
         if self.name == 'Luna':
             attack = random.randint(5, 10)
         if self.name == 'Draco':

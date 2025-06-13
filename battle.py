@@ -28,9 +28,7 @@ class Battle:
         print("press enter or any other keys to continue your battles and action!")
         print("\n--------------WARNING---------------")
         print("Dialogs in the battle will be printed with wait times in between like this...")
-        time.sleep(1)
         print("Only click enter once you have the option to, in order to avoid the battle from moving too quickly!")
-        time.sleep(1)
         print("\n------------------Main Game------------------")
         for i in range(3): # loops 3 times to create 3 different bettles
             oponent = random.choice(self.oponent_list) 
@@ -68,7 +66,7 @@ class Battle:
         if self.player.alive:
             time.sleep(1)
             print("\nWell done, yeh did it! Survived and won the battle — knew yeh had it in yeh all along!")
-            print(f"But oh no, {self.player.name}! Blimey —  Lord Voldemort just appeared on the battlefield! Use every bit of strength yeh got left — this is the fight over yer life!")
+            print(f"\nBut oh no, {self.player.name}! Blimey —  Lord Voldemort just appeared on the battlefield! Use every bit of strength yeh got left — this is the fight over yer life!")
             time.sleep(2)
             oponent = 'Voldemort'
             boss = character.Oponent('Voldemort')

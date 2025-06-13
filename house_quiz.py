@@ -29,7 +29,7 @@ def house_sort():
             line = quiz.readline()
             sorting = line.split(",")
         else:
-            answer = input("Try again (enter)")
+            answer = input("The sorting hat is confused by by your mind...")
         
     #print(house_list) # delete when game is done
     g = house_list.count(" G")    

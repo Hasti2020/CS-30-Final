@@ -9,7 +9,8 @@ class Spell:
           'Avada Kedavra',
           'Disillusionment',
           'Cruciatus', 
-          'Expelliarmus']
+          'Expelliarmus', 
+          'Stupefy']
     
     def __init__(self, name):
         self.name = name
@@ -33,14 +34,13 @@ class Spell:
             return 15
         if self.name == 'Stupefy':
             return 10
-        else:
-            return 0
+
         
     def cast_spell(self):
-        if character.spell_input in Spell.spell_list:
+        if self.name in Spell.spell_list:
             print(f"\nYou have casted {self.name}, which contributes {self.attack} damage")
-        else:
-            print(f"\nYou have casted an unknown spell, {self.name}, which contributes {self.attack} damage")
+
+    
 
 def spell_lesson():
     print("--------You have entered professor Flitwick's spells lessons--------")
