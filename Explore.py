@@ -216,10 +216,14 @@ class Movement:
                 print("Hagrid: Alright, outta here then.")
 
         elif current_tile == "Potion Class":
+            # Checks if the player has entered potion class yet
             if not self.player.enter_potion_class:
                 print("You're in Potions class. Professor Snape eyes you.")
+                # Pass the player into the potion game
                 mini_game = p.PotionGame(self.player)
+                # Stores the object in the potion game to the player to access later
                 self.player.potion_game = mini_game
+                # Starts the potion mini game
                 mini_game.start_potion_game()
                 self.player.enter_potion_class = True
             else:
@@ -245,10 +249,12 @@ class Movement:
                 print("Hagrid: Smart one, not all paths are worth the risk.")
 
         elif current_tile == "Spell Class":
+            # Checks if the player has gone to the spell lesson yet
             if not self.player.enter_spell_class:
+                # Allow player to go into the lesson
                 s.spell_lesson()
                 self.player.enter_spell_class = True
-            else:
+            else: # Prevents player from coming into spell lesson again
                 print("Hagrid: Yeh just walked pass professor Flitwick's spells class!")
 
         elif current_tile == "Room of Requirement":
@@ -269,7 +275,9 @@ class Movement:
                 print("\nMcGonagall: 'Very well. I hope you’ve been studying, practicing, and not just petting hippogriffs.'")
                 print("She pulls out a long scroll and scribbles your name down.")
                 print("McGonagall: 'The first battle will be start soon. Prepare yourself — there’s no turning back now.'")
+                # Have the player be passed into the battle
                 tournament = b.Battle(self.player)
+                # Starts the battle/tournament
                 tournament.start_battle()
             else:
                 print("\nMcGonagall: 'A wise decision. There’s no shame in preparation. Come back when you’re truly ready.'")

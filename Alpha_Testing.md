@@ -29,6 +29,7 @@ it does not sound like Hagrid or the characters.
 - Spells are too powerful
 
 # Fixes needed to be made:
+- Have the time.sleep() be get rid of during the battles due to confusions in Beta testing
 - Have the player not stack Maxima or Thunderbrew potions (If self.player.increase_attack is True then dont let them take more)
 - Add raise SystemExit() to the death scene of regular battle
 - Solve overlap of spells and timer by letting the player just choose the corresponding number
@@ -38,3 +39,4 @@ it does not sound like Hagrid or the characters.
 - Adjust thunderbrew damage to 20
 - Adjust some of the spells' powers or have their health be lower to use it
 - Rename increase_attack and damage 
+- Have the ingredients invenotry merge with the potion inventory and call it inventory

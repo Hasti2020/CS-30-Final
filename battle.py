@@ -17,7 +17,7 @@ import time
 
 
 class Battle:
-    """ Controls the battle sequences between the player and opponents """
+    ''' Controls the battle sequences between the player and opponents '''
 
 
     def __init__(self, player):
@@ -39,6 +39,22 @@ class Battle:
         self.player.compare_scores() # compares with high score
 
 
+    def quit_battle(self):
+        '''
+        This method is going to allow the player to quit the game or stay
+        '''
+        # The message has to be printed in case the timer is on
+        print('Hagrid: Yeh sure ya wanna quit? Yeh have '
+                         + 'so much potential! (y/n): ')
+        # By typing only a character, the input wouldn't overlap with the timer
+        decision = input('> ').title()
+        if decision == 'N': # Allows player to stay in the game
+            print("Hagrid: Keep on fightin' yeh? Yeh can do it!")
+        elif decision == 'Y': # Alows player to quit the game
+            print("Hagrid: There is always another year...")
+            raise SystemExit()
+
+
     def start_battle(self): 
         print("\n-----------------Player Info-----------------")
         # Displays highscore and the wand the user has
@@ -46,6 +62,7 @@ class Battle:
         print(f'Wand: {self.player.wand_type}')
         print("\n----------------Note-----------------")
         print("press 'e' to acess inventory of your potions! ")
+        print("press 'q' to quit the game! ")
         print("press enter or any other keys to continue your battles " 
               + "and action!")
         print("\n--------------WARNING---------------")
@@ -70,6 +87,8 @@ class Battle:
                 if choice == 'e':
                     self.player.potion_game.choose_potion()
                     continue 
+                if choice == 'q':
+                    self.quit_battle()
                 # Let player inflict damage on the enemy
                 player_attack = self.player.inflict_damage(target)
                 if target.alive: # Checks if the player is still alive
@@ -82,7 +101,8 @@ class Battle:
                         self.player.players_score += difference
                         print(f"score: {self.player.players_score}")
                 if not self.player.alive: # Chacks if player is dead
-                    print("Hagrid: Oh no, kiddo, stand up! ")
+                    print()
+                    print("\nHagrid: Oh no, kiddo, stand up! ")
                     time.sleep(2)
                     print("Seems like the enemy has won... don't worry — yeh "
                           + "got more in yeh than yeh know!")
@@ -96,6 +116,7 @@ class Battle:
                 self.battle_stat()
         if self.player.alive: 
             time.sleep(1)
+            print()
             print("\nWell done, yeh did it! Survived and won the battle — "
                   + "knew yeh had it in yeh all along!")
             print(f"\nBut oh no, {self.player.name}! Blimey —  Lord Voldemort"
@@ -110,6 +131,8 @@ class Battle:
                 if choice == 'e':
                     self.player.potion_game.choose_potion()
                     continue 
+                if choice == 'q':
+                    self.quit_battle()
                 player_attack = self.player.inflict_damage(boss)
                 if boss.alive:
                     boss_attack = boss.inflict_damage(self.player)
@@ -119,14 +142,16 @@ class Battle:
                         self.player.players_score += difference
                         print(f"score: {self.player.players_score}")
             if self.player.alive:
-                print(f"Yeh won. Yeh a true hero of the wizarding world"
+                print()
+                print(f"\nYeh won. Yeh a true hero of the wizarding world"
                       + f"{self.player.name}!")
                 time.sleep(2)
                 print('')
                 self.battle_stat()
                 raise SystemExit()
             else:
-                print("Hagrid: Better luck next time, kiddo… but don't worry"
+                print()
+                print("\nHagrid: Better luck next time, kiddo… but don't worry"
                       + " — yeh got more in yeh than yeh know!")
                 time.sleep(2)
                 self.battle_stat()

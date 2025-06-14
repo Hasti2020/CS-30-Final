@@ -364,4 +364,21 @@ in the library and learnt the spell
 
 ### Changes
 - Emily: Adjusted the power levels of the spells, enemies, and potions
-- Emily: Added comments
+
+
+# [Version 4.4] Pep 8 and final polishing
+
+## 2025-06-13
+
+### Added
+- Emily: Added comments and pep 8
+
+## 2025-06-14
+
+### Added:
+- Emily: Allow the player to quit during the battles
+- Emily: Added Pep 8 and comments 
+
+### Changes
+- Emily: Have the ingredients inventory merge with the potion inventory and call it inventory
+

@@ -10,6 +10,7 @@ from external modules like spells, potions, and wand.
 import random
 import wand as w
 import spells as s
+import potion as p
 import score 
 import threading
 import time
@@ -53,13 +54,14 @@ class Player(Character):
         self.players_score = 0 
         self.maxima_increase = False # Have increase attacks not be activated
         self.thunderbrew_increase = False
-        self.potion_inventory = [] 
-        #self.potion_game = potion.PotionGame(self) 
+        self.inventory = [] 
+        # Lets player have access to the potion game
+        self.potion_game = p.PotionGame(self) 
         self.have_money = False
         self.have_wand = False
         self.have_book = False
         self.have_pet = False
-        self.at_hogwarts = True
+        self.at_hogwarts = False
         self.sorted = False
         self.location = {'row': 0, 'col': 0} # Set player's coordinates to 0,0
         self.enter_potion_class = False
@@ -95,7 +97,7 @@ class Player(Character):
         thread.start()
 
 
-    def timer(self, t):
+    def countdown(self, t):
         '''
         This is the method for the Maxima Potion's timer to
         be displayed on the console.
