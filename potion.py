@@ -1,10 +1,32 @@
+###############################################################################
+'''
+This module handles the potion brewing part and choosing potion part of the 
+game. Player will pick ingredients, brew potions, and use them to help in 
+battles. The Wiggenwelf potion can heal you, Maxima boosts your attack, 
+and Thunderbrew gives a big damage strike. It includes inventory management, 
+recipes, and a little story with Snape guiding you.
+'''
+###############################################################################
+# Imports and Global Variables-------------------------------------------------
 import time
-import character as c
+
 
 class PotionGame:
+    '''Controls/Starting the potion game, potion brewing and choosing potion'''
+
     def __init__(self, player):
+        '''Initializes the potions and ingredients for the player'''
         self.player = player
-        self.ingredients = ['Horklump Juice', 'Dittany Leaves', 'Lemon Juice', 'Spider Fang', 'Leech Juice', 'Stench of the Dead']
+        # Ingredients for the potions
+        self.ingredients = [
+            'Horklump Juice', 
+            'Dittany Leaves', 
+            'Lemon Juice', 
+            'Spider Fang', 
+            'Leech Juice', 
+            'Stench of the Dead'
+        ]
+        # Ingredients needed for each potion
         self.potions = {
             'Wiggenweld Potion': ['Horklump Juice', 'Dittany Leaves'],
             'Maxima Potion': ['Lemon Juice', 'Spider Fang'],
@@ -14,6 +36,10 @@ class PotionGame:
 
 
     def things_on_table(self):
+        '''
+        This method would let the player chooses their ingredients on
+        the table and bring it to their brewing station.
+        '''
         global choice
         print("---------THINGS ON YOUR TABLE---------")
         i = 1
@@ -21,7 +47,8 @@ class PotionGame:
             print(f"{i}. {item}")
             i += 1
         try:
-            choice = int(input("What do you want to grab to the brewing station?: "))
+            choice = int(input("What do you want to grab to the brewing "
+                               + "station?: "))
             if 1 <= choice <= len(self.ingredients):
                 selected = self.ingredients[choice-1]
                 self.ingredients_inventory.append(selected)
@@ -52,16 +79,21 @@ class PotionGame:
                 if selected == 'Wiggenweld Potion':
                     print(f'\nYou have used the Wiggenweld Potion!')
                     self.player.healing()
-                if selected == 'Maxima Potion' and not self.player.maxima_increase:
+                if selected == 'Maxima Potion' and \
+                not self.player.maxima_increase:
                     print(f'\nYou have used the Maxima Potion!')
-                    print(f'\nYour attacks will increase by 5 damage for the next 20 seconds!')
+                    print(f'\nYour attacks will increase by 5 damage for the'
+                          + f' next 20 seconds!')
                     self.player.maxima_increase = True
                     self.player.start_countdown(15)
-                elif selected == 'Maxima Potion' and self.player.thunderbrew_increase:
+                elif selected == 'Maxima Potion' and \
+                    self.player.thunderbrew_increase:
                     print('You are already currently using the Maxima potion')
-                if selected == 'Thunderbrew Potion' and not self.player.thunderbrew_increase:
+                if selected == 'Thunderbrew Potion' and \
+                    not self.player.thunderbrew_increase:
                     print(f'\nYou have used the Thunderbrew Potion')
-                    print(f'\nYour next attack will be increased by 20 damage!')
+                    print(f'\nYour next attack will be increased by '
+                          + f'20 damage!')
                     self.player.thunderbrew_increase = True
             else:
                 print("You do not have that potion!")
@@ -79,15 +111,18 @@ class PotionGame:
         print("almost done!")
         time.sleep(1)
         for potion, required_items in self.potions.items():
-                if all(item in self.ingredients_inventory for item in required_items):
+                if all(item in self.ingredients_inventory 
+                       for item in required_items):
                         for item in required_items:
                             self.ingredients_inventory.remove(item)
-                            print(f'+ you have brewed a {potion}') # puts in loop to get 2 potions
+                            # puts in loop to get 2 potions
+                            print(f'+ you have brewed a {potion}') 
                             self.player.potion_inventory.append(potion)
                             brew = True
         if not brew:
             print(f'you have brewed no potion...')
-            print("Snape: Looks like someone did not follow the recipes correctly...")
+            print("Snape: Looks like someone did not follow the recipes"
+                  + " correctly...")
             time.sleep(1)
 
 
@@ -102,25 +137,34 @@ class PotionGame:
     def start_potion_game(self):
         print("--------You have entered professor Snape's potion class--------")
         time.sleep(1)
-        print("\nSnape: Well, well, look who is late on their very first day...")
+        print("\nSnape: Well, well, look who is late on their very first day"
+              + "...")
         time.sleep(1)
-        print("Snape: So as I was saying, we will be learning 3 types of potions in this class")
+        print("Snape: So as I was saying, we will be learning 3 types of potions"
+              + " in this class")
         time.sleep(2)
-        print("Snape: Pay attention as I explain the abilities of the potions as it might come in handy soon...")
+        print("Snape: Pay attention as I explain the abilities of the potions as"
+              + " it might come in handy soon...")
         time.sleep(1)
         print("\nSnape: Let's first take a look at the 'Wiggenweld Potion'...")
-        print("Snape: This potion has the ability to grant you with an extra 10 HP in your battles.")
+        print("Snape: This potion has the ability to grant you with an extra 10"
+              + " HP in your battles.")
         time.sleep(2)
         print("\nSnape: Moving on to the 'Maxima Potion'...")
-        print("Snape: This potion has the ability to grant you with an extra 5 attack damage for 15 seconds.")
+        print("Snape: This potion has the ability to grant you with an extra 5 "
+              + "attack damage for 15 seconds.")
         time.sleep(2)
         print("\nSnape: Next, the 'Thunderbrew Potion'...")
-        print("Snape: This potion will grant you the ability to strike your enemy with 20 total attack damage.")
+        print("Snape: This potion will grant you the ability to strike your"
+              + " enemy with 20 total attack damage.")
         time.sleep(2)
-        print("\nSnape: Now, you guys would be making these potions for yourselves,...")
-        print("Snape: Look at the recipes and brew the ingredients needed to make your potions.")
+        print("\nSnape: Now, you guys would be making these potions for "
+              + "yourselves,...")
+        print("Snape: Look at the recipes and brew the ingredients needed to "
+              + "make your potions.")
         time.sleep(2)
-        print("\nSnape: With each time you successfully brew, you will brew 2 of the same potion...")
+        print("\nSnape: With each time you successfully brew, you will brew 2 "
+              + "of the same potion...")
         input("press enter to continue: ")
         while True:
             print("\n-------------OPTIONS-------------")

@@ -129,6 +129,8 @@ Emily: Added the compare_score method in player class to update the higest score
 - Hasti: Moved the map tile from outside the class into the __init.__ method
 - Hasti: Removed the unnecessary attributes fromt the class
 - Hasti: Removed some parts of the tile logic that were no longer in use
+
+
 # [Version 2.3] Have potion game be made
 
 ## 2025-05-28 ##
@@ -314,7 +316,7 @@ Emily: Added the compare_score method in player class to update the higest score
 - Emily: Adjusted thurderbrew potion strength and time limit for maxima potion
 
 
-# [Version 4.2] Polishing Game
+# [Version 4.2] Polishing Game before Beta Test
 
 ## 2025-06-8
 
@@ -332,3 +334,34 @@ Emily: Added the compare_score method in player class to update the higest score
 
 ### Changes
 - Emily: Moved choose_potion from player class into potion module
+
+
+# [Version 4.3] Polishing Game + Fixing Bugs found after Beta and Alpha test
+
+
+## 2025-06-12
+
+### Changes
+- Emily: Added more instructions for the potion game, stating that you are supposed to get 2 potions
+of each after every brew
+- Emily: Got rid of time.sleep() in the battles entirely to prevent players from spamming the enter
+button and getting alot of texts at once
+- Emily: Changed spell casting from typing to choosing the corresponding number to make it easier and
+engaging.
+- Emily: Changed ingredients of Maxima potion 'Leech Juice' to 'Lemon Juice' to not match with Thunderbrew's 
+ingredients.
+- Emily: Removed brackets from potion recipe when it is being printed
+- Added a battle status method to be called at the end of the battles
+
+## 2025-06-13
+
+### Fixes
+- Emily: Prevented people from stacking Maxima Potion to avoid glitching of the timer
+- Emily: Also prevented people from stacking Thunderbrew potion
+- Emily: Made Stupefy spell added to the spell_list only if the player read the book
+in the library and learnt the spell
+- Emily: Added raise system exit when player died during the regular battle
+
+### Changes
+- Emily: Adjusted the power levels of the spells, enemies, and potions
+- Emily: Added comments
