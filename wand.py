@@ -1,5 +1,5 @@
 ###############################################################################
-# Title: Wnad Module
+# Title: Wand Module
 # Name/s: Hasti, Emily
 # Class: CS 30
 # Assignment: Capstone project
@@ -43,7 +43,7 @@ class Wand:
         time.sleep(2)
         print(f"Your wand has a {random_wand.core};  and casts spells with power between {random_wand.min_power} and {random_wand.max_power}.")
         
-        
+
 wand_options = [Wand("Duststick", "Rabbit Fur", 0, 10),
                 Wand("Ashlight", "Unicorn Hair", 5, 15),
                 Wand("Dragonshade", "Dragon Heartstring", 10, 20),

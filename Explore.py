@@ -1,3 +1,15 @@
+###############################################################################
+# Title: Wnad Module
+# Name/s: Hasti, Emily
+# Class: CS 30
+# Assignment: Capstone project
+##############################################################################
+'''
+This module defines a Wand class and provides functionality to randomly assign a wand 
+to a user, simulating a magical wand selection process similar to fantasy worlds.
+'''
+##############################################################################
+# Imports and Global Variables------------------------------------------------
 import wand as w
 from tabulate import tabulate
 import random as r

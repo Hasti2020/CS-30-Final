@@ -382,3 +382,8 @@ in the library and learnt the spell
 ### Changes
 - Emily: Have the ingredients inventory merge with the potion inventory and call it inventory
 
+## 2025-06-15
+
+### Added:
+- Hasti: Added pep 8 and comments to the wand module
+
