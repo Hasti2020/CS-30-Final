@@ -157,8 +157,8 @@ class Movement:
                     print("Hagrid: Ya can't get a wand without yer money,"
                           " mate! Go see Gringotts first.")
                 else:
-                    print(f"Hagrid: This here's the wand shop,"
-                          " {self.player.name}. Yer wand's waitin' for ya.")
+                    print(f"Hagrid: This here's the wand shop,{self.player.name}"
+                          ". Yer wand's waitin' for ya.")
                     print("Ollivander says...")
                     w.Wand.get_wand()
                     w.Wand.wand_intro()
@@ -177,8 +177,8 @@ class Movement:
                     print("Hagrid: No books without coins,"
                           " I’m afraid. Head to the bank!")
                 else:
-                    print(f"Hagrid: Grab yer spell books here,"
-                          " {self.player.name}, and be ready for Hogwarts!")
+                    print(f"Hagrid: Grab yer spell books here, {self.player.name}"
+                          ", and be ready for Hogwarts!")
                     self.player.have_book = True
                     # Mark books as obtained for the player
             else:
