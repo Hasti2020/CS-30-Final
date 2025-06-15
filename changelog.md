@@ -111,13 +111,13 @@ Hasti : Deleted all the quotation marks in Hagrid's lines
 ## 2025-05-29 ##
 
 ### Added
-Emily: Created score.py and score.txt
-Emily: Created getScore and newScore functions and have the player's score be saved into an external text
+- Emily: Created score.py and score.txt
+- Emily: Created getScore and newScore functions and have the player's score be saved into an external text
 file
-Emily: Addded score to battle. Player's difference in attack damge vs the opponent will be added up into their score
-Emily: Added score system to final boss battle
-Emily: Added a score display after every attack, and a call the wand_intro
-Emily: Added the compare_score method in player class to update the higest score to the external file after every round
+- Emily: Addded score to battle. Player's difference in attack damge vs the opponent will be added up into their score
+- Emily: Added score system to final boss battle
+- Emily: Added a score display after every attack, and a call the wand_intro
+- Emily: Added the compare_score method in player class to update the higest score to the external file after every round
 - Hasti: Added logic to each tile in Hogwarts
 - Hasti: Improted the random library and added a random outcome for one of the tiles in Hagwarts
 - Hasti:  Added the Hogwarts map display using tabulate

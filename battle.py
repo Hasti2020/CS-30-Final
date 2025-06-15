@@ -19,7 +19,6 @@ import time
 class Battle:
     ''' Controls the battle sequences between the player and opponents '''
 
-
     def __init__(self, player):
         '''Initializes the battle with the player and opponets'''
         self.oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
