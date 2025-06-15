@@ -4,7 +4,8 @@ This module handles the potion brewing part and choosing potion part of the
 game. Player will pick ingredients, brew potions, and use them to help in 
 battles. The Wiggenwelf potion can heal you, Maxima boosts your attack, 
 and Thunderbrew gives a big damage strike. It includes inventory management, 
-recipes, and a little story with Snape guiding you.
+recipes, and a little story with Snape guiding you. Also the 
+time.sleep() is to show the texts slowly to the console
 '''
 ###############################################################################
 # Imports and Global Variables-------------------------------------------------

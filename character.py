@@ -3,7 +3,9 @@
 This module is in charge of the part in the game where the player battles 
 enemies using spells, potions, and wands. It handles character health, damage, 
 timers, and score updates. Classes include Player and Opponent, with support 
-from external modules like spells, potions, and wand.
+from external modules like spells, potions, and wand. Also the time library 
+would be used to excecute the timer for the Maxima Potion and 
+time.sleep() is to show the texts slowly to the console
 '''
 ###############################################################################
 # Imports and Global Variables-------------------------------------------------
@@ -44,33 +46,37 @@ class Character:
 
 
 class Player(Character):
-    """Represents player in the game."""
+    '''Represents player in the game'''
    
 
     def __init__(self, name): 
         ''' Initializes player '''
         Character.__init__(self, name) # Takes attributes from character
         self.wand_type = w.Wand.get_wand() # Stores the wand given
-        self.players_score = 0 
-        self.maxima_increase = False # Have increase attacks not be activated
+        self.players_score = 0 # Have player's initial score be 0
+        # Have increase attacks not be activated for Maxima Potion
+        self.maxima_increase = False 
+        # Have increase attacks not be activated for Thunderbrew Potion
         self.thunderbrew_increase = False
-        self.inventory = [] 
+        self.inventory = [] # Player's inventory
         # Lets player have access to the potion game
         self.potion_game = p.PotionGame(self) 
-        self.have_money = False
-        self.have_wand = False
-        self.have_book = False
-        self.have_pet = False
-        self.at_hogwarts = False
-        self.sorted = False
+        self.have_money = False # Tracks player's money
+        self.have_wand = False # Tracks player's wand
+        self.have_book = False # Tracks player's books
+        self.have_pet = False # Track player's pets
+        self.at_hogwarts = False # Track if player is in Hogwarts
+        self.sorted = False # Tracks if player has sorted into a house
         self.location = {'row': 0, 'col': 0} # Set player's coordinates to 0,0
+        # Tracks if player entered potion class yet
         self.enter_potion_class = False
+        # Tracks if player entered spell lessons yet
         self.enter_spell_class = False
              
            
     def healing(self):
-        ''' Heals player '''
-        self.health += 20 
+        ''' This method will handle the healing logic for the player '''
+        self.health += 20 # Adds 20 HP to the player's health
         print('drinking...')
         time.sleep(1)
         print('+ 5 health!')
@@ -86,15 +92,14 @@ class Player(Character):
         In order for timer to not freeze the whole game, threading needs
         to be used to run the method sperately in the background in my
         game. Or else the game will wait for the timer to go out before
-        the game continues on.
+        the game continues on. 'thread' would chooses my countdown method 
+        to be played in the background, and takes in my coutdown argument 
+        of 15s, letting my timer to be played in the background without 
+        freezing the game daemon will stop the threading once the game ends
         '''
         thread = threading.Thread(target=self.countdown, args=(length,),
                                   daemon=True)
-        # chooses my countdown method to be played in the background, 
-        # and takes in my coutdown argument of 15s, letting my timer
-        # to be played in the background without freezing the game
-        # daemon will stop the threading once the game ends
-        thread.start()
+        thread.start() # Start the timer playing in background
 
 
     def countdown(self, t):

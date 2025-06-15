@@ -366,7 +366,7 @@ in the library and learnt the spell
 - Emily: Adjusted the power levels of the spells, enemies, and potions
 
 
-# [Version 4.4] Pep 8 and final polishing
+# [Version 4.4] Pep 8 and Final Polishing
 
 ## 2025-06-13
 
@@ -388,5 +388,6 @@ in the library and learnt the spell
 - Hasti: Added pep 8 and comments to the wand module
 - Hasti: Added pep 8 and comments to the Explore module
 - Hasti: Fixed the spelling errors and extra spaces and such
-- Hasti: Fixed a bug when prining player name in petstore
-
+- Hasti: Fixed a bug when printing player name in petstore
+- Emily: Added more comments to the modules
+- Emily: Added f string to a line in the spells module

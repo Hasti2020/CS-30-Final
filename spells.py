@@ -5,7 +5,7 @@ This module handles the spell part of the game. It includes all the famous
 Harry Potter spells, figures out how strong each one is, and prints out 
 messages when spells are cast. While also includes a fun little spell lesson
 with Flitwick to have the players know which spells to casts during the
-battle.
+battle. time.sleep() is to show the texts slowly to the console
 '''
 ###############################################################################
 # Imports and Global Variables-------------------------------------------------
@@ -31,12 +31,12 @@ class Spell:
 
     def __init__(self, name):
         '''Initializes the spells'''
-        self.name = name
+        self.name = name # Initializes the spell name
         self.attack = self.spell_power()
 
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name}" 
     
 
     def spell_power(self):

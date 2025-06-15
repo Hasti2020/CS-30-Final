@@ -5,11 +5,12 @@ using spells, potions, and wands. It handles battle flow, player and opponent
 health and damage, score updates, and user interactions during battles.
 The Battle class showcases encounters with opponents, with random battles 
 and the final boss fight with Voldemort. It also uses external modules 
-for character stats, spells, potions, wands, and scoring.
+for character stats, spells, potions, wands, and scoring. Also the
+time.sleep() is to show the texts slowly to the console
 '''
 ###############################################################################
 # Imports and Global Variables-------------------------------------------------
-import character
+import character as c
 import random
 import wand as w
 import score as s
@@ -22,8 +23,8 @@ class Battle:
     def __init__(self, player):
         '''Initializes the battle with the player and opponets'''
         self.oponent_list = ['Draco', 'Luna', 'Peter', 'Bellatrix']
-        w.Wand.get_wand()
-        s.getScore()
+        w.Wand.get_wand() # Retrieve the player's wand
+        s.getScore() # Get the player's high score to display
         self.player = player
 
 
@@ -73,7 +74,7 @@ class Battle:
             oponent = random.choice(self.oponent_list) 
             # Removes opponent from the list
             self.oponent_list.remove(oponent) 
-            target = character.Oponent(oponent)
+            target = c.Oponent(oponent)
             print(f"\n{oponent} is approaching...")
             print("\nOh no! Battle #" + str(i + 1) +" is starting!")
             print('...')
@@ -113,7 +114,7 @@ class Battle:
                       + f'{oponent}!')
                 time.sleep(2)
                 self.battle_stat()
-        if self.player.alive: 
+        if self.player.alive: # Checks if player is alive before boss battle
             time.sleep(1)
             print()
             print("\nWell done, yeh did it! Survived and won the battle — "
@@ -123,7 +124,8 @@ class Battle:
                   + "strength yeh got left — this is the fight over yer life!")
             time.sleep(2)
             oponent = 'Voldemort' # Have the opponent be Voldemort
-            boss = character.Oponent('Voldemort')
+            boss = c.Oponent('Voldemort')
+            # Checks if both character and Voldemort are alive
             while self.player.alive and boss.alive:
                 print("press enter to continue or 'e' to access inventory:") 
                 choice = input('> ')
@@ -140,7 +142,8 @@ class Battle:
                         print(f"Difference in attack damage: {difference}")
                         self.player.players_score += difference
                         print(f"score: {self.player.players_score}")
-            if self.player.alive:
+            # Checks if the player wins at the end of the battle
+            if self.player.alive: 
                 print()
                 print(f"\nYeh won. Yeh a true hero of the wizarding world"
                       + f"{self.player.name}!")
@@ -148,10 +151,10 @@ class Battle:
                 print('')
                 self.battle_stat()
                 raise SystemExit()
-            else:
+            else: 
                 print()
-                print("\nHagrid: Better luck next time, kiddo… but don't worry"
-                      + " — yeh got more in yeh than yeh know!")
+                print("\nHagrid: Better luck next time, kiddo… but "
+                      + "don't worry — yeh got more in yeh than yeh know!")
                 time.sleep(2)
                 self.battle_stat()
                 raise SystemExit
