@@ -12,6 +12,9 @@ Summary of the results of the alpha testing, along with a list of fixes to be ma
 - Dialogs (Make sure no grammar error, spelling mistakes, and on themed)
 - Format on the console for the battle
 - Power levels adjustments
+- Proper movement limits in the two maps
+- Now making the player have to choose everytime they enter a tile
+- Have the map update when they transition between the maps
 
 # Alpha Test Results!:
 - Stacking Maxima Potion ended up messing up the timer, the game does not 
