@@ -66,7 +66,7 @@ class Spell:
         if self.name in Spell.spell_list: 
             # Prints out the spell name and also its damage
             print(f"\nYou have casted {self.name}, which contributes"
-                  + " {self.attack} damage")
+                  + f" {self.attack} damage")
 
 
 def spell_lesson():
