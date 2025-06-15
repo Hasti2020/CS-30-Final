@@ -135,7 +135,7 @@ class Movement:
             if not self.player.have_money:
                 # Player hasnt collected money yet
                 print(
-                    "Hagrid: Right, time to fetch yer"
+                    "Hagrid: Right, time to fetch yer "
                     "galleons from yer vault!")
                 print(input("Enter yer name an' "
                             "password to get access, now: "))
