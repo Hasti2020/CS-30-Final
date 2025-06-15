@@ -24,21 +24,26 @@ import spells as s
 import house_quiz as h
 import battle as b
 
-
+# Function--------------------------------------------------------------------
 class Movement:
 
     def __init__(self, player):
         self.player = player
+
+        #Diagon Alley map layout
         self.diagon_alley_map = [
             ["Entrance", "Gringotts Wizarding Bank", "Ollivanders wand shop"],
             ["Bookstore", "Pet shop", "The leaky cauldron"],
-            ["Weasleys' Wizard Wheezes (joke shop)", "Post Office", "Train station"]
+            ["Weasleys' Wizard Wheezes (joke shop)", "Post Office", 
+             "Train station"]
         ]
+        #Howqarts map layout
         self.hogwarts_map = [
             ["Dining Hall", "Library", "Dorms"],
             ["Potion Class", "Hagrid's Cabin", "Secret path"],
             ["Spell Class", "Room of Requirement", "Front doors"]
         ]
+        #Set the starting map to daigon Alley
         self.current_map = self.diagon_alley_map
 
     def __str__(self):
@@ -46,11 +51,14 @@ class Movement:
 
     def move(self):
         while True:
-            print("- Hagrid: Alright, now which way do you wanna go? (north, south, east, west)")
+            print("- Hagrid: Alright, now which way do you wanna go? "
+                  "(north, south, east, west)")
             direction = input("Yer choice, mate: ").lower()
+            # used this to track wjenever a move was made for map display
             moved = False
+            # save current position in case the move choice was invalid
             old_location = self.player.location.copy()
-
+            # Logic to handle the movement with boundary check
             if direction == "west":
                 if self.player.location['col'] > 0:
                     self.player.location['col'] -= 1
@@ -68,157 +76,229 @@ class Movement:
                     self.player.location['row'] -= 1
                     moved = True
             else:
-                print("Hagrid: Blimey, that's not a direction! Try again, yeah?")
+                print("Hagrid: Blimey, that's not a direction! "
+                      +"Try again, yeah?")
+            
+            # Display player's position on the map
+            self.display_map()
 
+            #Confirm if the movenemt was succesful
             if moved:
                 print(f"Hagrid: Good on ya! You moved {direction}.")
             else:
-                print(f"Hagrid: Ya can't go {direction} from here, try another way.")
-
+                print(f"Hagrid: Ya can't go {direction} from here, "
+                      " try another way.")
+                
+            # Trigger the events based on the map the player is on
             if self.player.at_hogwarts:
                 self.explore_hogwarts_tile()
             else:
                 self.explore_diagon_tile()
-            self.display_map()
+            
 
     def explore_diagon_tile(self):
-        current_tile = self.diagon_alley_map[self.player.location['row']][self.player.location['col']]
-
+        # Get the player's current tile location
+        row = self.player.location['row']
+        col = self.player.location['col']
+        current_tile = self.diagon_alley_map[row][col]
+        
+        # Gringotts Logic
         if current_tile == "Gringotts Wizarding Bank":
             if not self.player.have_money:
-                print("Hagrid: Right, time to fetch yer galleons from yer vault!")
-                print(input("Enter yer name an' password to get access, now: "))
-                print("Hagrid: Vaults open! You've got plenty o' gold to spend.")
+                # Player hasnt collected money yet
+                print(
+                    "Hagrid: Right, time to fetch yer"
+                    "galleons from yer vault!")
+                print(input("Enter yer name an' "
+                            "password to get access, now: "))
+                print("Hagrid: Vaults open! You've got plenty"
+                      " o' gold to spend.")
                 self.player.have_money = True
                 print("Hagrid: Now ya can go on and buy what ya need.")
             else:
-                print("Hagrid: You've already taken yer money, no need t' come back here.")
-
+                # Player has already visited the bank
+                print("Hagrid: You've already taken yer money,"
+                      " no need t' come back here.")
+        
+        # Wand Shop Logic
         elif current_tile == "Ollivanders wand shop":
             if not self.player.have_wand:
                 if not self.player.have_money:
-                    print("Hagrid: Ya can't get a wand without yer money, mate! Go see Gringotts first.")
+                    # can't buy a wand without visiting the bank first
+                    print("Hagrid: Ya can't get a wand without yer money,"
+                          " mate! Go see Gringotts first.")
                 else:
-                    print(f"Hagrid: This here's the wand shop, {self.player.name}. Yer wand's waitin' for ya.")
+                    print(f"Hagrid: This here's the wand shop,"
+                          " {self.player.name}. Yer wand's waitin' for ya.")
                     print("Ollivander says...")
                     w.Wand.get_wand()
                     w.Wand.wand_intro()
-                    self.player.have_wand = True
+                    self.player.have_wand = True 
+                    # Mark wand as obtained for the player
             else:
-                print("Hagrid: You’ve already got yerself a wand, good on ya!")
+                print("Hagrid: You’ve already got yerself"
+                      " a wand, good on ya!")
 
+        # Bookstore Logic
         elif current_tile == "Bookstore":
             if not self.player.have_book:
                 if not self.player.have_money:
-                    print("Hagrid: No books without coins, I’m afraid. Head to the bank!")
+                    # Can't buy books without money
+                    print("Hagrid: No books without coins,"
+                          " I’m afraid. Head to the bank!")
                 else:
-                    print(f"Hagrid: Grab yer spell books here, {self.player.name}, and be ready for Hogwarts!")
+                    print(f"Hagrid: Grab yer spell books here,"
+                          " {self.player.name}, and be ready for Hogwarts!")
                     self.player.have_book = True
+                    # Mark books as obtained for the player
             else:
-                print("Hagrid: Yer books are already in yer bag, no need to buy more.")
+                print("Hagrid: Yer books are already in yer bag,"
+                      " no need to buy more.")
 
+        # Pet Shop Logic
         elif current_tile == "Pet shop":
             if not self.player.have_pet:
                 if not self.player.have_money:
-                    print("Hagrid: Ya havent got no money for a pet yet. Off to the bank!")
+                    # Can't get a pet without money
+                    print("Hagrid: Ya havent got no money"
+                          " for a pet yet. Off to the bank!")
                 else:
-                    print(f"Hagrid: Pick a magical companion, {self.player.name};\n1-Cat \n2-Toad \n3-Owl")
+                    print(f"Hagrid: Pick a magical companion,"
+                          " {self.player.name};\n1-Cat \n2-Toad \n3-Owl")
                     while True:
-                        pet = input("Choose yer pet, (Enter the corresponding number): ")
+                        pet = input("Choose yer pet, "
+                        "(Enter the corresponding number): ")
                         if pet == "1":
-                            print("Hagrid: A fine choice, a cat. Good luck with her!")
+                            print("Hagrid: A fine choice, "
+                                  "a cat. Good luck with her!")
                             break
                         elif pet == "2":
-                            print("Hagrid: Toads are great for beginners, youll do fine!")
+                            print("Hagrid: Toads are great for beginners,"
+                                  " you'll do fine!")
                             break
                         elif pet == "3":
-                            print("Hagrid: Owls are loyal friends, good pick!")
+                            print("Hagrid: Owls are loyal friends,"
+                                  " good pick!")
                             break
                         else:
-                            print("Hagrid: Oi! Pick 1, 2, or 3, no funny business.")
+                            print("Hagrid: Oi! Pick 1, 2, or 3,"
+                                  " no funny business.")
                     self.player.have_pet = True
+                    # Mark as pet obtained for the player
             else:
-                print("Hagrid: You already got a pet. Take good care of it, yeah?")
+                print("Hagrid: You already got a pet."
+                      " Take good care of it, yeah?")
 
+        # Leaky Cauldron Logic
         elif current_tile == "The leaky cauldron":
-            print("Hagrid: Ah, The Leaky Cauldron. Want to rest yer bones or listen for some news? (rest/news/leave)")
+            print("Hagrid: Ah, The Leaky Cauldron. Want to rest"
+                  " yer bones or listen for some news? (rest/news/leave)")
             choice = input("What'll it be? ").lower()
             if choice == "rest":
-                print("Hagrid: Nothing beats a warm meal and butterbeer to set ya right.")
+                print("Hagrid: Nothing beats a warm meal and"
+                      " butterbeer to set ya right.")
             elif choice == "news":
-                print("Hagrid: Heard tell of a secret room in Hogwarts... keep yer eyes open.")
+                print("Hagrid: Heard tell of a secret room in Hogwarts"
+                      "... keep yer eyes open.")
             else:
                 print("Hagrid: Alright, off ya go then!")
 
+        # Post Office Logic
         elif current_tile == "Post Office":
-            print("Hagrid: You are in the Post Office. Fancy sendin' a magical letter? (yes/no)  ")
+            print("Hagrid: You are in the Post Office. "
+                  "Fancy sendin' a magical letter? (yes/no)  ")
             choice = input("Say yes or no, mate: ").lower()
             if choice == "yes":
                 recipient = input("Recipient: ")
-                print(f"You sent a letter to {recipient}. Owls flap away into the sky!")
+                print(f"You sent a letter to {recipient}."
+                      " Owls flap away into the sky!")
             else:
                 print("Hagrid: 'No worries, maybe next time.'")
 
+        # Joke Shop Logic
         elif current_tile == "Weasleys' Wizard Wheezes (joke shop)":
             print("Hagrid: Welcome to the wildest joke shop in Diagon Alley!")
             if self.player.have_money:
-                print("Hagrid: You can get one o' these fun items: 1-Extendable Ear, 2-Trick Wand, 3-Skiving Snackbox")
+                print("Hagrid: You can get one o' these fun items: "
+                      "1-Extendable Ear, 2-Trick Wand, 3-Skiving Snackbox")
                 choice = input("What would you like? (1/2/3): ")
                 if choice == "1":
-                    print("Hagrid: You bought an Extendable Ear! Great for sneakin' on folks.")
+                    print("Hagrid: You bought an Extendable Ear! "
+                          "Great for sneakin' on folks.")
                 elif choice == "2":
-                    print("Hagrid: Careful with that wand—it sparks real good!")
+                    print("Hagrid: Careful with that wand—it"
+                          " sparks real good!")
                 elif choice == "3":
-                    print("Hagrid: That snackboxll get ya outta class, if yare clever enough.")
+                    print("Hagrid: That snackboxll get ya outta class,"
+                          " if yare clever enough.")
                 else:
                     print("Hagrid: That ain’t a proper choice, try again.")
             else:
-                print("George: Sorry, no galleons, no giggles! Get some money first.")
+                print("George: Sorry, no galleons, no giggles!"
+                      " Get some money first.")
 
+        # Train Station Logic
         elif current_tile == "Train station":
             print(f"Hagrid: You're at the {current_tile}.")
-            print("Hagrid: You can either stay in Diagon Alley or head off to Hogwarts, yeh? What'll it be?")
+            print("Hagrid: You can either stay in Diagon Alley or"
+                  " head off to Hogwarts, yeh? What'll it be?")
             decision = input("Stay or go, mate? (stay, go) ").lower()
             if decision == "stay":
                 print("Alrighty let's go explore more!")
             elif decision == "go":
                 if not self.player.have_book:
-                    print("Youre not done with your list yet! Go get your books.")
+                    print("Youre not done with your list yet! "
+                          "Go get your books.")
                 elif not self.player.have_pet:
-                    print("Youre not done with your list yet! Go get your pet")
+                    print("Youre not done with your list yet! "
+                          "Go get your pet")
                 elif not self.player.have_wand:
-                    print("Youre not done with your list yet! Go get your wand.")
+                    print("Youre not done with your list yet! "
+                          "Go get your wand.")
                 else:
-                    print("Hagrid: Brilliant! Let’s get yeh to Hogwarts. Choo choo!")
+                    print("Hagrid: Brilliant! Let’s get yeh to "
+                          "Hogwarts. Choo choo!")
                     self.current_map = self.hogwarts_map
                     self.player.location = {'row': 0, 'col': 0}
                     self.player.at_hogwarts = True
                     self.explore_hogwarts_tile()
 
     def explore_hogwarts_tile(self):
-        current_tile = self.hogwarts_map[self.player.location['row']][self.player.location['col']]
+        # Get the player's current tile location
+        row = self.player.location['row']
+        col = self.player.location['col']
+        current_tile = self.hogwarts_map[row][col]
 
+        # Dining hall logic
+        # Includes sorting the first time the player enters
+        # And simpler logiv for when they go a first time
         if current_tile == "Dining Hall":
             if not self.player.sorted:
-                print("Hagrid: Ahh, the Great Hall! Time for yeh to be sorted into yer house.")
+                print("Hagrid: Ahh, the Great Hall! "
+                      "Time for yeh to be sorted into yer house.")
                 self.player.sorted = True
-                h.house_sort()
+                h.house_sort() # Call sorting function from house_quiz module
             else:
-                print("Hagrid: Welcome to the Dining Hall. Fancy a feast or just sittin' with the students? (feast/sit/leave)")
+                print("Hagrid: Welcome to the Dining Hall. Fancy a feast or"
+                      " just sittin' with the students? (feast/sit/leave)")
                 choice = input("Yer pick: ").lower()
                 if choice == "feast":
-                    print("Hagrid: You had a grand feast! Yer energy’s full. You’ll feel stronger in battles now.")
+                    print("Hagrid: You had a grand feast! Yer energy’s"
+                          " full. You’ll feel stronger in battles now.")
                     self.player.energy_boost = True
                 elif choice == "sit":
-                    print("Hagrid: You sat with a group of friendly witches and wizards. Nice way to make friends!")
+                    print("Hagrid: You sat with a group of friendly"
+                          " witches and wizards. Nice way to make friends!")
                 else:
                     print("Hagrid: Alright then, movin on.")
 
         elif current_tile == "Library":
-            print("Hagrid: Shhh... It's the library. Want to read a magical book? (yes/no)")
+            print("Hagrid: Shhh... It's the library. Want to read"
+                  " a magical book? (yes/no)")
             if input("Your choice: ").lower() == "yes":
-                print("Hagrid: You found a dusty book on magical creatures. You've learned a new spell: *Stupefy!*")
-                s.Spell.spell_list.append('Stupefy')
+                print("Hagrid: You found a dusty book on magical"
+                      " creatures. You've learned a new spell: *Stupefy!*")
+                s.Spell.spell_list.append('Stupefy') # Add new spell
             else:
                 print("Hagrid: Fair enough, not everyone’s a bookworm.")
 
