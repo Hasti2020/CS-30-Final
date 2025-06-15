@@ -1,12 +1,18 @@
 ###############################################################################
-# Title: Wnad Module
+# Title: Explore Module
 # Name/s: Hasti, Emily
 # Class: CS 30
 # Assignment: Capstone project
 ##############################################################################
 '''
-This module defines a Wand class and provides functionality to randomly assign a wand 
-to a user, simulating a magical wand selection process similar to fantasy worlds.
+This module handles all the navigation within the two maps,
+Diagon Alley and Hogwarts.
+For each tile in siad maps, it handles the logic and user choice.
+It calls in the wand, potion, spells, house quiz, and battle module in 
+different tiles of the maps.
+It uses tabulate to print out the map display any time the player's location
+changes. It also uses the random library to give random outcomes for the user
+so the outomes will be different each time they play.
 '''
 ##############################################################################
 # Imports and Global Variables------------------------------------------------
