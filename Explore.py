@@ -194,8 +194,8 @@ class Movement:
                     print("Hagrid: Ya havent got no money"
                           " for a pet yet. Off to the bank!")
                 else:
-                    print(f"Hagrid: Pick a magical companion,"
-                          " {self.player.name};\n1-Cat \n2-Toad \n3-Owl")
+                    print(f"Hagrid: Pick a magical companion, {self.player.name}"
+                          ";\n1-Cat \n2-Toad \n3-Owl")
                     while True:
                         pet = input("Choose yer pet, "
                         "(Enter the corresponding number): ")

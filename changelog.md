@@ -386,4 +386,7 @@ in the library and learnt the spell
 
 ### Added:
 - Hasti: Added pep 8 and comments to the wand module
+- Hasti: Added pep 8 and comments to the Explore module
+- Hasti: Fixed the spelling errors and extra spaces and such
+- Hasti: Fixed a bug when prining player name in petstore
 
