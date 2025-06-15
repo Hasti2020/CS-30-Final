@@ -1,8 +1,22 @@
-import random
-import time
+###############################################################################
+# Title: Wnad Module
+# Name/s: Hasti, Emily
+# Class: CS 30
+# Assignment: Capstone project
+##############################################################################
+'''
+This module defines a Wand class and provides functionality to randomly assign a wand 
+to a user, simulating a magical wand selection process similar to fantasy worlds.
+'''
+##############################################################################
+# Imports and Global Variables------------------------------------------------
 
-random_wand = None
+import random # to assign a random wand
+import time # To add the factor of time to make the convo more engaging
 
+random_wand = None  # set it to none before the player gets their wand
+
+# Function--------------------------------------------------------------------
 class Wand:
 
     def __init__(self, name: str, core: str, min_power: int, max_power: int):
@@ -37,6 +51,8 @@ wand_options = [Wand("Duststick", "Rabbit Fur", 0, 10),
                 Wand("Elder Echo", "Basilisk Horn", 20, 30)]
 
 
+# Main------------------------------------------------------------------------
+#Usage exmpale:
 #Wand.get_wand()
 
 
