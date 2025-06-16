@@ -422,6 +422,7 @@ class Movement:
             if wish == "knowledge":
                 print("Hagrid: A rare spellbook appears."
                       " You learned *Expelliarmus!*")
+                s.Spell.spell_list.append('Expelliarmus') # Add new spell
             elif wish == "secret":
                 print("Hagrid: The room whispers... "
                       "'There's a traitor at Hogwarts.'")

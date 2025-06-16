@@ -144,7 +144,7 @@ class Player(Character):
             self.thunderbrew_increase = False
         # Checks if the player health is less than 40, they cast a spell
         if self.health <= 40: 
-            print('\nBlimey, cast any one of the spell yeh remember to '
+            print('\nBlimey, cast any one of the spell yeh know to '
                   + 'cause more damage!')
             i = 1
             # Prints out the spell list from Spell class in spell module

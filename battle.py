@@ -56,6 +56,17 @@ class Battle:
 
 
     def start_battle(self): 
+        '''
+        This method will be handling all the battles, output in console
+        (main menu) and its logic within it. It will be in charge of choosing
+        the opponents (randomized) and calling the differnt methods from
+        the character module, and excecute any inflicted damage or takes
+        damage of the opponent and player. The method will also help add
+        up the scores, which is the difference in the player's attack with
+        the opponent. Lastly, the method will also handle all of the first
+        3 battles, checks if player/opponent are alive and also calls in
+        the last battle with lord Voldemort, if the player survives.
+        '''
         print("\n-----------------Player Info-----------------")
         # Displays highscore and the wand the user has
         print(f'Current High-score: {s.high_score}')
@@ -65,9 +76,6 @@ class Battle:
         print("press 'q' to quit the game! ")
         print("press enter or any other keys to continue your battles " 
               + "and action!")
-        print("\n--------------WARNING---------------")
-        print("Only click enter once you have the option to, in order to "
-              + "avoid the battle from moving too quickly!")
         print("\n------------------Main Game------------------")
         for i in range(3): # Loops 3 times to create 3 different bettles
             # Chooses a random opponent from the list

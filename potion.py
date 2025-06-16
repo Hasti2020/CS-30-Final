@@ -124,8 +124,6 @@ class PotionGame:
                     self.player.thunderbrew_increase:
                     print('You already equipped the Thunderbrew'
                     '+ potion!')
-                else:
-                    print("That was not even a potion!")
             else:
                 print("You do not have that potion!")
         # Makes sure to not crash game if the input was not an integer

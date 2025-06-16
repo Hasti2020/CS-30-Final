@@ -24,8 +24,7 @@ class Spell:
         'Lumos',
         'Avada Kedavra',
         'Disillusionment',
-        'Cruciatus', 
-        'Expelliarmus'
+        'Cruciatus' 
         ]
     
 
@@ -87,21 +86,19 @@ def spell_lesson():
           + " Excellent for sneaking — just don’t trip over your own feet!")
     print("Flitwick: It can only create 5 DMG tho...")
     time.sleep(2)
-    print("\nFlitwick: Dark magic... Sectumsempra ✨ causes deep, "
-          + "slashing wounds. Use it only if you must — and be prepared "
-          + "for the consequences")
+    print("\nFlitwick: Dark magic... Sectumsempra ✨ causes deep wounds, "
+          + ". Use it only if you must.")
     print("Flitwick: This dangerous spell can cause a massive 20 DMG...")
     time.sleep(2)
     print("\nFlitwick: The Cruciatus. It causes unbearable pain. Unforgivable."
-          + " Illegal. And deeply disturbing. This is not a spell to take "
-          + "lightly")
+          + " Illegal. This is not a spell to take lightly.")
     print("Flitwick: This spell can cause 10 DMG...")
     time.sleep(2)
     print("\nFlitwick: The Killing Curse. Avada Kedavra. This spell is pure "
-          + "evil — never to be used")
+          + "evil — never to be used!")
     print("Flitwick: This spell can cause 25 DMG...")
     time.sleep(2)
-    print("\nYou: Ugh, this is too boring, I will sneak out now")
+    print("\nYou: Ugh, this is too boring, I will sneak out now!")
     time.sleep(2)
     print("...")
     time.sleep(1)
